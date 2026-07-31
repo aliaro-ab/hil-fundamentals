@@ -16,7 +16,7 @@ A test that says `drive the throttle to 30% and confirm the controller trips the
 
 The test bench that runs it is not durable in the same way. Test benches get replaced, chassis get swapped, a vendor gets acquired, the I/O card is discontinued, the project moves from one site to another. If your test is centered around the test bench, you have to rewrite it every time the test bench changes.
 
-## The three things that keep changing
+## Sources of change
 
 | What changes | How it changes | Why it hurts |
 | --- | --- | --- |
@@ -24,7 +24,7 @@ The test bench that runs it is not durable in the same way. Test benches get rep
 | **The bench** | Different vendors, different I/O, different naming, different units. | It's a purchase decision made by someone who wasn't thinking about your test. |
 | **The signal names** | The model, the controller's symbol file, the wiring diagram, and the network database each have their own name for one physical quantity. | Nothing lines up by default. See [[one-signal-five-names]]. |
 
-## What abstraction actually buys you
+## Benefits
 
 The return is not elegance; it is three concrete things:
 
@@ -34,7 +34,7 @@ The return is not elegance; it is three concrete things:
 | **Reuse across development stages** | The test written against a model gets rerun against hardware. See [[mil-sil-hil-one-story]]. |
 | **A shared vocabulary** | When a test engineer and a bench engineer both say "capture," they mean the same thing. Half of onboarding is just this. |
 
-## What it costs
+## Costs
 
 Abstraction is not free, and pretending otherwise breeds cynicism the first time an engineer hits its limits:
 
@@ -42,7 +42,7 @@ Abstraction is not free, and pretending otherwise breeds cynicism the first time
 - Abstractions leak hardest around timing. See [[time-is-the-hard-part]].
 - A generic interface may have limitations that specific hardware does not. 
 
-## The test to apply
+## The review question
 
 When you read a line of a test case, ask *is this describing the product, or the bench?*
 

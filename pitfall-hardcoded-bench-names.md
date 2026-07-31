@@ -26,7 +26,7 @@ Anything in a test that would have to change if the bench changed but the produc
 - Sleeps tuned to one bench's latency
 - Assumptions about capture rates or buffer sizes
 
-## The distinction to internalize
+## The key distinction
 
 Every line of a test is either a statement about **the product** or a statement about **the bench**.
 
@@ -59,6 +59,6 @@ When reviewing a test, ask one question of every line. *Would this still be corr
 
 If not, it's in the wrong layer. That single question, applied consistently in code review, is most of what keeps a suite portable, and it's much cheaper than the alternative, which is discovering the answer during a bench refresh.
 
-## Being fair about it
+## Acceptable coupling
 
 Some coupling is unavoidable and pretending otherwise is its own trap. A test that deliberately exercises a specific piece of I/O hardware is *supposed* to know about that hardware. The goal isn't zero bench knowledge. It's that bench knowledge appears **deliberately, in one place, and labeled**, rather than accidentally, everywhere, in silence.

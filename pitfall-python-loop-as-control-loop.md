@@ -51,7 +51,7 @@ Your script's job is to *specify, arm, start, and query*. The real-time side exe
 
 See [[capability-stimulate]] and [[time-is-the-hard-part]].
 
-## Where the boundary actually is
+## Where the boundary lies
 
 As a rule of thumb, **if the timing of an event matters to the DUT's behavior, it cannot originate in your script.**
 
@@ -69,6 +69,6 @@ It may not:
 - Time anything you intend to assert on
 - React to an event within a deadline
 
-## If the bench genuinely can't do it
+## Unsupported stimuli
 
 Occasionally you need a stimulus the bench's built-in generators don't cover. The answer is still not a loop in your script. It's a table of samples, uploaded as an arbitrary waveform and played by the real-time side. Compute it offline, play it in real time. See [[capability-replay]].

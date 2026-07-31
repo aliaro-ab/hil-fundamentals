@@ -15,7 +15,7 @@ Capture is [[capability-observe|observe]] done over many values, at a known rate
 
 Almost every interesting test assertion is a statement about a captured trace rather than a single reading.
 
-## The four things that define a capture
+## What defines a capture
 
 | Dimension | What it means |
 | --- | --- |

@@ -90,7 +90,7 @@ Walk the grid and ask "can it do this, and at what rate?" That's the [[bench-eva
 Every concept or instruction is going to be in service of one of the above cells.
 When you know which one you're in, a massive standard becomes a lookup table for how to do [Capability] at [Boundary].
 
-## The two things the grid doesn't show
+## What the grid does not show
 
 It's a static picture of a system whose whole difficulty is dynamic.
 Two things live off the grid and matter more than any single cell.

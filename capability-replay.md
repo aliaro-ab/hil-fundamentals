@@ -13,7 +13,7 @@ related_to:
 
 Replay is [[capability-stimulate|stimulate]] whose source is a recorded trace instead of a mathematical description. It closes the loop between the field and the lab.
 
-## Why it matters more than it sounds
+## Why it matters
 
 The most valuable test data your organization has is the recording of a failure in the field, under conditions you cannot reproduce. Replay is how that recording becomes a regression test.
 
@@ -34,7 +34,7 @@ flowchart LR
 
 A team that can do this has a fundamentally different debugging life from one that can't.
 
-## The three sources of a replay trace
+## Sources of replay traces
 
 | Source | What it gives you |
 | --- | --- |
@@ -51,7 +51,7 @@ A team that can do this has a fundamentally different debugging life from one th
 | [[boundary-plant-model]] | Drive model inputs from a recorded profile |
 | [[boundary-service-layer]] | Replay a recorded request sequence; often awkward, because services are request/response and a blind replay can desynchronize |
 
-## The four questions that decide if a replay is honest
+## Replay fidelity questions
 
 | Question | What to watch for |
 | --- | --- |

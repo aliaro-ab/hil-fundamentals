@@ -20,17 +20,29 @@ Every one of these is the same disease. **Something left state behind.**
 
 ## What gets left behind
 
-**Overridden variables.** You forced a sensor value and never released it. Every subsequent test runs against a frozen sensor and has no idea.
+### Overridden variables
 
-**Modified calibrations.** You changed a threshold to check the logic, the test failed before the restore line, and now the DUT has a wrong threshold that survives reboots. This is the worst one, because it's persistent and invisible. See [[boundary-device-internals]].
+You forced a sensor value and never released it. Every subsequent test runs against a frozen sensor and has no idea.
 
-**Injected faults.** A relay is still open. The next test's DUT genuinely has a broken sensor, and its failure looks like a real bug.
+### Modified calibrations
 
-**Running stimuli.** A waveform generator is still playing into an input nobody's watching.
+You changed a threshold to check the logic, the test failed before the restore line, and now the DUT has a wrong threshold that survives reboots. This is the worst one, because it's persistent and invisible. See [[boundary-device-internals]].
 
-**Held resources.** Captures, channels, sessions, and locks never released. Eventually the bench runs out and refuses to start anything.
+### Injected faults
 
-**DUT state.** A latched fault, a degraded mode, a diagnostic session, a non-default operating mode.
+A relay is still open. The next test's DUT genuinely has a broken sensor, and its failure looks like a real bug.
+
+### Running stimuli
+
+A waveform generator is still playing into an input nobody's watching.
+
+### Held resources
+
+Captures, channels, sessions, and locks never released. Eventually the bench runs out and refuses to start anything.
+
+### DUT state
+
+A latched fault, a degraded mode, a diagnostic session, a non-default operating mode.
 
 ## Why it happens
 
@@ -47,15 +59,23 @@ Cleanup on the success path only isn't cleanup. And during development, tests fa
 
 ## The fix
 
-**Guaranteed teardown, always.** Use whatever your language provides (`try/finally`, context managers, test fixtures with teardown, RAII). Never a bare cleanup call at the end of a function.
+### Guaranteed teardown
 
-**Restore, don't reset to a guess.** Read the original value before you change it, and put *that* back. Writing a hardcoded "default" just moves the corruption around.
+Always use whatever your language provides (`try/finally`, context managers, test fixtures with teardown, RAII). Never a bare cleanup call at the end of a function.
 
-**Assume you arrived dirty.** Don't trust that the previous test cleaned up. Establish your preconditions explicitly at the start, with a known mode, faults cleared, and no active overrides. Cheap insurance, and it turns "mysterious failure" into "clear precondition failure."
+### Restore the original value
 
-**Verify the cleanup.** Confirm the fault actually cleared and the calibration actually restored. A cleanup that silently failed is worse than none, because you believe it worked.
+Don't reset to a guess. Read the original value before you change it, and put *that* back. Writing a hardcoded "default" just moves the corruption around.
 
-## When you're already debugging one of these
+### Assume you arrived dirty
+
+Don't trust that the previous test cleaned up. Establish your preconditions explicitly at the start, with a known mode, faults cleared, and no active overrides. Cheap insurance, and it turns "mysterious failure" into "clear precondition failure."
+
+### Verify the cleanup
+
+Confirm the fault actually cleared and the calibration actually restored. A cleanup that silently failed is worse than none, because you believe it worked.
+
+## Debugging a suspected leak
 
 Stop debugging the failing test. It's probably innocent. Instead:
 

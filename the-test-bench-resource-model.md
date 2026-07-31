@@ -48,7 +48,7 @@ They're not bureaucracy. They exist because of real constraints:
 
 When an operation is rejected because you're "in the wrong state," the answer is almost never to retry. It's that you asked for something the system physically cannot do yet.
 
-## Leave it as you found it
+## Cleanup
 
 The rule that matters most, because violating it hurts other people:
 
@@ -62,7 +62,7 @@ Use whatever your language offers for guaranteed cleanup, such as try/finally, c
 
 Cleanup that only runs on the success path is not cleanup, and tests fail more often than they pass while you're writing them.
 
-## The symptom of getting this wrong
+## Symptoms
 
 The classic signature is the test passes alone and fails in the suite, or the first run passes and the second fails. Both mean someone left state behind.
 

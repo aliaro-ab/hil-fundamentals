@@ -20,7 +20,7 @@ Modern controllers are rarely alone. They sit on a bus alongside other controlle
 
 Work at signal level for readability; drop to frame level when you need to test something the database can't express, such as a bad checksum, a stalled rolling counter, or a frame that shouldn't exist.
 
-## What you can do here
+## Capabilities
 
 | Capability | What it means here |
 | --- | --- |
@@ -44,7 +44,7 @@ Everything at signal level depends on a database file that defines names, scalin
 
 See [[one-signal-five-names]].
 
-## Timing here is real
+## Timing
 
 Networks have cycle times, latency, and jitter. A signal updated every 100 ms cannot be used to assert a 20 ms response, no matter how fast you poll it. Always know the cycle time of any signal you assert on.
 

@@ -9,7 +9,7 @@ _organized: true
 
 A [[capability-capture|capture]] needs a beginning and an end. How you choose them decides whether you get evidence or a pile of samples.
 
-## Why not just record everything
+## Limits of continuous capture
 
 Sometimes that is the right choice. For a short test, continuous capture of everything is the simplest thing that works, and storage is cheap.
 
@@ -17,7 +17,7 @@ But it stops scaling. High-rate signals across a long test produce data nobody w
 
 More importantly, a well-chosen window is self-documenting. A capture that starts on the fault and ends on recovery is an artifact a reviewer can read. A twenty-minute dump is a research project.
 
-## Ways to start
+## Start conditions
 
 | Start | What it means | When it fits |
 | --- | --- | --- |
@@ -25,7 +25,7 @@ More importantly, a well-chosen window is self-documenting. A capture that start
 | **On a condition** | A signal crosses a threshold, a flag sets, a state changes. | The event's timing isn't yours to control. Condition-based triggers are evaluated on the real-time side, so they're precise. A trigger your script polls for is only as precise as your script, which is to say not very. See [[time-is-the-hard-part]]. |
 | **On an external event** | A hardware trigger, a network frame, a diagnostic response. | Something outside the bench software marks the moment. |
 
-## Ways to stop
+## Stop conditions
 
 | Stop | What it means | Watch out for |
 | --- | --- | --- |

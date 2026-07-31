@@ -88,7 +88,7 @@ Projects, applications, and industries will have their own words for several of 
 | **Measurement variable** | A read-only internal value. |
 | **Symbol file** | The build artifact mapping names to addresses. This is changed every build. |
 
-## Things people say
+## Colloquialisms
 
 | Phrase | Meaning |
 | --- | --- |

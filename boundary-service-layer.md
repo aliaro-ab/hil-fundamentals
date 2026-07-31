@@ -13,7 +13,7 @@ As embedded systems adopt service-oriented architectures, controllers stop broad
 
 This is a newer boundary than the rest, and it behaves much more like distributed-systems testing than like traditional bench work.
 
-## The three shapes of interaction
+## Interaction patterns
 
 | Shape | Pattern | Testing it means |
 | --- | --- | --- |
@@ -21,7 +21,7 @@ This is a newer boundary than the rest, and it behaves much more like distribute
 | **Events** | Publish/subscribe. The DUT emits a notification; subscribers receive it. | Subscribing and checking what arrives, when, and in what order. |
 | **Fields** | Shared state with getters, setters, and change notifications. | Reading, writing, and confirming the notification actually fires. |
 
-## What you can do here
+## Capabilities
 
 | Capability | What it means here |
 | --- | --- |
@@ -31,15 +31,23 @@ This is a newer boundary than the rest, and it behaves much more like distribute
 | [[inject-a-fault]] | Ways with no analog elsewhere. Return errors, time out, respond out of order, vanish mid-session, fail discovery |
 | [[capability-replay]] | Awkward here, because blind playback desynchronizes a conversational protocol |
 
-## Why it feels different
+## Differences from other boundaries
 
-**Dynamic, not periodic.** Nothing happens on a fixed cycle. A service may be absent until discovered, and discovery has its own timing and failure modes.
+### Dynamic rather than periodic
 
-**Stateful.** Sessions, subscriptions, and connections all have lifecycles. Test order starts to matter in ways it doesn't at other boundaries.
+Nothing happens on a fixed cycle. A service may be absent until discovered, and discovery has its own timing and failure modes.
 
-**Asynchronous.** Responses and events arrive on their own schedule. Your test needs to *wait for* things rather than *poll for* them, and needs sane timeouts on every wait.
+### Stateful
 
-**Both roles.** For most boundaries the bench is a stand-in for the physical world. Here it stands in as a peer, sometimes the client, sometimes the server, often both in the same test.
+Sessions, subscriptions, and connections all have lifecycles. Test order starts to matter in ways it doesn't at other boundaries.
+
+### Asynchronous
+
+Responses and events arrive on their own schedule. Your test needs to *wait for* things rather than *poll for* them, and needs sane timeouts on every wait.
+
+### Both roles
+
+For most boundaries the bench is a stand-in for the physical world. Here it stands in as a peer, sometimes the client, sometimes the server, often both in the same test.
 
 ## Common mistakes
 

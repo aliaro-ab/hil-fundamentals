@@ -46,7 +46,7 @@ Then your read samples something that was true a few milliseconds ago. See [[tim
 
 The trap also cuts the other way. Read the *setpoint* back in the gap between the write landing and being applied, and you get your new value while the hardware is still doing the old thing. That readback confirms nothing except that your write arrived. The value and the hardware disagree, and a test that treats it as proof the system responded is passing on false confidence.
 
-## The fix that isn't a fix
+## The wrong fix
 
 ```
 set(setpoint, 30)
@@ -56,7 +56,7 @@ assert read(output) == expected
 
 This passes on your machine today. It's a guess tuned until the test went green, and it carries no information about what you were actually waiting for. Under load, on a busier bench, or after someone adds a filter, it becomes an intermittent failure. Intermittent failures are how test suites lose credibility.
 
-## The actual fix
+## The correct fix
 
 Wait for the **condition**, bounded by a timeout, and fail with a message that says what you wanted:
 

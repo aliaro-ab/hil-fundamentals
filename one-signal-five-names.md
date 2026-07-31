@@ -54,7 +54,7 @@ flowchart LR
 
 All for one plate on one shaft. Every arrow in that chain is a conversion that somebody configured by hand, in a file, possibly years ago, possibly for a different variant.
 
-## The three layers worth naming
+## The three layers
 
 ### Raw
 
@@ -70,7 +70,7 @@ What the test means. "Throttle at 30%." "Idle." "Wide open." Durable across benc
 
 A good test is written in intent, resolved to physical by a mapping layer, and converted to raw by the bench. A fragile test is written in raw values with a comment explaining the math.
 
-## The three ways this goes wrong
+## Failure modes
 
 ### Silent scaling errors
 
@@ -98,7 +98,7 @@ Every test program needs to know where this lives, who owns it, how it is regene
 
 On most projects, the honest answer is "we wouldn't." Teams that add a consistency check between the mapping and its upstream sources catch a class of bug that otherwise costs weeks.
 
-## The habit to build
+## Recommended practice
 
 For every value you read or write, be able to answer three questions:
 

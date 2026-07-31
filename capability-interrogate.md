@@ -12,11 +12,13 @@ related_to:
 
 Every other verb observes the device from outside. Interrogate asks the device for its own account of itself, through the standardized channel that a service technician would use.
 
-## Why it's its own verb
+## Why it is a separate verb
 
 You could, in principle, read the same fault flags out of memory with [[capability-observe|observe]] at [[boundary-device-internals|device internals]]. That would be a mistake, for a reason worth internalizing.
 
-**The diagnostic channel is a product feature.** It's what a garage, a fleet system, or a field engineer will actually use. If the internal flag is set correctly but the diagnostic response is malformed, mislabeled, or missing, the product is broken, and reading memory directly would never have caught it.
+### The channel is a product feature
+
+The diagnostic channel is what a garage, a fleet system, or a field engineer will actually use. If the internal flag is set correctly but the diagnostic response is malformed, mislabeled, or missing, the product is broken, and reading memory directly would never have caught it.
 
 Testing through the diagnostic channel tests the thing the customer touches. Reading memory tests the thing the developer touches. You want both, and you should know which one you're doing.
 

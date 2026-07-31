@@ -33,17 +33,17 @@ Calibration interfaces give you access to read and write thresholds, gains, look
 
 A test that leaves a modified calibration behind will corrupt every test that runs after it, and the failures will look nothing like the cause. Treat calibration writes like a transaction. Record the original, always restore it, and never assume a bench arrives in a known state. See [[the-test-bench-resource-model]].
 
-## What this boundary costs you
+## Costs
 
-### It's not the product
+### Internals are not the product
 
 No customer reads your internal variables. Asserting on an internal flag is convenient and brittle. The next refactor renames it and your test breaks without the product changing. Prefer asserting on externally visible behavior and using internals for *diagnosis*.
 
-### Rates are lower than you think
+### Limited sample rates
 
 This channel usually samples slower than the DUT's own control loop, and often slower than [[boundary-physical-pins|physical pins]]. 
 
-### It has side effects
+### Side effects
 
 The DUT spends real cycles servicing your requests. Asking for too many variables too fast can change the timing you're trying to measure.
 

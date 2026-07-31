@@ -11,7 +11,7 @@ The true boundary between the device under test and its environment is the wirin
 
 At this boundary the bench is not simulating the interface, it *is* the interface. It acquires and generates all of the signals that the DUT defines and expects.
 
-## What lives here
+## Inputs and outputs
 
 ### Inputs to the DUT
 
@@ -32,7 +32,7 @@ It's the only place you can test what happens **between** the DUT's software and
 
 If your test is about whether the DUT interprets the physical world correctly, it has to happen here. No other boundary can answer that question.
 
-## What it costs
+## Costs
 
 ### Wiring is real (and often wrong)
 

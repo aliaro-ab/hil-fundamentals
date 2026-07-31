@@ -30,27 +30,41 @@ Work out what you need before reading on.
 
 ## A good answer
 
-**Precondition.** Get the system to a steady operating state where the sensor is being read and power is not already limited. Establish this via [[boundary-plant-model|the plant model]], and *verify* it rather than assuming.
+### Establish the precondition
 
-**Arm the capture first.** [[capability-capture]] the commanded power output (at [[boundary-network|the network]] or [[boundary-physical-pins|physical pins]], wherever the DUT actually publishes it), the DUT's internal reported temperature (at [[boundary-device-internals|device internals]], for diagnosis), and the fault flag. Use a pre-trigger so you see the state before the break. Sample fast enough to resolve 500 ms comfortably, at 100 Hz or better. See [[triggers-and-windows]].
+Get the system to a steady operating state where the sensor is being read and power is not already limited. Establish this via [[boundary-plant-model|the plant model]], and *verify* it rather than assuming.
 
-**Break it.** [[inject-a-fault]] at [[boundary-physical-pins|physical pins]] by opening the circuit on the sensor line. The fault must be electrically real rather than a model-level substitution, because the point is to test the DUT's input diagnostics, which a model fault would bypass entirely.
+### Arm the capture first
 
-**Assert on the trace.** From the captured timestamps, verify that the time from the break to the fault flag is under 500 ms, the substituted temperature equals the documented default, and the power is limited to 50% within its own spec.
+[[capability-capture]] the commanded power output (at [[boundary-network|the network]] or [[boundary-physical-pins|physical pins]], wherever the DUT actually publishes it), the DUT's internal reported temperature (at [[boundary-device-internals|device internals]], for diagnosis), and the fault flag. Use a pre-trigger so you see the state before the break. Sample fast enough to resolve 500 ms comfortably, at 100 Hz or better. See [[triggers-and-windows]].
 
-**Interrogate.** [[capability-interrogate]] at [[boundary-diagnostic-channel|the diagnostic channel]] and confirm the correct fault code, the correct status bits (not merely "present"; see the status model discussion there), and a freeze frame with plausible conditions.
+### Inject the fault
 
-**Recover.** Restore the circuit. Confirm the DUT returns to normal, and confirm the fault is now *history* rather than *active*. Whether it self-clears or requires a power cycle is a requirement; check the actual one.
+[[inject-a-fault]] at [[boundary-physical-pins|physical pins]] by opening the circuit on the sensor line. The fault must be electrically real rather than a model-level substitution, because the point is to test the DUT's input diagnostics, which a model fault would bypass entirely.
 
-**Clean up.** Release the relay, clear the faults, and return the DUT to a known state. See [[the-test-bench-resource-model]].
+### Assert on the trace
 
-## What this test does not catch
+From the captured timestamps, verify that the time from the break to the fault flag is under 500 ms, the substituted temperature equals the documented default, and the power is limited to 50% within its own spec.
+
+### Interrogate the diagnostics
+
+[[capability-interrogate]] at [[boundary-diagnostic-channel|the diagnostic channel]] and confirm the correct fault code, the correct status bits (not merely "present"; see the status model discussion there), and a freeze frame with plausible conditions.
+
+### Verify recovery
+
+Restore the circuit. Confirm the DUT returns to normal, and confirm the fault is now *history* rather than *active*. Whether it self-clears or requires a power cycle is a requirement; check the actual one.
+
+### Clean up
+
+Release the relay, clear the faults, and return the DUT to a known state. See [[the-test-bench-resource-model]].
+
+## Limitations
 
 - Intermittent faults. A clean open is the easy case; a flaky connection making and breaking at 50 Hz is the one that actually happens in vehicles, and it's a different test.
 - Short-to-ground and short-to-supply, which are different circuit conditions with potentially different detection paths. Three tests, not one.
 - Whether 500 ms is the *right* requirement. Nothing on the bench can tell you that.
 
-## Variations worth writing
+## Variations
 
 | Variation | Why it's a separate test |
 | --- | --- |

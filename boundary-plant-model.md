@@ -11,7 +11,7 @@ related_to:
 
 The plant model is whatever the DUT is trying to control, whether that is the motor, the vehicle, the battery pack, or the hydraulic circuit. It consumes the DUT's outputs and produces the inputs the DUT expects to see.
 
-## What you can do here
+## Capabilities
 
 | Capability | What it means here |
 | --- | --- |
@@ -22,19 +22,23 @@ The plant model is whatever the DUT is trying to control, whether that is the mo
 
 You cannot [[capability-interrogate|interrogate]] a model. It has no opinion about its own health.
 
-## Why it's the friendliest boundary
+## Advantages
 
 Everything is a named number in a known unit at a known rate, with no wiring, no scaling, and no electrical risk. Model variables are also the only place you can see quantities that don't physically exist as signals, such as internal states, energies, forces, and the "true" value of something the DUT can only estimate.
 
 That last one is enormously useful. You can compare the DUT's *estimate* of a quantity against the model's *truth*, which is an assertion you simply cannot make on a real machine.
 
-## The two things that bite
+## Constraints
 
-**Ownership.** The model recomputes its variables every tick. If you write one it owns, your value survives one cycle. To influence a model-owned quantity you change a driver, a load, a parameter, or an explicit override input the model author provided. See [[open-loop-vs-closed-loop]].
+### Ownership
 
-**Rate.** The model runs at a fixed step. Nothing you do here happens faster than one step, and no assertion about the model can resolve finer than that. A 1 ms model cannot tell you anything trustworthy about a 200 µs event.
+The model recomputes its variables every tick. If you write one it owns, your value survives one cycle. To influence a model-owned quantity you change a driver, a load, a parameter, or an explicit override input the model author provided. See [[open-loop-vs-closed-loop]].
 
-## The trap
+### Rate
+
+The model runs at a fixed step. Nothing you do here happens faster than one step, and no assertion about the model can resolve finer than that. A 1 ms model cannot tell you anything trustworthy about a 200 µs event.
+
+## The over-testing trap
 
 The plant model is so pleasant to work with that you'll be tempted to test against it exclusively. But the model is not the product, and it was written by someone with their own assumptions and simplifications. A test that only touches the plant model is at constant risk of confirming that the model does what the model does. See [[pitfall-testing-the-model-not-the-device]].
 

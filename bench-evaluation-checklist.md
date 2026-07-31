@@ -72,7 +72,7 @@ See [[the-test-bench-resource-model]].
 3. Can I tell, from a result six months old, exactly what configuration produced it?
 4. Is there a second bench, and do results agree between them?
 
-## Honesty
+## Known limitations
 
 1. What can this bench *not* test? Get a real answer.
 2. What's known to be inaccurate in the model?

@@ -13,11 +13,11 @@ This vault teaches the concepts behind hardware-in-the-loop test systems.
 It is deliberately vendor-neutral, with no product names, no APIs, and no code.
 When you eventually read a real standard or a real product manual this reference will help you to navigate vendor and industry terminology.
 
-## Who this is for
+## Audience
 
 Engineers who are competent in embedded software, controls, or test automation, but new to HIL specifically.
 
-## The one-sentence version
+## Summary
 
 A test bench is a machine that can observe, stimulate, capture, replay, break, and interrogate a device across six different boundaries.
 
@@ -40,14 +40,14 @@ Plan for half a day, in this order:
 
 Then work the [[scenario-cards|scenario cards]] with someone who has done this before.
 
-## When you're ready for more
+## Next steps
 
 | Note | Why it's here |
 | --- | --- |
 | [[bench-evaluation-checklist]] | What to ask when someone hands you a bench |
 | [[glossary]] | Terms, and what people actually say |
 
-## How the vault is organized
+## Vault organization
 
 | Type | What it's for |
 | --- | --- |

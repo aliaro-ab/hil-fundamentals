@@ -10,7 +10,7 @@ _organized: true
 
 A hardware-in-the-loop bench is a simulation system designed to convince a real controller that it is installed in a real machine, when in fact it is bolted to a rack in a lab. Everything else is detail.
 
-## The four parts
+## Components
 
 | Part | What it is | Why it's there |
 | --- | --- | --- |
@@ -40,7 +40,7 @@ The loop runs at a fixed rate, typically somewhere between 100 Hz and 10 kHz dep
 > [!tip]
 > Your test does not drive the loop. It reaches into the loop, changes something, and watches what happens. Internalizing that one sentence is most of the conceptual jump.
 
-## Why a bench instead of the real machine
+## Advantages over the real machine
 
 | Reason | What it buys you |
 | --- | --- |
@@ -50,7 +50,7 @@ The loop runs at a fixed rate, typically somewhere between 100 Hz and 10 kHz dep
 | **Availability** | The bench exists before the prototype does. |
 | **Repeatability** | The same test produces the same conditions, which is the only way a regression suite means anything. |
 
-## What a HIL bench is *not* good at
+## Limitations
 
 This is worth saying early, because it is tempting to over-trust testing of any kind:
 

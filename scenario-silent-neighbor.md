@@ -28,21 +28,35 @@ Work out what you need before reading on.
 
 ## A good answer
 
-**Know your restbus.** The message in question is being sent by the bench, standing in for a controller that isn't on this rack. If you don't know that, none of this makes sense. See [[boundary-network]].
+### Understand how the bus is simulated
 
-**Precondition.** Establish normal operation, with the restbus healthy, the speed signal present at its normal cycle time, and the DUT not already degraded. Verify it.
+The message in question is being sent by the bench, standing in for a controller that isn't on this rack. See [[boundary-network]] for details.
 
-**Arm the capture.** [[capability-capture]] at frame level, not just signal level. You need to see the *absence* of a message, and a decoded signal view will happily keep showing you the last received value forever. Capture the frame in question, the DUT's mode indication, and its output. Turn the pre-trigger on.
+### Establish the precondition
 
-**Break it.** [[inject-a-fault]] at [[boundary-network|the network]] by stopping transmission of that frame. Note the timing subtlety. The deadline starts at the *last successfully received* frame, not at the moment you called stop. Read that from the capture.
+Establish normal operation, with the restbus healthy, the speed signal present at its normal cycle time, and the DUT not already degraded. Verify it.
 
-**Assert.** Verify detection within 300 ms of the last received frame, the correct substitute value, and the correct degraded mode. And check the boundary. Does it correctly *not* trip at 290 ms? A timeout that fires too early is as much a defect as one that fires too late, and only testing the far side of the boundary leaves half the requirement unverified.
+### Arm the capture
 
-**Interrogate.** [[capability-interrogate]] and confirm the correct communication fault code and the correct status.
+[[capability-capture]] at frame level, not just signal level. You need to see the *absence* of a message, and a decoded signal view will happily keep showing you the last received value forever. Capture the frame in question, the DUT's mode indication, and its output. Turn the pre-trigger on.
 
-**Recover.** Resume transmission. Confirm automatic recovery, and confirm the fault becomes history rather than remaining active.
+### Stop the frame
 
-## The variations that find real bugs
+[[inject-a-fault]] at [[boundary-network|the network]] by stopping transmission of that frame. Note the timing subtlety. The deadline starts at the *last successfully received* frame, not at the moment you called stop. Read that from the capture.
+
+### Assert on the capture
+
+Verify detection within 300 ms of the last received frame, the correct substitute value, and the correct degraded mode. And check the boundary. Does it correctly *not* trip at 290 ms? A timeout that fires too early is as much a defect as one that fires too late, and only testing the far side of the boundary leaves half the requirement unverified.
+
+### Interrogate the diagnostics
+
+[[capability-interrogate]] and confirm the correct communication fault code and the correct status.
+
+### Verify recovery
+
+Resume transmission. Confirm automatic recovery, and confirm the fault becomes history rather than remaining active.
+
+## Variations
 
 This is the boundary where fault injection is cheapest and most productive. Each of these is a distinct failure mode and each has shipped as a field defect somewhere:
 
@@ -56,6 +70,6 @@ This is the boundary where fault injection is cheapest and most productive. Each
 | **Too fast** | Sent at 10× the cycle time. Some receivers overflow. |
 | **Recovery timing** | One good frame to recover, or several? Is there hysteresis, and should there be? |
 
-## What this test does not catch
+## Limitations
 
 Bus-level problems, such as arbitration under load, error frames, bus-off recovery, and wiring faults on the bus itself. Those are separate tests at [[boundary-physical-pins|physical pins]] and at the frame level.

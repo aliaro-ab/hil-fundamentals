@@ -10,7 +10,7 @@ _organized: true
 ---
 # Time is the hard part
 
-## The mental model you arrive with
+## The wrong mental model
 
 In ordinary software, this works:
 
@@ -21,7 +21,7 @@ assert read(power) < limit
 
 You wrote a value, so it's true. Read it back, and you expect what you wrote to be returned. 
 
-## The mental model you need
+## The right mental model
 
 **The system is running whether or not you are looking at it.**
 
@@ -49,7 +49,7 @@ Both lines are approximate in time. Neither is wrong; they're just not instantan
 
 Any assertion whose precision depends on your script's clock is worth roughly nothing. Assertions must be made against timestamps that came from the real-time side, which is why [[capability-capture|capture]] exists and why it isn't just "read in a loop."
 
-## The three rules that follow
+## The three rules
 
 ### Never assert immediately after acting
 
@@ -73,9 +73,9 @@ Your script arms and queries, but it does not participate in the loop.
 
 See [[pitfall-python-loop-as-control-loop]].
 
-### Every number has a rate, and the rate is part of its meaning
+### Every number has a rate
 
-A signal on a 100 ms cycle carries no information about a 10 ms event, no matter how fast you sample it downstream. Before asserting on any value, know its update rate at its source.
+The rate is part of the number's meaning. A signal on a 100 ms cycle carries no information about a 10 ms event, no matter how fast you sample it downstream. Before asserting on any value, know its update rate at its source.
 
 See [[pitfall-sample-rate-blindness]].
 

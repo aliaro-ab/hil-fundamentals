@@ -124,13 +124,13 @@ Cut the sensor wire mid-test and confirm the controller notices. See [[inject-a-
 
 That is the entire argument for [[why-abstraction-exists|why abstraction exists]], and it is why a well-built test suite has its intent in one place and its bench specifics in another.
 
-## The honest caveats
+## Caveats
 
 - Test reuse across stages is the dream, but very hard to realize. Expect the structure to survive and the details to need work.
 - Some tests only make sense at one stage. Electrical fault injection has no MIL equivalent; exhaustive parameter sweeps are usually only affordable in SIL.
 - A test that passed in MIL and fails in HIL has *not* wasted your time. That delta is exactly the information you paid for.
 
-## Other letters you'll hear
+## Related terms
 
 You will also encounter PIL (processor-in-the-loop, the real chip but not the real board), VIL (vehicle-in-the-loop), and various house-specific coinages.
 

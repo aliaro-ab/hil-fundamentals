@@ -36,7 +36,7 @@ It's a good indicator of whether someone has the mental model or just the vocabu
 5. [[scenario-calibration-threshold]]
 6. [[scenario-power-interrupt]]
 
-## What a good answer looks like
+## Criteria for a good answer
 
 A good answer is not just a list of cells from the grid. It covers:
 
