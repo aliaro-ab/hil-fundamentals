@@ -22,9 +22,9 @@ Then you spend a day investigating why the controller's response looks nothing l
 
 ## Why it can't work
 
-Your test script runs on a general-purpose operating system. It is scheduled at the convenience of a kernel that is also handling networking, disk, a desktop environment, and whatever else is logged in. `sleep(0.001)` guarantees only a minimum: not less than a millisecond, with no upper bound.
+Your test script runs on a general-purpose operating system. It is scheduled at the convenience of a kernel that is also handling networking, disk, a desktop environment, and whatever else is logged in. `sleep(0.001)` guarantees only a minimum. The pause lasts not less than a millisecond, with no upper bound.
 
-Jitter of tens of milliseconds is normal. Occasional pauses of hundreds of milliseconds are normal. For a 5 Hz signal, that jitter is a substantial fraction of a period — you are generating noise with a sinusoidal trend.
+Jitter of tens of milliseconds is normal. Occasional pauses of hundreds of milliseconds are normal. For a 5 Hz signal, that jitter is a substantial fraction of a period. You are generating noise with a sinusoidal trend.
 
 Meanwhile the bench's real-time side is doing exactly this job, at a fixed rate, with microsecond determinism, because that's what it's for.
 
@@ -39,7 +39,7 @@ stimulus.start()
 stimulus.wait_until_done(timeout=15)
 ```
 
-Your script's job is to *specify, arm, start, and query*. The real-time side executes. This is the correct division of labour for everything time-critical on a bench:
+Your script's job is to *specify, arm, start, and query*. The real-time side executes. This is the correct division of labor for everything time-critical on a bench:
 
 | Time-critical thing | Where it belongs |
 | --- | --- |
@@ -53,14 +53,14 @@ See [[capability-stimulate]] and [[time-is-the-hard-part]].
 
 ## Where the boundary actually is
 
-Rule of thumb: **if the timing of an event matters to the DUT's behaviour, it cannot originate in your script.**
+As a rule of thumb, **if the timing of an event matters to the DUT's behavior, it cannot originate in your script.**
 
 Your script may legitimately:
 
-- Set slow values — ambient temperature, configuration, a mode request
+- Set slow values such as ambient temperature, configuration, or a mode request
 - Sequence phases of a test
 - Wait for conditions with generous timeouts
-- Fetch and analyse results
+- Fetch and analyze results
 
 It may not:
 
@@ -71,4 +71,4 @@ It may not:
 
 ## If the bench genuinely can't do it
 
-Occasionally you need a stimulus the bench's built-in generators don't cover. The answer is still not a loop in your script — it's a table of samples, uploaded as an arbitrary waveform and played by the real-time side. Compute it offline, play it in real time. See [[capability-replay]].
+Occasionally you need a stimulus the bench's built-in generators don't cover. The answer is still not a loop in your script. It's a table of samples, uploaded as an arbitrary waveform and played by the real-time side. Compute it offline, play it in real time. See [[capability-replay]].

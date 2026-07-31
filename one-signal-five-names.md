@@ -7,9 +7,9 @@ related_to:
   - "[[pitfall-hardcoded-bench-names]]"
 _organized: true
 ---
-# One signal, five names
+# Five names for one signal
 
-Consider a single physical quantity: the angular position of a throttle plate, and how it is represented in the testbench.
+Consider a single physical quantity, the angular position of a throttle plate, and how it is represented in the testbench.
 
 ```mermaid
 flowchart LR
@@ -62,7 +62,7 @@ What the hardware literally holds. Counts, bits, volts, bytes. No physical meani
 
 ### Physical
 
-The engineering quantity. Degrees, percent, newton-metres, kelvin. Meaningful, but still bench- and implementation-specific.
+The engineering quantity. Degrees, percent, newton-meters, kelvin. Meaningful, but still bench- and implementation-specific.
 
 ### Intent
 
@@ -94,7 +94,7 @@ Nearly every test framework provides some way to implement a translation table b
 
 Implementing a good mapping layer for the device under test is what makes your test suite portable, but also introduces opportunities for error during comparisons and transforms.
 
-Every test program needs to know where this lives, who owns it, how is it regenerated, and how would we know if it were wrong.
+Every test program needs to know where this lives, who owns it, how it is regenerated, and how anyone would know if it were wrong.
 
 On most projects, the honest answer is "we wouldn't." Teams that add a consistency check between the mapping and its upstream sources catch a class of bug that otherwise costs weeks.
 

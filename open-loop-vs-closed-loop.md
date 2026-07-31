@@ -12,7 +12,7 @@ Two fundamentally different test setups get run on the same rack, and confusing 
 
 ## Open loop
 
-Nothing feeds back: the DUT's outputs end at your measurement.
+Nothing feeds back. The DUT's outputs end at your measurement.
 
 ```mermaid
 flowchart LR
@@ -30,7 +30,7 @@ Open loop testing is useful for:
 
 - checking a transfer function
 - verifying a signal is decoded correctly
-- characterising a response curve
+- characterizing a response curve
 - most component-level and bring-up work
 
 The DUT's reaction has no impact on the stimulus. That is exactly the point. You get a clean, repeatable input for verifying any outputs that are time-invariant.
@@ -56,7 +56,7 @@ flowchart LR
 
 ### Benefits
 
-Closed loop testing is useful for validating control behaviour, stability, fault reactions, or anything where the answer to "what does the sensor read?" is "depends what the controller just did."
+Closed loop testing is useful for validating control behavior, stability, fault reactions, or anything where the answer to "what does the sensor read?" is "depends what the controller just did."
 
 Here you cannot simply command a sensor value, because the plant model is also trying to set it and the plant model will win. You set *conditions* like road grade, load torque, or leak rate and let the physics produce the sensor value.
 
@@ -76,7 +76,7 @@ What you can set is the load, or the commanded setpoint, or an injected offset. 
 2. you introduce a state the controller was never designed for
 3. the test passes for a reason that will not survive the next model update
 
-Ask, for every value you intend to write: who owns this variable? If the model owns it, you influence it rather than assign it.
+For every value you intend to write, ask who owns the variable. If the model owns it, you influence it rather than assign it.
 
 ## Overriding on purpose
 

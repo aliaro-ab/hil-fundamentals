@@ -14,4 +14,4 @@ _sort: "title:asc"
 
 One of the six verbs a test system can perform at a boundary of the device under test.
 
-Observe, stimulate, capture, replay, break, interrogate. Everything a bench does is one of these, aimed at one [[boundary]].
+Observe, stimulate, capture, replay, break, interrogate. Everything a bench does is one of these, aimed at one [[boundary|boundary]].

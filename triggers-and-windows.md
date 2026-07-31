@@ -7,7 +7,7 @@ _organized: true
 ---
 # Triggers and windows
 
-A [[capability-capture]] needs a beginning and an end. How you choose them decides whether you get evidence or a pile of samples.
+A [[capability-capture|capture]] needs a beginning and an end. How you choose them decides whether you get evidence or a pile of samples.
 
 ## Why not just record everything
 
@@ -15,7 +15,7 @@ Sometimes that is the right choice. For a short test, continuous capture of ever
 
 But it stops scaling. High-rate signals across a long test produce data nobody will ever open, the interesting 50 ms is buried in twenty minutes of idle, and high-rate capture consumes real-time bandwidth and disk space you may not have.
 
-More importantly, a well-chosen window is self-documenting. A capture that starts on the fault and ends on recovery is an artefact a reviewer can read. A twenty-minute dump is a research project.
+More importantly, a well-chosen window is self-documenting. A capture that starts on the fault and ends on recovery is an artifact a reviewer can read. A twenty-minute dump is a research project.
 
 ## Ways to start
 
@@ -29,11 +29,11 @@ More importantly, a well-chosen window is self-documenting. A capture that start
 
 | Stop | What it means | Watch out for |
 | --- | --- | --- |
-| **Fixed duration or sample count** | A set length, decided up front. | Predictable and bounded — the easy default. |
-| **On a condition** | End when the system settles or the fault clears. | Always pair it with a maximum: a stop condition that never occurs is a capture that never ends. |
+| **Fixed duration or sample count** | A set length, decided up front. | Predictable and bounded, which makes it the easy default. |
+| **On a condition** | End when the system settles or the fault clears. | Always pair it with a maximum, because a stop condition that never occurs is a capture that never ends. |
 | **Manually** | Your script says stop. | Fine for exploratory work, imprecise for assertions. |
 
-## Pre-trigger: the one that saves you
+## Pre-trigger capture
 
 The bench continuously buffers samples. When the trigger fires, it keeps some window from *before* the trigger as well as after. This is how you capture the cause rather than only the aftermath. 
 
@@ -59,7 +59,7 @@ Any time you catch yourself thinking "I wish I'd been recording just before that
 
 ## Retriggering
 
-Some captures can fire repeatedly, producing one segment per occurrence. Retriggering is ideal for intermittent behaviour: arm it, run for an hour, and get ten short segments around ten events instead of one enormous file.
+Some captures can fire repeatedly, producing one segment per occurrence. Retriggering is ideal for intermittent behavior. Arm it, run for an hour, and get ten short segments around ten events instead of one enormous file.
 
 ## Practical defaults
 

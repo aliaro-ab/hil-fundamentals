@@ -16,7 +16,7 @@ A hardware-in-the-loop bench is a simulation system designed to convince a real 
 | --- | --- | --- |
 | **Device under test (DUT)** | Real hardware, running real production software. | The only part you are actually testing. Everything else exists to fool it. |
 | **Plant model** | A simulation of the world the DUT thinks it lives in. The motor, the vehicle, the battery, the hydraulics. | Consumes the DUT's outputs and produces the sensor values it expects to see. Runs on a computer that is fast and strictly timed. |
-| **I/O layer** | The translation between simulated numbers and physical reality: a voltage on a pin, a current on a loop, a resistance across a sensor input, a frame on a network. | This is where a number becomes an electron. |
+| **I/O layer** | The translation between simulated numbers and physical reality, such as a voltage on a pin, a current on a loop, a resistance across a sensor input, or a frame on a network. | This is where a number becomes an electron. |
 | **Test automation** | Your code. It sets conditions, waits, observes, and decides pass or fail. | It is *not* part of the loop. See [[pitfall-python-loop-as-control-loop]]. |
 
 ## The loop
@@ -38,9 +38,9 @@ flowchart LR
 The loop runs at a fixed rate, typically somewhere between 100 Hz and 10 kHz depending on the physics. If the system is running, it keeps running whether your test script is executing, sleeping, or crashed.
 
 > [!tip]
-> Your test does not drive the loop. It reaches into the loop, changes something, and watches what happens. Internalising that one sentence is most of the conceptual jump.
+> Your test does not drive the loop. It reaches into the loop, changes something, and watches what happens. Internalizing that one sentence is most of the conceptual jump.
 
-## Why bother, instead of testing the real machine
+## Why a bench instead of the real machine
 
 | Reason | What it buys you |
 | --- | --- |
@@ -54,7 +54,7 @@ The loop runs at a fixed rate, typically somewhere between 100 Hz and 10 kHz dep
 
 This is worth saying early, because it is tempting to over-trust testing of any kind:
 
-- It cannot find bugs in physics you modelled wrong. See [[pitfall-testing-the-model-not-the-device]].
+- It cannot find bugs in physics you modeled wrong. See [[pitfall-testing-the-model-not-the-device]].
 - It is usually poor at EMC, thermal, vibration, and mechanical wear analysis.
 - Timing fidelity has limits. A bench running at 1 kHz cannot honestly test a 50 µs interrupt race.
 

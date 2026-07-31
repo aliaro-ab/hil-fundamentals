@@ -17,7 +17,7 @@ Two distinct things live here:
 
 Internal state as the DUT sees it. 
 
-This could be filtered sensor values, estimator outputs, state machine states, intermediate computations, internal flags. These are read-only, so you can [[capability-observe]] and [[capability-capture]] these.
+This could be filtered sensor values, estimator outputs, state machine states, intermediate computations, internal flags. These are read-only, so you can [[capability-observe|observe]] and [[capability-capture|capture]] these.
 
 This is your window into *why*. When a test fails, the physical outputs tell you what happened, and the internal variables tell you what the DUT believed. 
 
@@ -25,23 +25,23 @@ The gap between the two is usually the bug.
 
 ## Calibration values
 
-Calibration interfaces give you access to read and write thresholds, gains, lookup tables, timeouts, enable flags, and other tuning parameters on the device. You can [[capability-stimulate]] these to change a threshold mid-test to check the logic responds, configure a variant without reflashing, or a number of other useful features.
+Calibration interfaces give you access to read and write thresholds, gains, lookup tables, timeouts, enable flags, and other tuning parameters on the device. You can [[capability-stimulate|stimulate]] these to change a threshold mid-test to check the logic responds, configure a variant without reflashing, or a number of other useful features.
 
 > [!warning]
 > These are dangerous.
-> Writing calibration data changes the device's behaviour persistently and invisibly.
+> Writing calibration data changes the device's behavior persistently and invisibly.
 
-A test that leaves a modified calibration behind will corrupt every test that runs after it, and the failures will look nothing like the cause. Treat calibration writes like a transaction: record the original, always restore it, and never assume a bench arrives in a known state. See [[the-test-bench-resource-model]].
+A test that leaves a modified calibration behind will corrupt every test that runs after it, and the failures will look nothing like the cause. Treat calibration writes like a transaction. Record the original, always restore it, and never assume a bench arrives in a known state. See [[the-test-bench-resource-model]].
 
 ## What this boundary costs you
 
 ### It's not the product
 
-No customer reads your internal variables. Asserting on an internal flag is convenient and brittle: the next refactor renames it and your test breaks without the product changing. Prefer asserting on externally visible behaviour and using internals for *diagnosis*.
+No customer reads your internal variables. Asserting on an internal flag is convenient and brittle. The next refactor renames it and your test breaks without the product changing. Prefer asserting on externally visible behavior and using internals for *diagnosis*.
 
 ### Rates are lower than you think
 
-This channel usually samples slower than the DUT's own control loop, and often slower than [[boundary-physical-pins]]. 
+This channel usually samples slower than the DUT's own control loop, and often slower than [[boundary-physical-pins|physical pins]]. 
 
 ### It has side effects
 
@@ -49,7 +49,7 @@ The DUT spends real cycles servicing your requests. Asking for too many variable
 
 ### Names are volatile
 
-Internal symbol names come from a build artefact and change between software versions. This is a major contributor to [[one-signal-five-names]].
+Internal symbol names come from a build artifact and change between software versions. This is a major contributor to [[one-signal-five-names|five names for one signal]].
 
 ## Rule of thumb
 

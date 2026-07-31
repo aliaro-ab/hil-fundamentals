@@ -8,7 +8,7 @@ _organized: true
 ---
 # Why abstraction exists
 
-Everything else in this vault follows from one observation:
+Everything else in this vault follows from one observation.
 
 **Test cases outlive test benches.**
 
@@ -20,7 +20,7 @@ The test bench that runs it is not durable in the same way. Test benches get rep
 
 | What changes | How it changes | Why it hurts |
 | --- | --- | --- |
-| **The device** | Starts as a model, becomes compiled software, ends up as silicon in a housing. | Same behaviour, three different things to poke at. See [[mil-sil-hil-one-story]]. |
+| **The device** | Starts as a model, becomes compiled software, ends up as silicon in a housing. | Same behavior, three different things to poke at. See [[mil-sil-hil-one-story]]. |
 | **The bench** | Different vendors, different I/O, different naming, different units. | It's a purchase decision made by someone who wasn't thinking about your test. |
 | **The signal names** | The model, the controller's symbol file, the wiring diagram, and the network database each have their own name for one physical quantity. | Nothing lines up by default. See [[one-signal-five-names]]. |
 

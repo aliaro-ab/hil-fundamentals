@@ -11,7 +11,7 @@ _favorite_index: 2
 
 This document outlines what to ask when evaluating a testbench.
 
-It's [[capability-grid]] turned into questions to guide you through discovery. Work through it with whoever owns the bench and write the answers down.
+It's [[capability-grid|the capability grid]] turned into questions to guide you through discovery. Work through it with whoever owns the bench and write the answers down.
 
 The document you produce is more useful than most bench documentation you'll be given.
 
@@ -26,7 +26,7 @@ The document you produce is more useful than most bench documentation you'll be 
 
 ## Per boundary
 
-For each of the six boundaries ([[boundary-plant-model]], [[boundary-device-internals]], [[boundary-physical-pins]], [[boundary-network]], [[boundary-service-layer]], [[boundary-diagnostic-channel]]) ask:
+For each of the six boundaries ([[boundary-plant-model|the plant model]], [[boundary-device-internals|device internals]], [[boundary-physical-pins|physical pins]], [[boundary-network|the network]], [[boundary-service-layer|the service layer]], [[boundary-diagnostic-channel|the diagnostic channel]]) ask:
 
 1. Is it present on this bench at all?
 2. Can I observe? At what rate? With what latency?
@@ -58,7 +58,7 @@ See [[time-is-the-hard-part]].
 ## Lifecycle and safety
 
 1. How do I acquire and release each resource?
-2. What happens if my test crashes mid-run — does anything auto-release?
+2. What happens if my test crashes mid-run? Does anything auto-release?
 3. Which operations persist across a power cycle? (Calibrations especially.)
 4. What are the interlocks, and what combinations can damage the DUT?
 5. What's the recovery procedure when the bench is in an unknown state?

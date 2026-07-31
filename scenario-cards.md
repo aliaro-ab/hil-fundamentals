@@ -23,25 +23,25 @@ Disagreements are the point. Most cards have more than one defensible approach, 
 
 ### As an interview or check-in
 
-One card, fifteen minutes, talk it through.
+Use one card, allow fifteen minutes, and talk it through.
 
-It's a good read on whether someone has the mental model or just the vocabulary.
+It's a good indicator of whether someone has the mental model or just the vocabulary.
 
 ## The cards
 
 1. [[scenario-open-sensor-fault]]
 2. [[scenario-response-time]]
-3. [[scenario-silent-neighbour]]
+3. [[scenario-silent-neighbor]]
 4. [[scenario-field-failure-reproduction]]
 5. [[scenario-calibration-threshold]]
 6. [[scenario-power-interrupt]]
 
 ## What a good answer looks like
 
-Not just a list of cells from the grid. A good answer covers:
+A good answer is not just a list of cells from the grid. It covers:
 
 - Which boundary for the stimulus, and which for the assertion, and why they're different
 - What capability at each, with the rate or timing it needs
 - What the trigger and window are, if a capture is involved
-- What cleanup is required as outlined in [[the-test-bench-resource-model]]
+- What cleanup is required as outlined in [[the-test-bench-resource-model|the test bench resource model]]
 - What the test would fail to catch, stated honestly

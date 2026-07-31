@@ -15,7 +15,7 @@ At this boundary the bench is not simulating the interface, it *is* the interfac
 
 ### Inputs to the DUT
 
-The bench pretends to be a sensor. A voltage divider standing in for a potentiometer, a programmable resistance standing in for a thermistor, a current source for a 4–20 mA loop, a pulse train for a wheel-speed sensor, a synthesised waveform for a resolver.
+The bench pretends to be a sensor. A voltage divider standing in for a potentiometer, a programmable resistance standing in for a thermistor, a current source for a 4–20 mA loop, a pulse train for a wheel-speed sensor, a synthesized waveform for a resolver.
 
 ### Outputs from the DUT
 The bench pretends to be a load. A PWM output driving a solenoid, an H-bridge driving a motor, a low-side switch driving a lamp. Real loads or emulated ones, but the DUT must see a plausible impedance or its own driver diagnostics will complain.
@@ -24,11 +24,11 @@ The bench pretends to be a load. A PWM output driving a solenoid, an H-bridge dr
 
 It's the only place you can test what happens **between** the DUT's software and the world:
 
-- Sensor scaling and ADC behaviour
+- Sensor scaling and ADC behavior
 - Input filtering and its lag
 - Signal integrity, noise, and ground offsets
-- Driver-level diagnostics — open load, short circuit, over-current
-- Genuine electrical faults, via [[inject-a-fault]]
+- Driver-level diagnostics (open load, short circuit, over-current)
+- Genuine electrical faults, via [[inject-a-fault|fault injection]]
 
 If your test is about whether the DUT interprets the physical world correctly, it has to happen here. No other boundary can answer that question.
 
@@ -48,7 +48,7 @@ Emulated loads that are "close enough" for the control law are frequently not cl
 
 ### Bandwidth is finite
 
-Analogue I/O has an update rate and a settling time. Neither is infinite, and both are usually slower than you assumed.
+Analog I/O has an update rate and a settling time. Neither is infinite, and both are usually slower than you assumed.
 
 ## Safety
 

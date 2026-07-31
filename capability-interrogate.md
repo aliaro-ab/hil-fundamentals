@@ -10,13 +10,13 @@ related_to:
 
 **What does the device think is wrong?**
 
-Every other verb observes the device from outside. Interrogate asks the device for its own account of itself, through the standardised channel that a service technician would use.
+Every other verb observes the device from outside. Interrogate asks the device for its own account of itself, through the standardized channel that a service technician would use.
 
 ## Why it's its own verb
 
-You could, in principle, read the same fault flags out of memory with [[capability-observe]] at [[boundary-device-internals]]. That would be a mistake, for a reason worth internalising:
+You could, in principle, read the same fault flags out of memory with [[capability-observe|observe]] at [[boundary-device-internals|device internals]]. That would be a mistake, for a reason worth internalizing.
 
-**The diagnostic channel is a product feature.** It's what a garage, a fleet system, or a field engineer will actually use. If the internal flag is set correctly but the diagnostic response is malformed, mislabelled, or missing, the product is broken — and reading memory directly would never have caught it.
+**The diagnostic channel is a product feature.** It's what a garage, a fleet system, or a field engineer will actually use. If the internal flag is set correctly but the diagnostic response is malformed, mislabeled, or missing, the product is broken, and reading memory directly would never have caught it.
 
 Testing through the diagnostic channel tests the thing the customer touches. Reading memory tests the thing the developer touches. You want both, and you should know which one you're doing.
 
@@ -40,15 +40,15 @@ The diagnostic channel is **request/response and stateful**, which makes it feel
 - Some operations are locked behind a security handshake.
 - Some are only permitted in certain vehicle or machine states.
 
-So diagnostic steps are slow and sequential, while the rest of your test is fast and parallel. Plan for that: don't put a diagnostic query inside a tight timing assertion.
+So diagnostic steps are slow and sequential, while the rest of your test is fast and parallel. Plan for that, and don't put a diagnostic query inside a tight timing assertion.
 
 ## Where it fits in a test
 
-Almost always as the third act of a fault test — see [[inject-a-fault]]:
+Almost always as the third act of a fault test (see [[inject-a-fault]]):
 
 1. Break something
-2. Confirm the reaction with [[capability-capture]]
+2. Confirm the reaction with [[capability-capture|capture]]
 3. **Interrogate** to confirm the correct fault code, with the right status bits and a sane freeze frame
 4. Clear the fault, remove the cause, confirm the device agrees it's healthy
 
-Step 3 is where you catch the classic bug of the right behaviour reported under the wrong code — harmless on the bench, expensive in a service network.
+Step 3 is where you catch the classic bug of the right behavior reported under the wrong code, which is harmless on the bench but expensive in a service network.

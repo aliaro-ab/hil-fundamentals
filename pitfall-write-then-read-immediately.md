@@ -13,7 +13,7 @@ set(setpoint, 30)
 assert read(output) == expected   # fails
 ```
 
-You wrote the value. You read it back. It hasn't changed. Or worse — it changed, but not enough, and only sometimes.
+You wrote the value. You read it back. It hasn't changed. Or worse, it changed, but not enough, and only sometimes.
 
 ## What's happening
 
@@ -44,7 +44,7 @@ None of these delays are defects. The control law is not instant by design (rate
 
 Then your read samples something that was true a few milliseconds ago. See [[time-is-the-hard-part]].
 
-The trap also cuts the other way. Read the *setpoint* back in the gap between the write landing and being applied, and you get your new value while the hardware is still doing the old thing. That readback confirms nothing except that your write arrived — the value and the hardware disagree, and a test that treats it as proof the system responded is passing on false confidence.
+The trap also cuts the other way. Read the *setpoint* back in the gap between the write landing and being applied, and you get your new value while the hardware is still doing the old thing. That readback confirms nothing except that your write arrived. The value and the hardware disagree, and a test that treats it as proof the system responded is passing on false confidence.
 
 ## The fix that isn't a fix
 
@@ -69,11 +69,11 @@ wait_until(lambda: within(read(output), expected, tol),
 
 Now the test says what it means. It's fast when the system is fast, patient when it's slow, and when it fails it tells you something.
 
-## Better still, when timing is the point
+## When timing is the point
 
-If the requirement is *"shall respond within 100 ms"*, a wait loop can't prove it — your polling isn't precise enough to measure 100 ms. Arm a [[capability-capture]] with a pre-trigger, apply the stimulus, and measure the response time from the captured timestamps. See [[triggers-and-windows]].
+If the requirement is *"shall respond within 100 ms"*, a wait loop can't prove it. Your polling isn't precise enough to measure 100 ms. Arm a [[capability-capture|capture]] with a pre-trigger, apply the stimulus, and measure the response time from the captured timestamps. See [[triggers-and-windows]].
 
-Rule of thumb: **waiting is for getting the system into a state. Capturing is for asserting on how it got there.**
+As a rule of thumb, **waiting is for getting the system into a state, and capturing is for asserting on how it got there.**
 
 ## The one legitimate sleep
 

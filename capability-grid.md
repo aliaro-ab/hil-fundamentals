@@ -59,7 +59,7 @@ flowchart TB
 
 ⚠️ = possible but awkward, or bench-dependent
 
-❌ = not a thing
+❌ = not available
 
 |  | Observe | Stimulate | Capture | Replay | Break | Interrogate |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -70,7 +70,7 @@ flowchart TB
 | **Service layer** | ✅ | ✅ | ✅ | ⚠️ | ✅ | ❌ |
 | **Diagnostic channel** | ⚠️ | ⚠️ | ⚠️ | ❌ | ⚠️ | ✅ |
 
-Don't take the marks as gospel.
+Don't take the marks as definitive.
 They vary by bench, and arguing about a specific cell is a good way to learn.
 The value is the shape: most cells are filled, which is why a bench feels overwhelming.
 
@@ -83,7 +83,7 @@ If a cell you need is ❌ or ⚠️ on your bench, you've found your hard part b
 
 ### Evaluating a bench
 
-Walk the grid and ask "can it do this, and at what rate?" That's [[bench-evaluation-checklist]].
+Walk the grid and ask "can it do this, and at what rate?" That's the [[bench-evaluation-checklist|bench evaluation checklist]].
 
 ### Reading a standard or a manual
 

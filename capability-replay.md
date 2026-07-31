@@ -11,11 +11,11 @@ related_to:
 
 **Do again exactly what happened before.**
 
-Replay is [[capability-stimulate]] whose source is a recorded trace instead of a mathematical description. It closes the loop between the field and the lab.
+Replay is [[capability-stimulate|stimulate]] whose source is a recorded trace instead of a mathematical description. It closes the loop between the field and the lab.
 
 ## Why it matters more than it sounds
 
-The most valuable test data your organisation has is the recording of a failure in the field, under conditions you cannot reproduce. Replay is how that recording becomes a regression test.
+The most valuable test data your organization has is the recording of a failure in the field, under conditions you cannot reproduce. Replay is how that recording becomes a regression test.
 
 ```mermaid
 flowchart LR
@@ -40,16 +40,16 @@ A team that can do this has a fundamentally different debugging life from one th
 | --- | --- |
 | **Field recordings** | Real, messy, authoritative, and the point of the exercise |
 | **Prior bench captures** | Replay a run that failed intermittently, or feed one subsystem's recorded output into another subsystem's test |
-| **Synthesised traces** | A drive cycle, a mission profile, a standard duty cycle from a regulation |
+| **Synthesized traces** | A drive cycle, a mission profile, a standard duty cycle from a regulation |
 
 ## Where it works
 
 | Boundary | What replaying means there |
 | --- | --- |
 | [[boundary-network]] | The classic case. Replay a recorded bus log so the DUT sees exactly the traffic it saw in the field. Watch for whether the bench replays *timing* faithfully or just message order |
-| [[boundary-physical-pins]] | Play a recorded analogue trace back out as a real waveform |
+| [[boundary-physical-pins]] | Play a recorded analog trace back out as a real waveform |
 | [[boundary-plant-model]] | Drive model inputs from a recorded profile |
-| [[boundary-service-layer]] | Replay a recorded request sequence; often awkward, because services are request/response and a blind replay can desynchronise |
+| [[boundary-service-layer]] | Replay a recorded request sequence; often awkward, because services are request/response and a blind replay can desynchronize |
 
 ## The four questions that decide if a replay is honest
 
@@ -62,4 +62,4 @@ A team that can do this has a fundamentally different debugging life from one th
 
 ## Rule of thumb
 
-Replay is at its best for **open-loop, observational** signals: bus traffic, sensor inputs, commands from another controller. It's at its weakest wherever the DUT's own behaviour should have changed what it received. In closed loop, prefer replaying the *inputs to the plant model* over replaying the DUT's sensor values directly — that way the physics stays consistent.
+Replay is at its best for **open-loop, observational** signals such as bus traffic, sensor inputs, and commands from another controller. It's at its weakest wherever the DUT's own behavior should have changed what it received. In closed loop, prefer replaying the *inputs to the plant model* over replaying the DUT's sensor values directly. That way the physics stays consistent.

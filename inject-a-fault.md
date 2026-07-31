@@ -20,17 +20,17 @@ Most of a controller's software is not the control algorithms. It's the error ha
 - entering a safe state
 - notifying the user or technician
 
-Behaviour on an error is the hardest to get right, the most safety-relevant, and by far the least exercised in normal operation. A bench lets you run it a thousand times a day.
+Behavior on an error is the hardest to get right, the most safety-relevant, and by far the least exercised in normal operation. A bench lets you run it a thousand times a day.
 
 ## The layers you can break
 
 | Layer | Boundary | Faults you can inject | Why it matters |
 | --- | --- | --- | --- |
-| **Electrically** | [[boundary-physical-pins]] | Open circuit, short to supply, short to ground, short between two pins, added series resistance, degraded contact | The physically real one: relays and switch matrices between the bench and the DUT connector, so the controller experiences an actual broken wire |
+| **Electrically** | [[boundary-physical-pins]] | Open circuit, short to supply, short to ground, short between two pins, added series resistance, degraded contact | The physically real one. Relays and switch matrices sit between the bench and the DUT connector, so the controller experiences an actual broken wire |
 | **Logically** | [[boundary-plant-model]] | Stuck actuator, leak, seized bearing, depleted battery | The sensor still works; the thing it's measuring is wrong. Tests the *plausibility* logic rather than the hardware diagnostics |
 | **On the network** | [[boundary-network]] | Stop transmitting a frame, send it late, send a stale counter, corrupt a checksum, flood the bus, send an out-of-range value | Communication faults are extremely common in the field and cheap to inject |
 | **At the service layer** | [[boundary-service-layer]] | Return an error, time out, respond out of order, disappear mid-session | Exercises the client-side error paths that only appear when a peer misbehaves |
-| **On power** | — | Brownouts, sags, cranking profiles, hard resets at awkward moments | Reset-during-write is a rich source of real bugs |
+| **On power** | (none) | Brownouts, sags, cranking profiles, hard resets at awkward moments | Reset-during-write is a rich source of real bugs |
 
 ## The four-part fault test
 
@@ -40,13 +40,13 @@ Every fault test should have the same shape:
 | --- | --- |
 | **Detection** | Does the DUT notice? Within what time? |
 | **Reaction** | Does it enter the correct degraded state? |
-| **Reporting** | Does it log the right fault? Use [[capability-interrogate]]. |
+| **Reporting** | Does it log the right fault? Use [[capability-interrogate|interrogate]]. |
 | **Recovery** | When the fault clears, does the DUT return to normal? Does the fault stay logged as history? Does it need a power cycle, and is that intended? |
 
 > [!tip]
 > Part 4 is where the good bugs live. Latching a fault that should self-clear, or self-clearing one that should latch, are both classic field failures.
 
-## Safety, briefly
+## Safety
 
 Fault injection hardware can put supply voltage onto a pin that was never designed to see it.
 

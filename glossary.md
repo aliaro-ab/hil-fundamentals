@@ -5,7 +5,7 @@ related_to:
 ---
 # Glossary
 
-Common terms, plus what people actually say out loud.
+This list covers common terms, plus what people actually say out loud.
 
 Projects, applications, and industries will have their own words for several of these, so this list should not be considered exhaustive.
 
@@ -40,7 +40,7 @@ Projects, applications, and industries will have their own words for several of 
 | **Variable** | A named value inside the model or the DUT. |
 | **Label** | A signal's name in a particular naming scheme. The same signal can be represented by multiple labels in multiple schemes. See [[one-signal-five-names]]. |
 | **Mapping** | The translation table between naming schemes, with units and scaling. |
-| **Raw vs physical** | The measured value versus what that value represents. Examples: `Counts → degrees` or `volts → newton-metres` |
+| **Raw vs physical** | The measured value versus what that value represents, for example `Counts → degrees` or `volts → newton-meters`. |
 | **Capture / acquisition / measurement** | The real-time system records many samples over a window. See [[capability-capture]]. |
 | **Stimulus / stimulation** | The real-time system drives a value or waveform in. See [[capability-stimulate]]. |
 | **Trigger** | A condition that starts or stops something, evaluated on the real-time side. |
@@ -86,7 +86,7 @@ Projects, applications, and industries will have their own words for several of 
 | **Calibration value / cal / parameter** | A tunable constant in the DUT. See [[boundary-device-internals]]. |
 | **Calibration set / dataset** | The complete collection of calibration values. These typically need to be versioned. |
 | **Measurement variable** | A read-only internal value. |
-| **Symbol file** | The build artefact mapping names to addresses. This is changed every build. |
+| **Symbol file** | The build artifact mapping names to addresses. This is changed every build. |
 
 ## Things people say
 

@@ -2,6 +2,7 @@
 type: Pitfall
 related_to:
   - "[[one-signal-five-names]]"
+_width: normal
 ---
 # Avoid unit and scaling assumptions
 
@@ -9,11 +10,11 @@ related_to:
 
 The test asserts the pressure stays below 5. It passes. Nobody notices that the signal is in kPa and the requirement was in bar, so the real limit was 500 and the test has been asserting nothing for eight months.
 
-Or: the value reads 0.3 where you expected 30. Someone "fixes" it by multiplying by 100 in the test. Six weeks later a different variant reports the same signal as a percentage already, and now two tests disagree about reality.
+Or the value reads 0.3 where you expected 30. Someone "fixes" it by multiplying by 100 in the test. Six weeks later a different variant reports the same signal as a percentage already, and now two tests disagree about reality.
 
 ## Why it's so hard to catch
 
-**A units error does not throw.** It returns a number. Numbers are plausible. Nothing in the system knows what a kilopascal is — there is a float, and there is your expectation, and the only place they're reconciled is your head.
+**A units error does not throw.** It returns a number. Numbers are plausible. Nothing in the system knows what a kilopascal is. There is a float, and there is your expectation, and the only place they're reconciled is your head.
 
 Worse, wrong-unit tests often *pass*, which means they're never investigated. A test that fails loudly gets fixed on day one. A test that passes vacuously survives for years and gives false confidence to the people relying on it.
 
@@ -38,4 +39,4 @@ Worse, wrong-unit tests often *pass*, which means they're never investigated. A 
 
 **Sanity-check against something independent.** If the model has ground truth and the DUT has an estimate, compare them once at a known condition. Wildly different numbers for the same physical quantity is a units error until proven otherwise.
 
-**Be sceptical of a passing test you've never seen fail.** Break it on purpose once — inject a condition that *should* trip it. If it still passes, the assertion isn't doing anything. This is worth doing for every safety-relevant limit check in the suite.
+**Be skeptical of a passing test you've never seen fail.** Break it on purpose once. Inject a condition that *should* trip it. If it still passes, the assertion isn't doing anything. This is worth doing for every safety-relevant limit check in the suite.

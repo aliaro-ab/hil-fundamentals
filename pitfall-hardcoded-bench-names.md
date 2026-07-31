@@ -10,9 +10,9 @@ related_to:
 
 Two years in, the bench gets refreshed. Or a second bench is built at another site. Or a new product variant arrives.
 
-And nothing runs. Not because the product changed — because four hundred test files contain the old bench's signal names, the old I/O card's channel numbers, the old database's scaling, and a set of sleeps tuned to the old bench's speed.
+And nothing runs. Not because the product changed, but because four hundred test files contain the old bench's signal names, the old I/O card's channel numbers, the old database's scaling, and a set of sleeps tuned to the old bench's speed.
 
-The team's options are all bad: rewrite the suite, keep the obsolete bench in service solely to run the old tests, or quietly stop running them.
+The team's options are all bad. They can rewrite the suite, keep the obsolete bench in service solely to run the old tests, or quietly stop running them.
 
 ## What "bench specifics" means
 
@@ -26,7 +26,7 @@ Anything in a test that would have to change if the bench changed but the produc
 - Sleeps tuned to one bench's latency
 - Assumptions about capture rates or buffer sizes
 
-## The distinction to internalise
+## The distinction to internalize
 
 Every line of a test is either a statement about **the product** or a statement about **the bench**.
 
@@ -37,7 +37,7 @@ Every line of a test is either a statement about **the product** or a statement 
 | "responds within 100 ms" | "sleep 0.2 then read" |
 | "fault P0128 is stored" | "byte 3 of the response is 0x28" |
 
-Product statements are durable. They stay true across benches, variants, sites, and years. Bench statements are configuration, and configuration belongs in a file, owned by whoever owns the bench — not scattered through test logic owned by whoever owns the product.
+Product statements are durable. They stay true across benches, variants, sites, and years. Bench statements are configuration, and configuration belongs in a file, owned by whoever owns the bench, not scattered through test logic owned by whoever owns the product.
 
 See [[why-abstraction-exists]] and [[one-signal-five-names]].
 
@@ -55,10 +55,10 @@ Swapping benches then means editing layers 2 and 3. Layer 1 is untouched, which 
 
 ## The review question
 
-When reviewing a test, ask of every line: *would this still be correct on a different bench?*
+When reviewing a test, ask one question of every line. *Would this still be correct on a different bench?*
 
-If not, it's in the wrong layer. That single question, applied consistently in code review, is most of what keeps a suite portable — and it's much cheaper than the alternative, which is discovering the answer during a bench refresh.
+If not, it's in the wrong layer. That single question, applied consistently in code review, is most of what keeps a suite portable, and it's much cheaper than the alternative, which is discovering the answer during a bench refresh.
 
 ## Being fair about it
 
-Some coupling is unavoidable and pretending otherwise is its own trap. A test that deliberately exercises a specific piece of I/O hardware is *supposed* to know about that hardware. The goal isn't zero bench knowledge — it's that bench knowledge appears **deliberately, in one place, and labelled**, rather than accidentally, everywhere, in silence.
+Some coupling is unavoidable and pretending otherwise is its own trap. A test that deliberately exercises a specific piece of I/O hardware is *supposed* to know about that hardware. The goal isn't zero bench knowledge. It's that bench knowledge appears **deliberately, in one place, and labeled**, rather than accidentally, everywhere, in silence.

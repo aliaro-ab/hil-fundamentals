@@ -37,17 +37,17 @@ set(throttle, 30)          # takes effect sometime in the next cycle or two
 assert read(power) < limit # a value sampled a few ms ago, maybe
 ```
 
-Both lines are approximate in time. Neither is wrong; they're just not instantaneous, and the gap between them is the system's actual behaviour.
+Both lines are approximate in time. Neither is wrong; they're just not instantaneous, and the gap between them is the system's actual behavior.
 
-## Three clocks, and none of them agree
+## Three clocks that do not agree
 
 | Clock | Character |
 | --- | --- |
 | **The real-time clock** | The bench's loop. Precise, fixed, and the only one that matters for physics. |
-| **The DUT's clock** | Its own scheduler: free-running, unsynchronised with the bench, and running its tasks at its own rates. |
-| **Your script's clock** | The wall clock on a general-purpose operating system. Coarse, jittery, subject to garbage collection, network hiccups, and someone else logging in. Good to maybe tens of milliseconds under favourable conditions. |
+| **The DUT's clock** | Its own scheduler, which is free-running, unsynchronized with the bench, and running its tasks at its own rates. |
+| **Your script's clock** | The wall clock on a general-purpose operating system. Coarse, jittery, subject to garbage collection, network hiccups, and someone else logging in. Good to maybe tens of milliseconds under favorable conditions. |
 
-Any assertion whose precision depends on your script's clock is worth roughly nothing. Assertions must be made against timestamps that came from the real-time side — which is why [[capability-capture]] exists and why it isn't just "read in a loop."
+Any assertion whose precision depends on your script's clock is worth roughly nothing. Assertions must be made against timestamps that came from the real-time side, which is why [[capability-capture|capture]] exists and why it isn't just "read in a loop."
 
 ## The three rules that follow
 
@@ -79,7 +79,7 @@ A signal on a 100 ms cycle carries no information about a 10 ms event, no matter
 
 See [[pitfall-sample-rate-blindness]].
 
-## Fixed sleeps: the tell
+## The fixed-sleep warning sign
 
 `sleep(0.5)` scattered through a test suite is the most reliable indicator of an engineer who hasn't made this jump yet. 
 

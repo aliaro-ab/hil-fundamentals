@@ -9,22 +9,22 @@ related_to:
 
 **The simulated world the device thinks it lives in.**
 
-The plant model is the motor, the vehicle, the battery pack, the hydraulic circuit — whatever the DUT is trying to control. It consumes the DUT's outputs and produces the inputs the DUT expects to see.
+The plant model is whatever the DUT is trying to control, whether that is the motor, the vehicle, the battery pack, or the hydraulic circuit. It consumes the DUT's outputs and produces the inputs the DUT expects to see.
 
 ## What you can do here
 
 | Capability | What it means here |
 | --- | --- |
 | [[capability-observe]] and [[capability-stimulate]] | Any model variable |
-| [[capability-capture]] | Model variables at the model's own rate — usually the highest-fidelity, best-aligned data available on the whole bench |
+| [[capability-capture]] | Model variables at the model's own rate (usually the highest-fidelity, best-aligned data available on the whole bench) |
 | [[capability-replay]] | Recorded profiles into model inputs |
-| [[inject-a-fault]] | Logically: seize a bearing, spring a leak, stick an actuator |
+| [[inject-a-fault]] | Logical faults, such as seizing a bearing, springing a leak, or sticking an actuator |
 
-You cannot [[capability-interrogate]] a model. It has no opinion about its own health.
+You cannot [[capability-interrogate|interrogate]] a model. It has no opinion about its own health.
 
 ## Why it's the friendliest boundary
 
-Everything is a named number in a known unit at a known rate, with no wiring, no scaling, and no electrical risk. Model variables are also the only place you can see quantities that don't physically exist as signals — internal states, energies, forces, and the "true" value of something the DUT can only estimate.
+Everything is a named number in a known unit at a known rate, with no wiring, no scaling, and no electrical risk. Model variables are also the only place you can see quantities that don't physically exist as signals, such as internal states, energies, forces, and the "true" value of something the DUT can only estimate.
 
 That last one is enormously useful. You can compare the DUT's *estimate* of a quantity against the model's *truth*, which is an assertion you simply cannot make on a real machine.
 
