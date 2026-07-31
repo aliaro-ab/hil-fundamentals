@@ -8,12 +8,21 @@ has:
 related_to:
   - "[[boundary-physical-pins]]"
 ---
-
 # Scenario: a sensor wire breaks
 
 ## The goal
 
-> When the coolant temperature sensor circuit goes open, the controller shall detect it within 500 ms, substitute a safe default, limit power to 50%, and store the corresponding fault code. When the circuit is restored, normal operation shall resume, and the fault shall remain in history.
+```
+When the coolant temperature sensor circuit goes open:
+    the controller shall detect it within 500 ms
+    substitute a safe default
+    limit power to 50%
+    store the corresponding fault code
+
+When the circuit is restored:
+    normal operation shall resume
+    the fault shall remain in history
+```
 
 Work out what you need before reading on.
 

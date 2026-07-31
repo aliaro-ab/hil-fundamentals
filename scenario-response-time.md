@@ -8,12 +8,14 @@ related_to:
   - "[[time-is-the-hard-part]]"
   - "[[pitfall-sample-rate-blindness]]"
 ---
-
 # Scenario: prove a 100 ms deadline
 
 ## The goal
 
-> When the operator issues a stop request, the controller shall command zero output within 100 ms.
+```
+When the operator issues a stop request:
+    the controller shall command zero output within 100 ms
+```
 
 Sounds trivial. It is the card most people get wrong.
 

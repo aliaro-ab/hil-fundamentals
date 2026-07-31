@@ -9,12 +9,17 @@ related_to:
   - "[[boundary-physical-pins]]"
   - "[[triggers-and-windows]]"
 ---
-
 # Scenario: reset at the worst moment
 
 ## The goal
 
-> The controller writes accumulated operating hours to non-volatile memory periodically. Verify that a power interruption during that write does not corrupt the stored data, and that the controller starts correctly afterwards.
+The controller writes accumulated operating hours to non-volatile memory periodically.
+
+```
+When power is interrupted during that write:
+    the stored data shall not be corrupted
+    the controller shall start correctly afterwards
+```
 
 The hardest card here, because the fault has to land in a window you don't directly control.
 
@@ -24,7 +29,7 @@ The hardest card here, because the fault has to land in a window you don't direc
 
 **The core problem: hitting the window.** The write takes a few milliseconds and happens every few minutes. Cutting power at a random time will almost never coincide with it. Three approaches, roughly in order of preference:
 
-| # | Approach | What it involves |
+| \# | Approach | What it involves |
 | --- | --- | --- |
 | 1 | **Trigger on an observable** | If the DUT toggles a pin, sends a frame, or sets an internal flag around the write, use that as a hardware trigger for the power cut, with a configurable delay to sweep across the window. Precise and repeatable — this is the real-time side doing what it's for. See [[triggers-and-windows]]. |
 | 2 | **Use a debug or test build** | A build that signals the write externally, or lets you command one on demand. Legitimate, but you're then testing an artefact of a build you don't ship — note that limitation honestly. |

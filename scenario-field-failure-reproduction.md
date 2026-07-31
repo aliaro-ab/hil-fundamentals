@@ -8,12 +8,19 @@ related_to:
   - "[[boundary-network]]"
   - "[[one-signal-five-names]]"
 ---
-
 # Scenario: reproduce a field failure
 
 ## The goal
 
-> A unit in the field entered an unexpected shutdown. You have a 90-second bus log from the vehicle, recorded up to and including the event. Reproduce it on the bench and turn it into a regression test.
+A unit in the field entered an unexpected shutdown. You have a 90-second bus log from the vehicle, recorded up to and including the event.
+
+```
+Given that log:
+    reproduce the failure on the bench
+    turn it into a regression test
+```
+
+Work out what you need before reading on.
 
 ---
 

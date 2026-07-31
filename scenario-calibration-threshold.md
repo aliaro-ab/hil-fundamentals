@@ -9,12 +9,17 @@ related_to:
   - "[[boundary-device-internals]]"
   - "[[pitfall-leaked-bench-resources]]"
 ---
-
 # Scenario: verify a tunable threshold
 
 ## The goal
 
-> The overtemperature warning threshold is a calibratable constant. Verify that the warning triggers at the calibrated value, for any value within the allowed range — not at a hardcoded number someone left in the source.
+The overtemperature warning threshold is a calibratable constant.
+
+```
+When the threshold is set to any value within the allowed range:
+    the warning shall trigger at the calibrated value
+    and not at a hardcoded number someone left in the source
+```
 
 This is a test *about the calibratability itself*, which is a category new engineers rarely think to write.
 

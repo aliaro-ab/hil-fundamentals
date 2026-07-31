@@ -8,12 +8,21 @@ has:
 related_to:
   - "[[boundary-network]]"
 ---
-
-# Scenario: a neighbour stops talking
+# Scenario: another node stops talking
 
 ## The goal
 
-> If the message carrying vehicle speed is absent for more than 300 ms, the controller shall enter a degraded mode, use a safe substitute value, and store a communication fault. It shall recover automatically when the message returns.
+```
+When the message carrying vehicle speed is absent for more than 300 ms:
+    the controller shall enter a degraded mode
+    use a safe substitute value
+    store a communication fault
+
+When the message returns:
+    the controller shall recover automatically
+```
+
+Work out what you need before reading on.
 
 ---
 
