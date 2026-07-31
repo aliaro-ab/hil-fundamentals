@@ -86,7 +86,7 @@ Projects, applications, and industries will have their own words for several of 
 | **Calibration value / cal / parameter** | A tunable constant in the DUT. See [[boundary-device-internals]]. |
 | **Calibration set / dataset** | The complete collection of calibration values. These typically need to be versioned. |
 | **Measurement variable** | A read-only internal value. |
-| **Symbol file** | The build artifact mapping names to addresses. This is changed every build. |
+| **Symbol file** | The build artefact mapping names to addresses. This is changed every build. |
 
 ## Things people say
 
@@ -96,4 +96,4 @@ Projects, applications, and industries will have their own words for several of 
 | **"Flaky"** | Fails intermittently. Usually a timing or cleanup bug in the test, not the product. See [[pitfall-leaked-bench-resources]]. |
 | **"Bench issue"** | The failure was the test system, not the product. True more often than anyone likes. |
 | **"Works on the bench"** | The HIL equivalent of "works on my machine," and carries the same caveat. |
-| **"Did you power cycle it?"** | Annoyingly often the answer. |
+| **"Did you power cycle it?"** | A first-line check that resolves problems more often than expected. |

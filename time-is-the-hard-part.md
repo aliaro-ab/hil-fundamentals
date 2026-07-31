@@ -41,17 +41,17 @@ Both lines are approximate in time. Neither is wrong; they're just not instantan
 
 ## Three clocks, and none of them agree
 
-**The real-time clock** — the bench's loop. Precise, fixed, and the only one that matters for physics.
-
-**The DUT's clock** — its own scheduler, free-running, unsynchronised with the bench, and running its tasks at its own rates.
-
-**Your script's clock** — the wall clock on a general-purpose operating system. Coarse, jittery, subject to garbage collection, network hiccups, and someone else logging in. Good to maybe tens of milliseconds on a good day.
+| Clock | Character |
+| --- | --- |
+| **The real-time clock** | The bench's loop. Precise, fixed, and the only one that matters for physics. |
+| **The DUT's clock** | Its own scheduler: free-running, unsynchronised with the bench, and running its tasks at its own rates. |
+| **Your script's clock** | The wall clock on a general-purpose operating system. Coarse, jittery, subject to garbage collection, network hiccups, and someone else logging in. Good to maybe tens of milliseconds under favourable conditions. |
 
 Any assertion whose precision depends on your script's clock is worth roughly nothing. Assertions must be made against timestamps that came from the real-time side — which is why [[capability-capture]] exists and why it isn't just "read in a loop."
 
 ## The three rules that follow
 
-### **Never assert immediately after acting**
+### Never assert immediately after acting
 
 Between cause and effect sit at least: 
 
@@ -65,7 +65,7 @@ Wait for a *condition*, with a timeout, not for a fixed sleep you tuned until it
 
 See [[pitfall-write-then-read-immediately]].
 
-### **Anything with real timing requirements belongs on the real-time side**
+### Anything with real timing requirements belongs on the real-time side
 
 You describe the waveform, the trigger, or the capture window and the bench executes it.
 
@@ -73,7 +73,7 @@ Your script arms and queries, but it does not participate in the loop.
 
 See [[pitfall-python-loop-as-control-loop]].
 
-### **Every number has a rate, and the rate is part of its meaning**
+### Every number has a rate, and the rate is part of its meaning
 
 A signal on a 100 ms cycle carries no information about a 10 ms event, no matter how fast you sample it downstream. Before asserting on any value, know its update rate at its source.
 

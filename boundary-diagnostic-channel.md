@@ -33,16 +33,16 @@ That distinction is the whole reason it's a separate boundary. A fault correctly
 
 **Sessions.** Many operations require entering a non-default session first, and sessions time out if you stop talking. Long test steps can silently drop you back to default and the next request fails for reasons that look unrelated.
 
-**Slow.** Responses in the tens to hundreds of milliseconds are normal. Some routines take seconds. Never place a diagnostic call inside a tight timing assertion.
+**Responses are slow.** Latencies in the tens to hundreds of milliseconds are normal, and some routines take seconds. Never place a diagnostic call inside a tight timing assertion.
 
-**Sequential.** One conversation at a time. This makes diagnostic steps a natural bottleneck in an otherwise parallel test.
+**Communication is sequential.** The channel carries one conversation at a time, which makes diagnostic steps a natural bottleneck in an otherwise parallel test.
 
-**State-gated.** Some requests are refused unless the machine is stationary, unlocked, unpowered, or in a service mode. A "rejected" response is often correct behaviour, not a bug.
+**Requests are state-gated.** Some requests are refused unless the machine is stationary, unlocked, unpowered, or in a service mode. A "rejected" response is often correct behaviour, not a bug.
 
 **Negative responses are meaningful.** A refusal carries a reason code. Reading it is usually faster than guessing.
 
 ## Fault status is not a boolean
 
-The most common junior mistake here. A fault isn't simply present or absent. It has status bits distinguishing *confirmed this cycle*, *pending*, *tested this cycle*, *failed since last clear*, and more. A test that checks only "is this code in the list?" will pass in cases it should fail — and, more annoyingly, fail intermittently in cases it should pass, because the code is present but not yet confirmed.
+This is the most common mistake at this boundary. A fault isn't simply present or absent. It has status bits distinguishing *confirmed this cycle*, *pending*, *tested this cycle*, *failed since last clear*, and more. A test that checks only "is this code in the list?" will pass in cases it should fail — and, more annoyingly, fail intermittently in cases it should pass, because the code is present but not yet confirmed.
 
 Learn the status model on your project before writing fault-memory assertions. See [[capability-interrogate]].

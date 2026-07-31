@@ -11,13 +11,13 @@ related_to:
 
 **Make this value be something.**
 
-Stimulate splits into two very different things that beginners lump together, and the split matters more than almost anything else in this vault.
+Stimulate splits into two very different operations that are easy to conflate, and the split matters more than almost anything else in this vault.
 
 ## Setting a value
 
 Write a number. The system now uses that number until something changes it.
 
-Fine for preconditions and slow changes: ambient temperature, a configuration parameter, a mode request, an operator setpoint. Your test script can do this directly.
+Setting a value is fine for preconditions and slow changes: ambient temperature, a configuration parameter, a mode request, an operator setpoint. Your test script can do this directly.
 
 Two constraints:
 
@@ -30,7 +30,7 @@ Two constraints:
 
 Deliver a *time-varying* signal with real timing guarantees: a 5 Hz sine, a 10 ms pulse, a ramp from 0 to 100% over 3 seconds, an arbitrary recorded trace.
 
-This cannot be done from your test script. A loop of write-and-sleep gives you a staircase with jitter proportional to your operating system's mood — see [[pitfall-python-loop-as-control-loop]]. Instead you **describe** the waveform, hand the description to the real-time part of the bench, and tell it to run.
+This cannot be done from your test script. A loop of write-and-sleep gives you a staircase with jitter determined by operating system scheduling — see [[pitfall-python-loop-as-control-loop]]. Instead you **describe** the waveform, hand the description to the real-time part of the bench, and tell it to run.
 
 That handoff is the single most important structural idea about stimulation: **you specify, the bench executes.** Your script's role is to arm it, start it, and find out when it finished.
 

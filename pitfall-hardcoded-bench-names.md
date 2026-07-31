@@ -12,7 +12,7 @@ Two years in, the bench gets refreshed. Or a second bench is built at another si
 
 And nothing runs. Not because the product changed — because four hundred test files contain the old bench's signal names, the old I/O card's channel numbers, the old database's scaling, and a set of sleeps tuned to the old bench's speed.
 
-The team's options are all bad: rewrite the suite, keep the old bench alive as a museum piece, or quietly stop running the tests.
+The team's options are all bad: rewrite the suite, keep the obsolete bench in service solely to run the old tests, or quietly stop running them.
 
 ## What "bench specifics" means
 

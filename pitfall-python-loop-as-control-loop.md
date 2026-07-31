@@ -16,13 +16,13 @@ for t in timesteps:
     sleep(0.001)
 ```
 
-What the DUT receives is not a sine wave. It's a staircase with randomly-sized steps, occasionally frozen for 40 ms because the garbage collector ran, sometimes for 200 ms because someone opened a browser.
+What the DUT receives is not a sine wave. It's a staircase with randomly-sized steps, occasionally frozen for 40 ms by a garbage-collection pause, sometimes for 200 ms by competing load on the machine.
 
 Then you spend a day investigating why the controller's response looks nothing like the frequency-response test in the requirement.
 
 ## Why it can't work
 
-Your test script runs on a general-purpose operating system. It is scheduled at the convenience of a kernel that is also handling networking, disk, a desktop environment, and whatever else is logged in. `sleep(0.001)` means "not less than a millisecond, and honestly, who knows."
+Your test script runs on a general-purpose operating system. It is scheduled at the convenience of a kernel that is also handling networking, disk, a desktop environment, and whatever else is logged in. `sleep(0.001)` guarantees only a minimum: not less than a millisecond, with no upper bound.
 
 Jitter of tens of milliseconds is normal. Occasional pauses of hundreds of milliseconds are normal. For a 5 Hz signal, that jitter is a substantial fraction of a period — you are generating noise with a sinusoidal trend.
 

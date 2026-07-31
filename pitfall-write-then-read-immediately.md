@@ -19,12 +19,6 @@ You wrote the value. You read it back. It hasn't changed. Or worse — it change
 
 Between your write and your read sit at least five delays, none of which you control:
 
-1. The write travels to the real-time side and lands on the *next* cycle
-2. The bench applies it — one cycle
-3. The DUT samples its input on its own schedule — up to one task period
-4. The DUT computes, filters, and ramps — the control law is not instant, and rate limiters exist precisely to make it not instant
-5. The physics settles — a real quantity with mass or inertia takes real time
-
 ```mermaid
 sequenceDiagram
     participant S as Your script
@@ -45,6 +39,8 @@ sequenceDiagram
     D->>P: 5. physics settles
     P-->>B: output finally reaches the expected value
 ```
+
+None of these delays are defects. The control law is not instant by design (rate limiters and filters exist precisely to make it not instant), and a real quantity with mass or inertia takes real time to settle.
 
 Then your read samples something that was true a few milliseconds ago. See [[time-is-the-hard-part]].
 

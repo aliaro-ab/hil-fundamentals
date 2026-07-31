@@ -11,17 +11,17 @@ These are provided for practice. Each card states a test goal in plain language 
 
 ## How to run this
 
-### **Solo**
+### Solo
 
 Read the goal, write your answer down, then compare. 
 
-### **In a group**
+### In a group
 
 Hand out one card each, give people five minutes, then have each person defend their answer to the room. 
 
 Disagreements are the point. Most cards have more than one defensible approach, and the argument about which is better teaches more than the answer does.
 
-### **As an interview or check-in**
+### As an interview or check-in
 
 One card, fifteen minutes, talk it through.
 

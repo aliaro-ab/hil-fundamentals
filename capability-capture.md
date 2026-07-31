@@ -17,12 +17,14 @@ Almost every interesting test assertion is a statement about a captured trace ra
 
 ## The four things that define a capture
 
-| Dimension | What it means | See also |
-| --- | --- | --- |
-| **Which signals** | A named set, captured together so they share a time base. Signals captured separately cannot be reliably compared against each other. |  |
-| **At what rate** | Fast enough to see what you're testing. | [[pitfall-sample-rate-blindness]] |
-| **Over what window** | Bounded by time, by sample count, or by conditions. | [[triggers-and-windows]] |
-| **Aligned to what clock** | If your test asserts `output responded within 50 ms of input` the input and output samples need to share a time base. Cross-boundary captures (like a model variable against a network signal) often don't, and the skew is a potential source of failures. |  |
+| Dimension | What it means |
+| --- | --- |
+| **Which signals** | A named set, captured together so they share a time base. Signals captured separately cannot be reliably compared against each other. |
+| **At what rate** | Fast enough to see what you're testing. See [[pitfall-sample-rate-blindness]]. |
+| **Over what window** | Bounded by time, by sample count, or by conditions. See [[triggers-and-windows]]. |
+| **Aligned to what clock** | A shared time base for every signal you intend to compare. |
+
+The clock dimension is the one people miss. If your test asserts `output responded within 50 ms of input`, the input and output samples need to share a time base. Cross-boundary captures (like a model variable against a network signal) often don't, and the skew is a potential source of failures.
 
 ## Why the trace, not the number
 
@@ -32,7 +34,7 @@ Requirements are almost always temporal:
 | --- | --- |
 | `shall respond within 100 ms` | Two timestamps |
 | `shall not overshoot by more than 5%` | The peak |
-| `shall remain within band during the maneuver` | Every sample in the window |
+| `shall remain within band during the manoeuvre` | Every sample in the window |
 | `shall debounce for 2 seconds before reacting` | The whole transition |
 
 None of these can be answered by polling in a loop, because your loop's sampling is neither fast enough nor evenly spaced.
@@ -45,17 +47,17 @@ Better still, use a pre-trigger. Most benches continuously buffer so that when t
 
 ## Where it works
 
-Everywhere.
+Capture is available at every boundary.
 
 | Boundary | What you capture there |
 | --- | --- |
 | [[boundary-plant-model]] | Model variables |
 | [[boundary-device-internals]] | Internal values |
-| [[boundary-physical-pins]] | Analog and digital lines |
+| [[boundary-physical-pins]] | Analogue and digital lines |
 | [[boundary-network]] | Frames or decoded signals |
 | [[boundary-service-layer]] | Message traces |
 
-The important question at each: **what rate, and does it share a clock with the others?**
+The important question at each boundary is **what rate, and does it share a clock with the others?**
 
 ## The output is data, not a verdict
 

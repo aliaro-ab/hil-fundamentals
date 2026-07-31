@@ -20,7 +20,7 @@ Most of a controller's software is not the control algorithms. It's the error ha
 - entering a safe state
 - notifying the user or technician
 
-Behavior on an error is the hardest to get right, the most safety-relevant, and by far the least exercised in normal operation. A bench lets you run it a thousand times a day.
+Behaviour on an error is the hardest to get right, the most safety-relevant, and by far the least exercised in normal operation. A bench lets you run it a thousand times a day.
 
 ## The layers you can break
 

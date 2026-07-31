@@ -30,13 +30,13 @@ stateDiagram-v2
     end note
 ```
 
-| Step | What it does | What to watch for |
-| --- | --- | --- |
-| **Reserve** | Claim the resource. | It may be in use, in a bad state, or held by a crashed session from yesterday afternoon. |
-| **Configure** | Say what you want: which signals, what rate, which trigger, which database. | Most things are only configurable *before* they start, which is why "I'll add that signal mid-run" usually isn't allowed. |
-| **Start** | It begins doing its job. | Configuration is now frozen. |
-| **Stop** | It stops. | Results may only be retrievable after this point, or may be lost by it. Know which. |
-| **Unreserve** | Hand it back. | This is the one people skip, and skipping it is how benches become unusable. |
+| Step | What to watch for |
+| --- | --- |
+| **Reserve** | The resource may be in use, in a bad state, or held by a crashed session from yesterday afternoon. |
+| **Configure** | You declare which signals, what rate, which trigger, which database. Most things are only configurable *before* they start, which is why "I'll add that signal mid-run" usually isn't allowed. |
+| **Start** | Configuration is now frozen. |
+| **Stop** | Results may only be retrievable after this point, or may be lost by it. Know which. |
+| **Unreserve** | This is the step people skip, and skipping it is how benches become unusable. |
 
 ## Why the states exist
 

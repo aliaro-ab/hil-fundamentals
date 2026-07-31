@@ -52,7 +52,7 @@ The loop runs at a fixed rate, typically somewhere between 100 Hz and 10 kHz dep
 
 ## What a HIL bench is *not* good at
 
-Worth saying out loud early, because it's tempting to over-trust testing of any kind:
+This is worth saying early, because it is tempting to over-trust testing of any kind:
 
 - It cannot find bugs in physics you modelled wrong. See [[pitfall-testing-the-model-not-the-device]].
 - It is usually poor at EMC, thermal, vibration, and mechanical wear analysis.

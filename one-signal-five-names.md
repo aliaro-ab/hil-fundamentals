@@ -20,11 +20,11 @@ flowchart LR
         P["pin 47<br/>0.5–4.5 V"]
     end
     subgraph SD["Inside the DUT"]
-        R["ThrPosRaw<br/>0–4095 counts"]
+        R["ThrPosRaw<br/>12-bit ADC count, 0–4095"]
         F["ThrPosFilt<br/>0–100 %"]
     end
     subgraph SN["The network database"]
-        N["EngThrPos<br/>0.4 %/bit"]
+        N["EngThrPos<br/>8 bits, 0.4 %/bit, offset 0"]
     end
     subgraph SM["The plant model"]
         M["throttle.position<br/>0.0–1.0"]
@@ -50,31 +50,21 @@ flowchart LR
     class W,P,N world
 ```
 
-| Where | What it's called | What it is |
-| --- | --- | --- |
-| The physical world | throttle angle | 0–90 degrees of rotation |
-| The connector | pin 47 | 0.5–4.5 V from a potentiometer |
-| Inside the DUT | `ThrPosRaw` | a 12-bit ADC count, 0–4095 |
-| Inside the DUT, later | `ThrPosFilt` | scaled and filtered, 0–100 % |
-| The network database | `EngThrPos` | 8 bits, 0.4 %/bit, offset 0 |
-| The plant model | `throttle.position` | a float, 0.0–1.0 |
-| Your test | "throttle at 30%" | intent |
-
 **Seven names. Five unit systems. Four scaling conversions.**
 
 All for one plate on one shaft. Every arrow in that chain is a conversion that somebody configured by hand, in a file, possibly years ago, possibly for a different variant.
 
 ## The three layers worth naming
 
-### **Raw**
+### Raw
 
 What the hardware literally holds. Counts, bits, volts, bytes. No physical meaning without a conversion.
 
-### **Physical**
+### Physical
 
 The engineering quantity. Degrees, percent, newton-metres, kelvin. Meaningful, but still bench- and implementation-specific.
 
-### **Intent**
+### Intent
 
 What the test means. "Throttle at 30%." "Idle." "Wide open." Durable across benches, variants, and years.
 
@@ -82,17 +72,17 @@ A good test is written in intent, resolved to physical by a mapping layer, and c
 
 ## The three ways this goes wrong
 
-### **Silent scaling errors**
+### Silent scaling errors
 
 A wrong factor doesn't throw. It gives you 3.0 where 30 was expected, or 30 where 0.30 was expected. The test fails, someone "fixes" the tolerance, and the wrongness is now permanent.
 
 See [[pitfall-unit-assumption]].
 
-### **Drift between sources**
+### Drift between sources
 
 Symbol files come from a build. Network databases come from an architecture tool. Bench configuration comes from a spreadsheet. Model names come from the model. Four sources of truth, four update cadences, and no one notices they've diverged until a test reads a plausible wrong number.
 
-### **Names in test code**
+### Names in test code
 
 Once a test contains a bench-specific label, it's welded to that bench.
 

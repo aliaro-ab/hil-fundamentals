@@ -15,7 +15,7 @@ The simplest verb, and the one that misleads people most. Reading a single value
 
 ## What you actually get
 
-Not "the value." You get **a value that was true at some moment, delivered to you a little later.** Between the sample and your receipt of it sits a scheduler, a transport, and a queue. On a bench running at 1 kHz, the number in your hand may be up to several milliseconds stale, and nothing about the API will tell you that.
+What you get is not "the value" but **a value that was true at some moment, delivered to you a little later.** Between the sample and your receipt of it sits a scheduler, a transport, and a queue. On a bench running at 1 kHz, the number in your hand may be up to several milliseconds stale, and nothing about the API will tell you that.
 
 For slow physics — temperature, state of charge, pressure in a big vessel — this is irrelevant. For anything that moves fast, a single observation is close to meaningless. Use [[capability-capture]] instead.
 

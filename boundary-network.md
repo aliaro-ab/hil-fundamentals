@@ -32,7 +32,7 @@ Work at signal level for readability; drop to frame level when you need to test 
 
 ## Restbus simulation
 
-Worth naming explicitly, because it's the thing juniors don't expect. Your DUT may need to hear from twenty other controllers before it will even leave its startup state. The bench synthesises all of them — that's the "rest" of the bus. Restbus configuration is usually the single largest chunk of bench setup, and when a DUT "doesn't do anything," a misconfigured restbus is the first suspect.
+Restbus simulation is worth naming explicitly because it is the part of bench setup that engineers new to HIL don't expect. Your DUT may need to hear from twenty other controllers before it will even leave its startup state. The bench synthesises all of them — that's the "rest" of the bus. Restbus configuration is usually the single largest chunk of bench setup, and when a DUT "doesn't do anything," a misconfigured restbus is the first suspect.
 
 ## The database is the contract, and it drifts
 

@@ -17,7 +17,7 @@ When the operator issues a stop request:
     the controller shall command zero output within 100 ms
 ```
 
-Sounds trivial. It is the card most people get wrong.
+It sounds trivial, and it is the card most people get wrong.
 
 ---
 
@@ -25,7 +25,7 @@ Sounds trivial. It is the card most people get wrong.
 
 **The wrong instinct first**, because it's worth naming: send the request, `sleep(0.1)`, read the output, assert it's zero. This proves almost nothing. Your script's timing is good to maybe tens of milliseconds; you can't measure a 100 ms deadline with a 30 ms ruler. And a *pass* here is even more misleading than a fail. See [[pitfall-write-then-read-immediately]].
 
-**Both timestamps must come from the real-time side.** That's the whole card.
+**Both timestamps must come from the real-time side.** That is the entire point of this card.
 
 **Set up the capture.** [[capability-capture]] on both the stop request and the commanded output, **in the same capture** so they share a time base. Separate captures may be skewed, and the skew can easily be a large fraction of your 100 ms budget. Sample at 1 kHz or better — at least 10× the deadline. See [[pitfall-sample-rate-blindness]].
 

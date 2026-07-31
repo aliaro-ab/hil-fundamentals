@@ -8,11 +8,11 @@ related_to:
 
 ## The symptom
 
-Pick your favourite:
+The symptom takes several forms:
 
 - The test passes alone and fails in the suite
 - The first run passes, the second fails, the third passes again
-- Everything fails after lunch, and nobody changed anything
+- Tests begin failing partway through the day with no code change
 - It works for you and not for the colleague who runs it after you
 - The bench "needs a reboot every morning"
 

@@ -104,6 +104,7 @@ View rules that matter when creating or editing files:
 - `regex: true` is supported with `equals`, `not_equals`, `contains`, and `not_contains` when pattern matching is needed.
 - Relationship filters can use wikilinks in `value`, for example `"[[tolaria]]"`.
 - Do not create JSON view files or `.view.json` filenames.
+- Do not create views that only filter on a single type. Tolaria already provides a built-in view per type, so such a view adds nothing. A saved view must earn its place by combining criteria: type plus status, a relationship filter, a custom sort, or a cross-type selection.
 
 ## Filenames
 

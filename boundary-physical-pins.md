@@ -7,7 +7,7 @@ related_to:
 ---
 # Physical pins
 
-The true boundary between the device under test and it's environment is the wiring harness, the connectors, and the physical pins they contain.
+The true boundary between the device under test and its environment is the wiring harness, the connectors, and the physical pins they contain.
 
 At this boundary the bench is not simulating the interface, it *is* the interface. It acquires and generates all of the signals that the DUT defines and expects.
 

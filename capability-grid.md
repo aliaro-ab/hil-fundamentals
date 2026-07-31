@@ -16,7 +16,7 @@ Six capabilities at six boundaries cover the entirety of what HIL does and where
 
 ## The six verbs
 
-| Verb | Question it answers |
+| Verb | What it means |
 | --- | --- |
 | [[capability-observe]] | What is this value right now? |
 | [[capability-stimulate]] | Make this value be something. |
@@ -76,7 +76,9 @@ The value is the shape: most cells are filled, which is why a bench feels overwh
 
 ## How to use it
 
-**Designing a test.** Write the goal in one plain sentence, then find every cell you need.
+### Designing a test
+
+Write the goal in one plain sentence, then find every cell you need.
 If a cell you need is ❌ or ⚠️ on your bench, you've found your hard part before you started writing code, which is the cheapest possible time to find it.
 
 ### Evaluating a bench

@@ -3,7 +3,7 @@ type: Pitfall
 related_to:
   - "[[one-signal-five-names]]"
 ---
-# Avoid comparing non-engineering values
+# Avoid unit and scaling assumptions
 
 ## The symptom
 

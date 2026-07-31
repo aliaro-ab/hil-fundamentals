@@ -15,21 +15,13 @@ Replay is [[capability-stimulate]] whose source is a recorded trace instead of a
 
 ## Why it matters more than it sounds
 
-The most valuable test data your organisation has is the recording of the thing that went wrong in the field at 3am on a Tuesday. Replay is how that recording becomes a regression test.
-
-The workflow:
-
-1. A vehicle, machine, or rig logs its inputs during a fault.
-2. You bring the log into the bench.
-3. The bench plays it back into the DUT with correct timing.
-4. The bug reproduces on demand, on a desk, at 11am.
-5. It stays in the suite forever, so it can never come back unnoticed.
+The most valuable test data your organisation has is the recording of a failure in the field, under conditions you cannot reproduce. Replay is how that recording becomes a regression test.
 
 ```mermaid
 flowchart LR
-    F["field failure<br/>3am on a Tuesday"] -- "log the inputs" --> L["recorded log"]
+    F["field failure<br/>unreproducible conditions"] -- "log the inputs" --> L["recorded log"]
     L -- "import" --> B["bench replay<br/>original timing"]
-    B -- "reproduces on demand" --> D["bug on a desk<br/>at 11am"]
+    B -- "reproduces" --> D["bug on the bench<br/>on demand"]
     D -- "pin it down" --> S["regression test<br/>in the suite forever"]
 
     classDef event fill:#fee2e2,stroke:#ef4444,color:#7f1d1d

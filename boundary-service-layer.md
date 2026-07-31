@@ -15,11 +15,11 @@ This is a newer boundary than the rest, and it behaves much more like distribute
 
 ## The three shapes of interaction
 
-**Methods** — request/response. Someone calls, someone answers, possibly with an error. Testing means both calling the DUT's methods and standing in as a service the DUT calls.
-
-**Events** — publish/subscribe. The DUT emits a notification; subscribers receive it. Testing means subscribing and checking what arrives, when, and in what order.
-
-**Fields** — shared state with getters, setters, and change notifications. Testing means reading, writing, and confirming the notification actually fires.
+| Shape | Pattern | Testing it means |
+| --- | --- | --- |
+| **Methods** | Request/response. Someone calls, someone answers, possibly with an error. | Calling the DUT's methods, and standing in as a service the DUT calls. |
+| **Events** | Publish/subscribe. The DUT emits a notification; subscribers receive it. | Subscribing and checking what arrives, when, and in what order. |
+| **Fields** | Shared state with getters, setters, and change notifications. | Reading, writing, and confirming the notification actually fires. |
 
 ## What you can do here
 
@@ -41,8 +41,8 @@ This is a newer boundary than the rest, and it behaves much more like distribute
 
 **Both roles.** For most boundaries the bench is a stand-in for the physical world. Here it stands in as a peer — sometimes the client, sometimes the server, often both in the same test.
 
-## What juniors get wrong
+## Common mistakes
 
-Testing only the happy path. In service-oriented systems, the interesting behaviour is almost entirely in the failure modes: what does the DUT do when a service it depends on never appears, answers slowly, answers wrongly, or disappears halfway through? Those are cheap to inject here and expensive to discover in the field.
+The most common mistake is testing only the happy path. In service-oriented systems, the interesting behaviour is almost entirely in the failure modes: what does the DUT do when a service it depends on never appears, answers slowly, answers wrongly, or disappears halfway through? Those are cheap to inject here and expensive to discover in the field.
 
-Second most common: assuming ordering. Two events published in order are not guaranteed to be *received* in order across different services. If your test depends on ordering, verify the system actually guarantees it.
+The second most common is assuming ordering. Two events published in order are not guaranteed to be *received* in order across different services. If your test depends on ordering, verify the system actually guarantees it.

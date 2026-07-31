@@ -7,7 +7,7 @@ related_to:
 ---
 # Device internals
 
-Querying the device for internal state is one of the most useful ways to get information about what's happening to access the device directly.
+Querying the device for internal state is one of the most useful ways to find out what is actually happening.
 
 Many devices provide a separate channel into the DUT that lets you read its internal variables and write its calibration constants without stopping it. It's the same mechanism a calibration engineer uses to tune a controller on a test track.
 
@@ -29,25 +29,25 @@ Calibration interfaces give you access to read and write thresholds, gains, look
 
 > [!warning]
 > These are dangerous.
-> Writing calibration data changes the device's behavior persistently and invisibly.
+> Writing calibration data changes the device's behaviour persistently and invisibly.
 
 A test that leaves a modified calibration behind will corrupt every test that runs after it, and the failures will look nothing like the cause. Treat calibration writes like a transaction: record the original, always restore it, and never assume a bench arrives in a known state. See [[the-test-bench-resource-model]].
 
 ## What this boundary costs you
 
-### **It's not the product**
+### It's not the product
 
 No customer reads your internal variables. Asserting on an internal flag is convenient and brittle: the next refactor renames it and your test breaks without the product changing. Prefer asserting on externally visible behaviour and using internals for *diagnosis*.
 
-### **Rates are lower than you think**
+### Rates are lower than you think
 
 This channel usually samples slower than the DUT's own control loop, and often slower than [[boundary-physical-pins]]. 
 
-### **It has side effects**
+### It has side effects
 
 The DUT spends real cycles servicing your requests. Asking for too many variables too fast can change the timing you're trying to measure.
 
-### **Names are volatile**
+### Names are volatile
 
 Internal symbol names come from a build artefact and change between software versions. This is a major contributor to [[one-signal-five-names]].
 

@@ -46,11 +46,11 @@ flowchart LR
     class C dut
 ```
 
-### **What you learn**
+### What you learn
 
 Is the control *logic* right? Is 110 °C the correct threshold? Is two seconds the right debounce?
 
-### **What you cannot learn**
+### What you cannot learn
 
 Anything about code, timing, hardware, or wiring.
 
@@ -76,7 +76,7 @@ flowchart LR
 
 Did the code generation or hand-implementation preserve the logic? Fixed-point rounding, integer overflow, initialisation order, etc.
 
-### **What you cannot learn**
+### What you cannot learn
 
 Anything requiring the target processor or real I/O.
 
@@ -101,11 +101,11 @@ flowchart LR
     class C dut
 ```
 
-### **What you learn**
+### What you learn
 
 Does the whole thing work? Sensor scaling, ADC noise, filter lag, task scheduling, driver bugs, wiring.
 
-### **What you can now also do**
+### What you can now also do
 
 Cut the sensor wire mid-test and confirm the controller notices. See [[inject-a-fault]].
 
@@ -126,7 +126,7 @@ That is the entire argument for [[why-abstraction-exists]], and it is why a well
 
 ## The honest caveats
 
-- Test reuse across stages is the dream, but very hard to realize. Expect the structure to survive and the details to need work.
+- Test reuse across stages is the dream, but very hard to realise. Expect the structure to survive and the details to need work.
 - Some tests only make sense at one stage. Electrical fault injection has no MIL equivalent; exhaustive parameter sweeps are usually only affordable in SIL.
 - A test that passed in MIL and fails in HIL has *not* wasted your time. That delta is exactly the information you paid for.
 

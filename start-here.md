@@ -35,7 +35,7 @@ Half a day, in this order:
 | [[capability-grid]] | The one-page map, and the note to print |
 | [[time-is-the-hard-part]] | The concept most newcomers are missing |
 | [[one-signal-five-names]] | Where most real bugs live |
-| [[the-test-bench-resource-model]] | The research discipline that keeps benches stable |
+| [[the-test-bench-resource-model]] | The resource discipline that keeps benches stable |
 | [[mil-sil-hil-one-story]] | The payoff: one test, three benches |
 
 Then work the [[scenario-cards]] with someone who has done this before.

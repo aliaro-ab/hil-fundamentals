@@ -11,11 +11,11 @@ A [[capability-capture]] needs a beginning and an end. How you choose them decid
 
 ## Why not just record everything
 
-Sometimes you should! For a short test, continuous capture of everything is the simplest thing that works, and storage is cheap.
+Sometimes that is the right choice. For a short test, continuous capture of everything is the simplest thing that works, and storage is cheap.
 
 But it stops scaling. High-rate signals across a long test produce data nobody will ever open, the interesting 50 ms is buried in twenty minutes of idle, and high-rate capture consumes real-time bandwidth and disk space you may not have.
 
-More importantly, a well-chosen window is self-documenting. A capture that starts on the fault and ends on recovery is an artifact a reviewer can read. A twenty-minute dump is a research project.
+More importantly, a well-chosen window is self-documenting. A capture that starts on the fault and ends on recovery is an artefact a reviewer can read. A twenty-minute dump is a research project.
 
 ## Ways to start
 
@@ -59,7 +59,7 @@ Any time you catch yourself thinking "I wish I'd been recording just before that
 
 ## Retriggering
 
-Some captures can fire repeatedly, producing one segment per occurrence. Ideal for intermittent behaviour: arm it, run for an hour, and get ten short segments around ten events instead of one enormous file.
+Some captures can fire repeatedly, producing one segment per occurrence. Retriggering is ideal for intermittent behaviour: arm it, run for an hour, and get ten short segments around ten events instead of one enormous file.
 
 ## Practical defaults
 

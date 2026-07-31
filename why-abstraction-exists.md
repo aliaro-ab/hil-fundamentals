@@ -26,7 +26,7 @@ The test bench that runs it is not durable in the same way. Test benches get rep
 
 ## What abstraction actually buys you
 
-Not elegance. Three concrete things:
+The return is not elegance; it is three concrete things:
 
 | What you get | Why it matters |
 | --- | --- |
@@ -36,7 +36,7 @@ Not elegance. Three concrete things:
 
 ## What it costs
 
-Abstraction is not free, and pretending otherwise makes juniors cynical when they hit the wall:
+Abstraction is not free, and pretending otherwise breeds cynicism the first time an engineer hits its limits:
 
 - Every layer hides something.
 - Abstractions leak hardest around timing. See [[time-is-the-hard-part]].

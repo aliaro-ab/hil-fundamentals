@@ -34,7 +34,7 @@ Work out what you need before reading on.
 
 **Arm the capture first.** [[capability-capture]] on: the commanded power output (at [[boundary-network]] or [[boundary-physical-pins]] — wherever the DUT actually publishes it), the DUT's internal reported temperature (at [[boundary-device-internals]], for diagnosis), and the fault flag. Use a pre-trigger so you see the state before the break. Sample fast enough to resolve 500 ms comfortably — 100 Hz or better. See [[triggers-and-windows]].
 
-**Break it.** [[inject-a-fault]] at [[boundary-physical-pins]]: open circuit on the sensor line. Electrically real, not a model-level substitution — the point is to test the DUT's input diagnostics, which a model fault would bypass entirely.
+**Break it.** [[inject-a-fault]] at [[boundary-physical-pins]]: open circuit on the sensor line. The fault must be electrically real rather than a model-level substitution, because the point is to test the DUT's input diagnostics, which a model fault would bypass entirely.
 
 **Assert on the trace.** From the captured timestamps: time from the break to the fault flag < 500 ms; substituted temperature equals the documented default; power limited to 50% within its own spec.
 
@@ -52,4 +52,10 @@ Work out what you need before reading on.
 
 ## Variations worth writing
 
-Short to ground · short to supply · slow drift out of range · plausible-but-wrong value (the hardest to detect, and the most dangerous) · fault during a transient rather than at steady state.
+| Variation | Why it's a separate test |
+| --- | --- |
+| **Short to ground** | A different circuit condition, with a potentially different detection path and fault code. |
+| **Short to supply** | Same again, and the one that stresses the input hardware hardest. |
+| **Slow drift out of range** | No sharp edge to detect; exercises range and plausibility checks rather than circuit diagnostics. |
+| **Plausible-but-wrong value** | The hardest to detect, and the most dangerous. |
+| **Fault during a transient** | Detection logic tuned at steady state can misbehave mid-manoeuvre. |

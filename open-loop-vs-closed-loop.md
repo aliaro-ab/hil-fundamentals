@@ -12,7 +12,7 @@ Two fundamentally different test setups get run on the same rack, and confusing 
 
 ## Open loop
 
-You drive the DUT's inputs directly. Nothing feeds back. The DUT's outputs go nowhere except into your measurement.
+Nothing feeds back: the DUT's outputs end at your measurement.
 
 ```mermaid
 flowchart LR
@@ -37,7 +37,7 @@ The DUT's reaction has no impact on the stimulus. That is exactly the point. You
 
 ## Closed loop
 
-The DUT's outputs drive a plant model, and the plant model produces the DUT's inputs. The DUT is controlling something, even if that something is simulated.
+The DUT is controlling something, even if that something is simulated.
 
 ```mermaid
 flowchart LR
