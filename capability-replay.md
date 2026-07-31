@@ -25,6 +25,21 @@ The workflow:
 4. The bug reproduces on demand, on a desk, at 11am.
 5. It stays in the suite forever, so it can never come back unnoticed.
 
+```mermaid
+flowchart LR
+    F["field failure<br/>3am on a Tuesday"] -- "log the inputs" --> L["recorded log"]
+    L -- "import" --> B["bench replay<br/>original timing"]
+    B -- "reproduces on demand" --> D["bug on a desk<br/>at 11am"]
+    D -- "pin it down" --> S["regression test<br/>in the suite forever"]
+
+    classDef event fill:#fee2e2,stroke:#ef4444,color:#7f1d1d
+    classDef world fill:#f3f4f6,stroke:#6b7280,color:#1f2937
+    classDef kept fill:#dcfce7,stroke:#16a34a,color:#14532d
+    class F event
+    class L,B,D world
+    class S kept
+```
+
 A team that can do this has a fundamentally different debugging life from one that can't.
 
 ## The three sources of a replay trace

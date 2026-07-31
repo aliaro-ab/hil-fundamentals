@@ -36,6 +36,23 @@ Six capabilities at six boundaries cover the entirety of what HIL does and where
 | [[boundary-service-layer]] | Requests, responses, and events between software services |
 | [[boundary-diagnostic-channel]] | The device's self-report |
 
+Six surfaces around one device:
+
+```mermaid
+flowchart TB
+    PM["plant model"] --- DUT
+    DI["device internals"] --- DUT
+    PP["physical pins"] --- DUT
+    DUT["the DUT"] --- NW["network"]
+    DUT --- SL["service layer"]
+    DUT --- DC["diagnostic channel"]
+
+    classDef dut fill:#fef3c7,stroke:#d97706,color:#78350f
+    classDef boundary fill:#d1fae5,stroke:#10b981,color:#065f46
+    class DUT dut
+    class PM,DI,PP,NW,SL,DC boundary
+```
+
 ## The grid
 
 ✅ = normal and well supported

@@ -37,6 +37,22 @@ More importantly, a well-chosen window is self-documenting. A capture that start
 
 The bench continuously buffers samples. When the trigger fires, it keeps some window from *before* the trigger as well as after. This is how you capture the cause rather than only the aftermath. 
 
+Time runs left to right:
+
+```mermaid
+flowchart LR
+    A["older samples<br/>overwritten as the buffer rolls"] --> B["pre-trigger window<br/>kept: the cause"]
+    B --> T(("trigger<br/>fires"))
+    T --> C["post-trigger window<br/>kept: the aftermath"]
+
+    classDef kept fill:#dcfce7,stroke:#16a34a,color:#14532d
+    classDef gone fill:#f3f4f6,stroke:#6b7280,color:#1f2937
+    classDef event fill:#fee2e2,stroke:#ef4444,color:#7f1d1d
+    class B,C kept
+    class A gone
+    class T event
+```
+
 When you are testing a fault reaction, the trigger is the reaction. Generally speaking though, what you actually want to see is the hundred milliseconds preceding it. Without a pre-trigger you get the consequence and have to guess at the lead-up.
 
 Any time you catch yourself thinking "I wish I'd been recording just before that," you wanted a pre-trigger.

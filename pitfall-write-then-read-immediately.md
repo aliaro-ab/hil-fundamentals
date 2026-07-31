@@ -25,7 +25,30 @@ Between your write and your read sit at least five delays, none of which you con
 4. The DUT computes, filters, and ramps — the control law is not instant, and rate limiters exist precisely to make it not instant
 5. The physics settles — a real quantity with mass or inertia takes real time
 
+```mermaid
+sequenceDiagram
+    participant S as Your script
+    participant B as Bench real-time side
+    participant D as DUT
+    participant P as Physics
+
+    S->>B: set(setpoint, 30)
+    S->>B: read(output)
+    B-->>S: a sample from before anything changed
+    Note over S: assert fails here
+    B->>B: 1. write lands on the next cycle
+    B-->>S: a readback here already says 30
+    Note over S,B: the value and the hardware now disagree
+    B->>B: 2. applied one cycle later
+    B->>D: 3. sampled at the DUT's next task activation
+    D->>D: 4. compute, filter, ramp
+    D->>P: 5. physics settles
+    P-->>B: output finally reaches the expected value
+```
+
 Then your read samples something that was true a few milliseconds ago. See [[time-is-the-hard-part]].
+
+The trap also cuts the other way. Read the *setpoint* back in the gap between the write landing and being applied, and you get your new value while the hardware is still doing the old thing. That readback confirms nothing except that your write arrived — the value and the hardware disagree, and a test that treats it as proof the system responded is passing on false confidence.
 
 ## The fix that isn't a fix
 

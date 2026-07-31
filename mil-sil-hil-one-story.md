@@ -32,6 +32,20 @@ The plant model and the controller model run together on one desktop machine. Ex
 - You set temperature by driving the plant model. See [[boundary-plant-model]].
 - You observe the power command as a model variable.
 
+```mermaid
+flowchart LR
+    T["the test"] --> P["plant model"]
+    P -- "sensor values" --> C["controller:<br/>a model"]
+    C -- "commands" --> P
+
+    classDef yours fill:#dbeafe,stroke:#3b82f6,color:#1e3a8a
+    classDef dut fill:#fef3c7,stroke:#d97706,color:#78350f
+    classDef model fill:#dcfce7,stroke:#16a34a,color:#14532d
+    class T yours
+    class P model
+    class C dut
+```
+
 ### **What you learn**
 
 Is the control *logic* right? Is 110 °C the correct threshold? Is two seconds the right debounce?
@@ -43,6 +57,20 @@ Anything about code, timing, hardware, or wiring.
 ## Round 2: The controller is compiled software (SIL)
 
 The model has become C. The real production source is compiled for a host machine and runs against the same plant model, often still not in real time. Same test intent and plant model, but the DUT is now a binary.
+
+```mermaid
+flowchart LR
+    T["the test"] --> P["plant model"]
+    P -- "sensor values" --> C["controller:<br/>a compiled binary"]
+    C -- "commands" --> P
+
+    classDef yours fill:#dbeafe,stroke:#3b82f6,color:#1e3a8a
+    classDef dut fill:#fef3c7,stroke:#d97706,color:#78350f
+    classDef model fill:#dcfce7,stroke:#16a34a,color:#14532d
+    class T yours
+    class P model
+    class C dut
+```
 
 ### What you learn
 
@@ -58,6 +86,20 @@ The production software is flashed onto the real controller, in its real housing
 
 - Temperature is no longer a number you write. It's a resistance the bench presents across two pins, which the controller's ADC samples, scales, and filters. See [[boundary-physical-pins]].
 - The power command is no longer a variable. It's a PWM duty cycle on an output pin, or a value in a network frame. See [[boundary-network]].
+
+```mermaid
+flowchart LR
+    T["the test"] --> P["plant model<br/>real-time build"]
+    P -- "resistances, voltages" --> C["controller:<br/>real hardware"]
+    C -- "PWM, network frames" --> P
+
+    classDef yours fill:#dbeafe,stroke:#3b82f6,color:#1e3a8a
+    classDef dut fill:#fef3c7,stroke:#d97706,color:#78350f
+    classDef model fill:#dcfce7,stroke:#16a34a,color:#14532d
+    class T yours
+    class P model
+    class C dut
+```
 
 ### **What you learn**
 

@@ -13,6 +13,23 @@ Everything on a bench is a collection of shared, finite, stateful resources.
 
 Every resource on every bench follows the same five steps:
 
+```mermaid
+stateDiagram-v2
+    [*] --> Reserved: reserve
+    Reserved --> Configured: configure
+    Configured --> Running: start
+    Running --> Stopped: stop
+    Stopped --> [*]: unreserve
+
+    Running --> StillHeld: test crashes mid-run
+    StillHeld: Still held
+    note right of StillHeld
+        Cleanup never ran. This is the resource
+        "held by a crashed session from yesterday
+        afternoon" that the next reserve trips over.
+    end note
+```
+
 | Step | What it does | What to watch for |
 | --- | --- | --- |
 | **Reserve** | Claim the resource. | It may be in use, in a bad state, or held by a crashed session from yesterday afternoon. |
