@@ -5,7 +5,7 @@ related_to:
 ---
 # Glossary
 
-Common terms, plus what people actually say out loud. 
+Common terms, plus what people actually say out loud.
 
 Projects, applications, and industries will have their own words for several of these, so this list should not be considered exhaustive.
 
@@ -14,7 +14,7 @@ Projects, applications, and industries will have their own words for several of 
 | Term | Meaning |
 | --- | --- |
 | **DUT / UUT/SUT** | Device, unit, or system under test. This is the thing you're testing. Everything else is scaffolding. |
-| **Bench / rig / test system** | The integrated test system. These terms are used interchangably, but "rig" tends to imply more hardware. |
+| **Bench / rig / test system** | The integrated test system. These terms are used interchangeably, but "rig" tends to imply more hardware. |
 | **Plant model** | The simulation of the world around the DUT. Also "the model," "the simulation", "the vehicle model". See [[boundary-plant-model]]. |
 | **Real-time target** | The computer running the plant model on a hard schedule. Also "the RT target," "the controller", or "the target". |
 | **Host / automation PC** | A PC that is connected to the real-time target for monitoring, control, and sequencing of tests. |
@@ -40,7 +40,7 @@ Projects, applications, and industries will have their own words for several of 
 | **Variable** | A named value inside the model or the DUT. |
 | **Label** | A signal's name in a particular naming scheme. The same signal can be represented by multiple labels in multiple schemes. See [[one-signal-five-names]]. |
 | **Mapping** | The translation table between naming schemes, with units and scaling. |
-| **Raw vs physical** | The measured value versus what that value represents. Examples: `Counts → degrees volts → newton-metres` |
+| **Raw vs physical** | The measured value versus what that value represents. Examples: `Counts → degrees` or `volts → newton-metres` |
 | **Capture / acquisition / measurement** | The real-time system records many samples over a window. See [[capability-capture]]. |
 | **Stimulus / stimulation** | The real-time system drives a value or waveform in. See [[capability-stimulate]]. |
 | **Trigger** | A condition that starts or stops something, evaluated on the real-time side. |

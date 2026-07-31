@@ -27,7 +27,7 @@ That sentence is the test. Note what it does not mention:
 
 The control logic exists only as a block diagram or model. There is no code and no hardware.
 
-The plant model and the controller model run together on one desktop machine. Execution is synchronous, but no isochronous, meaning that cycles execute together, but not necessarily in real-time.
+The plant model and the controller model run together on one desktop machine. Execution is synchronous but not real-time, meaning the controller and plant step together, but a simulated second may take more or less than a wall-clock second.
 
 - You set temperature by driving the plant model. See [[boundary-plant-model]].
 - You observe the power command as a model variable.

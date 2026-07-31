@@ -5,7 +5,7 @@ related_to:
   - "[[boundary-device-internals]]"
 _organized: true
 ---
-# The testbench resource model
+# The test bench resource model
 
 Everything on a bench is a collection of shared, finite, stateful resources.
 
@@ -41,14 +41,14 @@ The rule that matters most, because violating it hurts other people:
 - Return overridden variables to model control
 - Put the DUT back in a known state
 
-Use whatever your language offers for guaranteed cleanup, such as try/finally, context managers, or fixtures with teardown. 
+Use whatever your language offers for guaranteed cleanup, such as try/finally, context managers, or fixtures with teardown.
 
 Cleanup that only runs on the success path is not cleanup, and tests fail more often than they pass while you're writing them.
 
 ## The symptom of getting this wrong
 
-The classic signature is the test passes alone and fails in the suite, or the first run passes and the second fails. Both mean someone left state behind. 
+The classic signature is the test passes alone and fails in the suite, or the first run passes and the second fails. Both mean someone left state behind.
 
-When you see either, stop debugging the failing test and go look at what ran before it. 
+When you see either, stop debugging the failing test and go look at what ran before it.
 
 See [[pitfall-leaked-bench-resources]].

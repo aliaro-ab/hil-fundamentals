@@ -63,7 +63,7 @@ See [[time-is-the-hard-part]].
 4. What are the interlocks, and what combinations can damage the DUT?
 5. What's the recovery procedure when the bench is in an unknown state?
 
-See [[a-bench-is-leased-resources]].
+See [[the-test-bench-resource-model]].
 
 ## Reproducibility
 

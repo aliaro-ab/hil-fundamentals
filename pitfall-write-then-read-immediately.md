@@ -4,7 +4,7 @@ related_to:
   - "[[time-is-the-hard-part]]"
   - "[[capability-observe]]"
 ---
-# Avoid atomic write-then-reads
+# Avoid immediately reading after writing
 
 ## The symptom
 

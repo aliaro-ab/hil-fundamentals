@@ -1,7 +1,7 @@
 ---
 type: Pitfall
 related_to:
-  - "[[a-bench-is-leased-resources]]"
+  - "[[the-test-bench-resource-model]]"
   - "[[boundary-device-internals]]"
 ---
 # Avoid leaving state behind
@@ -63,4 +63,4 @@ Stop debugging the failing test. It's probably innocent. Instead:
 2. Bisect the suite to find what runs before it.
 3. Look at that test's teardown, especially its failure path.
 
-And when the bench is in an unknown state, do the full reset — power cycle the DUT, restore calibrations from a known-good set, clear faults — rather than poking at symptoms. See [[a-bench-is-leased-resources]].
+And when the bench is in an unknown state, do the full reset — power cycle the DUT, restore calibrations from a known-good set, clear faults — rather than poking at symptoms. See [[the-test-bench-resource-model]].

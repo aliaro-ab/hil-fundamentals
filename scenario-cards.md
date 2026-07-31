@@ -43,5 +43,5 @@ Not just a list of cells from the grid. A good answer covers:
 - Which boundary for the stimulus, and which for the assertion, and why they're different
 - What capability at each, with the rate or timing it needs
 - What the trigger and window are, if a capture is involved
-- What cleanup is required as outlined in [[a-bench-is-leased-resources]]
+- What cleanup is required as outlined in [[the-test-bench-resource-model]]
 - What the test would fail to catch, stated honestly

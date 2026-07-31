@@ -42,7 +42,7 @@ Work out what you need before reading on.
 
 **Recover.** Restore the circuit. Confirm the DUT returns to normal, and confirm the fault is now *history* rather than *active*. Whether it self-clears or requires a power cycle is a requirement; check the actual one.
 
-**Clean up.** Relay released, faults cleared, DUT back to a known state. See [[a-bench-is-leased-resources]].
+**Clean up.** Relay released, faults cleared, DUT back to a known state. See [[the-test-bench-resource-model]].
 
 ## What this test does not catch
 
