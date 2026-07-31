@@ -2,11 +2,12 @@
 type: Scenario
 belongs_to: "[[scenario-cards]]"
 has:
-  - "[[inject-a-fault]]"
+  - "[[capability-break]]"
   - "[[capability-capture]]"
   - "[[capability-interrogate]]"
 related_to:
   - "[[boundary-network]]"
+_organized: true
 ---
 # Scenario: another node stops talking
 
@@ -42,7 +43,7 @@ Establish normal operation, with the restbus healthy, the speed signal present a
 
 ### Stop the frame
 
-[[inject-a-fault]] at [[boundary-network|the network]] by stopping transmission of that frame. Note the timing subtlety. The deadline starts at the *last successfully received* frame, not at the moment you called stop. Read that from the capture.
+[[capability-break]] at [[boundary-network|the network]] by stopping transmission of that frame. Note the timing subtlety. The deadline starts at the *last successfully received* frame, not at the moment you called stop. Read that from the capture.
 
 ### Assert on the capture
 

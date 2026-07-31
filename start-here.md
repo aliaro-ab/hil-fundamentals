@@ -6,6 +6,7 @@ related_to:
   - "[[why-abstraction-exists]]"
 _favorite: true
 _favorite_index: 0
+_organized: true
 ---
 # Start here
 
@@ -16,6 +17,8 @@ When you eventually read a real standard or a real product manual this reference
 ## Audience
 
 Engineers who are competent in embedded software, controls, or test automation, but new to HIL specifically.
+
+If your background is automated software testing, skim [[coming-from-software-testing]] first. It maps this world onto the one you already know, and flags where the analogies break.
 
 ## Summary
 
@@ -29,11 +32,13 @@ Plan for half a day, in this order:
 
 | Note | Why it's here |
 | --- | --- |
-| [[why-abstraction-exists]] | The motivation for everything else |
 | [[what-a-hil-bench-is]] | The physical and logical picture |
+| [[what-hil-testing-produces]] | What the discipline delivers, and who consumes it |
+| [[why-abstraction-exists]] | Why tests are written around the product, not the bench |
 | [[open-loop-vs-closed-loop]] | The distinction that decides how you write a test |
 | [[capability-grid]] | The one-page map, and the note to print |
 | [[time-is-the-hard-part]] | The concept most newcomers are missing |
+| [[triggers-and-windows]] | How a capture becomes evidence instead of a pile of samples |
 | [[one-signal-five-names]] | Where most real bugs live |
 | [[the-test-bench-resource-model]] | The resource discipline that keeps benches stable |
 | [[mil-sil-hil-one-story]] | The payoff. One test, three benches |

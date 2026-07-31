@@ -46,7 +46,7 @@ The loop runs at a fixed rate, typically somewhere between 100 Hz and 10 kHz dep
 | --- | --- |
 | **Cost** | Destroying a simulated gearbox is free. |
 | **Safety** | You can test the runaway-motor case without a runaway motor. |
-| **Coverage** | Faults that occur once a year in the field can be triggered every thirty seconds. See [[inject-a-fault]]. |
+| **Coverage** | Faults that occur once a year in the field can be triggered every thirty seconds. See [[capability-break]]. |
 | **Availability** | The bench exists before the prototype does. |
 | **Repeatability** | The same test produces the same conditions, which is the only way a regression suite means anything. |
 

@@ -2,8 +2,9 @@
 type: Boundary
 belongs_to: "[[capability-grid]]"
 related_to:
-  - "[[inject-a-fault]]"
+  - "[[capability-break]]"
   - "[[one-signal-five-names]]"
+_organized: true
 ---
 # Physical pins
 
@@ -28,7 +29,7 @@ It's the only place you can test what happens **between** the DUT's software and
 - Input filtering and its lag
 - Signal integrity, noise, and ground offsets
 - Driver-level diagnostics (open load, short circuit, over-current)
-- Genuine electrical faults, via [[inject-a-fault|fault injection]]
+- Genuine electrical faults, via [[capability-break|fault injection]]
 
 If your test is about whether the DUT interprets the physical world correctly, it has to happen here. No other boundary can answer that question.
 

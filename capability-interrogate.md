@@ -3,7 +3,8 @@ type: Capability
 belongs_to: "[[capability-grid]]"
 related_to:
   - "[[boundary-diagnostic-channel]]"
-  - "[[inject-a-fault]]"
+  - "[[capability-break]]"
+_organized: true
 ---
 
 # Interrogate
@@ -46,7 +47,7 @@ So diagnostic steps are slow and sequential, while the rest of your test is fast
 
 ## Where it fits in a test
 
-Almost always as the third act of a fault test (see [[inject-a-fault]]):
+Almost always as the third act of a fault test (see [[capability-break]]):
 
 1. Break something
 2. Confirm the reaction with [[capability-capture|capture]]

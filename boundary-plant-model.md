@@ -4,6 +4,7 @@ belongs_to: "[[capability-grid]]"
 related_to:
   - "[[open-loop-vs-closed-loop]]"
   - "[[pitfall-testing-the-model-not-the-device]]"
+_organized: true
 ---
 # The plant model
 
@@ -18,7 +19,7 @@ The plant model is whatever the DUT is trying to control, whether that is the mo
 | [[capability-observe]] and [[capability-stimulate]] | Any model variable |
 | [[capability-capture]] | Model variables at the model's own rate (usually the highest-fidelity, best-aligned data available on the whole bench) |
 | [[capability-replay]] | Recorded profiles into model inputs |
-| [[inject-a-fault]] | Logical faults, such as seizing a bearing, springing a leak, or sticking an actuator |
+| [[capability-break]] | Logical faults, such as seizing a bearing, springing a leak, or sticking an actuator |
 
 You cannot [[capability-interrogate|interrogate]] a model. It has no opinion about its own health.
 

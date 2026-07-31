@@ -2,6 +2,7 @@
 type: Guide
 related_to:
   - "[[start-here]]"
+_organized: true
 ---
 # Glossary
 
@@ -71,7 +72,7 @@ Projects, applications, and industries will have their own words for several of 
 
 | Term | Meaning |
 | --- | --- |
-| **Fault injection** | Deliberately breaking something by simulating an electrical or logical error. See [[inject-a-fault]]. |
+| **Fault injection** | Deliberately breaking something by simulating an electrical or logical error. See [[capability-break]]. |
 | **FIU / fault injection unit** | The switching hardware that creates electrical faults. |
 | **Open / short-to-ground / short-to-battery** | The three basic electrical faults. These cover 90% of fault requirements. |
 | **Fault code / DTC** | A stored identifier for a detected problem. |

@@ -22,7 +22,7 @@ Six capabilities at six boundaries cover the entirety of what HIL does and where
 | [[capability-stimulate]] | Make this value be something. |
 | [[capability-capture]] | What did this value do over that window? |
 | [[capability-replay]] | Do again exactly what happened before. |
-| [[inject-a-fault]] | What happens when this goes wrong? |
+| [[capability-break]] | What happens when this goes wrong? |
 | [[capability-interrogate]] | What does the device think is wrong? |
 
 ## The six boundaries

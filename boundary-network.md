@@ -5,6 +5,7 @@ related_to:
   - "[[capability-replay]]"
   - "[[one-signal-five-names]]"
   - "[[boundary-service-layer]]"
+_organized: true
 ---
 # The network
 
@@ -28,7 +29,7 @@ Work at signal level for readability; drop to frame level when you need to test 
 | [[capability-stimulate]] | Transmit frames, usually with the bench **restbus-simulating** the absent controllers so the DUT sees a plausible network |
 | [[capability-capture]] | Frames or decoded signals, with timestamps (often the best-timestamped data on the bench) |
 | [[capability-replay]] | A recorded log, which is the highest-value use of this boundary |
-| [[inject-a-fault]] | Rich support, including stopping a frame, delaying it, corrupting a checksum, freezing a counter, sending out-of-range values, and overloading the bus |
+| [[capability-break]] | Rich support, including stopping a frame, delaying it, corrupting a checksum, freezing a counter, sending out-of-range values, and overloading the bus |
 
 ## Restbus simulation
 

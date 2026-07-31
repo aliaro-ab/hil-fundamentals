@@ -7,9 +7,11 @@ related_to:
   - "[[scenario-open-sensor-fault]]"
 _organized: true
 ---
-# Inject a fault
+# Break
 
 **What happens when something goes wrong?**
+
+The industry term is **fault injection**. On the grid it gets one word, like the other five verbs, and the two names mean the same thing.
 
 The ability to inject fault conditions is the capability that most justifies the existence of a HIL bench because it is the one you genuinely cannot exercise any other way.
 
@@ -30,7 +32,7 @@ Behavior on an error is the hardest to get right, the most safety-relevant, and 
 | **Logically** | [[boundary-plant-model]] | Stuck actuator, leak, seized bearing, depleted battery | The sensor still works; the thing it's measuring is wrong. Tests the *plausibility* logic rather than the hardware diagnostics |
 | **On the network** | [[boundary-network]] | Stop transmitting a frame, send it late, send a stale counter, corrupt a checksum, flood the bus, send an out-of-range value | Communication faults are extremely common in the field and cheap to inject |
 | **At the service layer** | [[boundary-service-layer]] | Return an error, time out, respond out of order, disappear mid-session | Exercises the client-side error paths that only appear when a peer misbehaves |
-| **On power** | (none) | Brownouts, sags, cranking profiles, hard resets at awkward moments | Reset-during-write is a rich source of real bugs |
+| **On power** | [[boundary-physical-pins]] | Brownouts, sags, cranking profiles, hard resets at awkward moments | The supply rails are pins too, though they usually get their own programmable supply rather than the fault matrix. Reset-during-write is a rich source of real bugs |
 
 ## The four-part fault test
 

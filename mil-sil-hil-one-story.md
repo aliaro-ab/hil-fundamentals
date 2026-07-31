@@ -107,7 +107,7 @@ Does the whole thing work? This covers sensor scaling, ADC noise, filter lag, ta
 
 ### What you can now also do
 
-Cut the sensor wire mid-test and confirm the controller notices. See [[inject-a-fault]].
+Cut the sensor wire mid-test and confirm the controller notices. See [[capability-break]].
 
 ## What actually changes
 

@@ -2,11 +2,12 @@
 type: Scenario
 belongs_to: "[[scenario-cards]]"
 has:
-  - "[[inject-a-fault]]"
+  - "[[capability-break]]"
   - "[[capability-capture]]"
   - "[[capability-interrogate]]"
 related_to:
   - "[[boundary-physical-pins]]"
+_organized: true
 ---
 # Scenario: a sensor wire breaks
 
@@ -40,7 +41,7 @@ Get the system to a steady operating state where the sensor is being read and po
 
 ### Inject the fault
 
-[[inject-a-fault]] at [[boundary-physical-pins|physical pins]] by opening the circuit on the sensor line. The fault must be electrically real rather than a model-level substitution, because the point is to test the DUT's input diagnostics, which a model fault would bypass entirely.
+[[capability-break]] at [[boundary-physical-pins|physical pins]] by opening the circuit on the sensor line. The fault must be electrically real rather than a model-level substitution, because the point is to test the DUT's input diagnostics, which a model fault would bypass entirely.
 
 ### Assert on the trace
 
