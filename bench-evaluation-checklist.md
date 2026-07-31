@@ -9,9 +9,11 @@ _favorite_index: 2
 ---
 # Bench evaluation checklist
 
-What to ask when evaluating a testbench on day one at a new project, when considering a purchase, or when planning a test campaign.
+This document outlines what to ask when evaluating a testbench.
 
-It's [[capability-grid]] turned into questions. Work through it with whoever owns the bench and write the answers down; the document you produce is more useful than most bench documentation you'll be given.
+It's [[capability-grid]] turned into questions to guide you through discovery. Work through it with whoever owns the bench and write the answers down.
+
+The document you produce is more useful than most bench documentation you'll be given.
 
 ## Orientation
 
