@@ -1,0 +1,87 @@
+---
+type: Guide
+status: Active
+related_to:
+  - "[[start-here]]"
+  - "[[bench-evaluation-checklist]]"
+_width: wide
+_organized: true
+_favorite: true
+_favorite_index: 1
+---
+# The capability grid
+
+Every test system does a small number of things to a small number of surfaces.
+Six capabilities at six boundaries cover the entirety of what HIL does and where it happens.
+
+## The six verbs
+
+| Verb | Question it answers |
+| --- | --- |
+| [[capability-observe]] | What is this value right now? |
+| [[capability-stimulate]] | Make this value be something. |
+| [[capability-capture]] | What did this value do over that window? |
+| [[capability-replay]] | Do again exactly what happened before. |
+| [[inject-a-fault]] | What happens when this goes wrong? |
+| [[capability-interrogate]] | What does the device think is wrong? |
+
+## The six boundaries
+
+| Boundary | What it is |
+| --- | --- |
+| [[boundary-plant-model]] | The simulated world around the device |
+| [[boundary-device-internals]] | The device's own memory and calibrations |
+| [[boundary-physical-pins]] | Wires, voltages, currents, resistances |
+| [[boundary-network]] | Frames and signals on a bus |
+| [[boundary-service-layer]] | Requests, responses, and events between software services |
+| [[boundary-diagnostic-channel]] | The device's self-report |
+
+## The grid
+
+✅ = normal and well supported
+
+⚠️ = possible but awkward, or bench-dependent
+
+❌ = not a thing
+
+|  | Observe | Stimulate | Capture | Replay | Break | Interrogate |
+| --- | --- | --- | --- | --- | --- | --- |
+| **Plant model** | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ |
+| **Device internals** | ✅ | ✅ | ✅ | ⚠️ | ⚠️ | ❌ |
+| **Physical pins** | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ |
+| **Network** | ✅ | ✅ | ✅ | ✅ | ✅ | ⚠️ |
+| **Service layer** | ✅ | ✅ | ✅ | ⚠️ | ✅ | ❌ |
+| **Diagnostic channel** | ⚠️ | ⚠️ | ⚠️ | ❌ | ⚠️ | ✅ |
+
+Don't take the marks as gospel.
+They vary by bench, and arguing about a specific cell is a good way to learn.
+The value is the shape: most cells are filled, which is why a bench feels overwhelming.
+
+## How to use it
+
+**Designing a test.** Write the goal in one plain sentence, then find every cell you need.
+If a cell you need is ❌ or ⚠️ on your bench, you've found your hard part before you started writing code, which is the cheapest possible time to find it.
+
+### Evaluating a bench
+
+Walk the grid and ask "can it do this, and at what rate?" That's [[bench-evaluation-checklist]].
+
+### Reading a standard or a manual
+
+Every concept or instruction is going to be in service of one of the above cells.
+When you know which one you're in, a massive standard becomes a lookup table for how to do [Capability] at [Boundary].
+
+## The two things the grid doesn't show
+
+It's a static picture of a system whose whole difficulty is dynamic.
+Two things live off the grid and matter more than any single cell.
+
+### Timing
+
+Every cell has a rate, a latency, and a jitter, and those numbers decide whether your test is meaningful.
+See [[time-is-the-hard-part]].
+
+### Naming
+
+The same physical quantity has a different name at every boundary, and translating between them is where the bugs are.
+See [[one-signal-five-names]].

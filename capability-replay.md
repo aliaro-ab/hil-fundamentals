@@ -1,0 +1,58 @@
+---
+type: Capability
+belongs_to: "[[capability-grid]]"
+related_to:
+  - "[[capability-capture]]"
+  - "[[capability-stimulate]]"
+  - "[[boundary-network]]"
+---
+
+# Replay
+
+**Do again exactly what happened before.**
+
+Replay is [[capability-stimulate]] whose source is a recorded trace instead of a mathematical description. It closes the loop between the field and the lab.
+
+## Why it matters more than it sounds
+
+The most valuable test data your organisation has is the recording of the thing that went wrong in the field at 3am on a Tuesday. Replay is how that recording becomes a regression test.
+
+The workflow:
+
+1. A vehicle, machine, or rig logs its inputs during a fault.
+2. You bring the log into the bench.
+3. The bench plays it back into the DUT with correct timing.
+4. The bug reproduces on demand, on a desk, at 11am.
+5. It stays in the suite forever, so it can never come back unnoticed.
+
+A team that can do this has a fundamentally different debugging life from one that can't.
+
+## The three sources of a replay trace
+
+| Source | What it gives you |
+| --- | --- |
+| **Field recordings** | Real, messy, authoritative, and the point of the exercise |
+| **Prior bench captures** | Replay a run that failed intermittently, or feed one subsystem's recorded output into another subsystem's test |
+| **Synthesised traces** | A drive cycle, a mission profile, a standard duty cycle from a regulation |
+
+## Where it works
+
+| Boundary | What replaying means there |
+| --- | --- |
+| [[boundary-network]] | The classic case. Replay a recorded bus log so the DUT sees exactly the traffic it saw in the field. Watch for whether the bench replays *timing* faithfully or just message order |
+| [[boundary-physical-pins]] | Play a recorded analogue trace back out as a real waveform |
+| [[boundary-plant-model]] | Drive model inputs from a recorded profile |
+| [[boundary-service-layer]] | Replay a recorded request sequence; often awkward, because services are request/response and a blind replay can desynchronise |
+
+## The four questions that decide if a replay is honest
+
+| Question | What to watch for |
+| --- | --- |
+| **Is timing preserved?** | Original inter-sample intervals, or a nominal fixed rate |
+| **Is it interactive?** | A pure replay ignores the DUT. If the DUT was in a closed loop originally, blind replay may present it with a physically impossible situation |
+| **What was not recorded?** | Everything absent from the log is being supplied by something else, probably a default. That gap is where "it reproduced but behaved differently" comes from |
+| **Do the names and units still line up?** | See [[one-signal-five-names]] |
+
+## Rule of thumb
+
+Replay is at its best for **open-loop, observational** signals: bus traffic, sensor inputs, commands from another controller. It's at its weakest wherever the DUT's own behaviour should have changed what it received. In closed loop, prefer replaying the *inputs to the plant model* over replaying the DUT's sensor values directly — that way the physics stays consistent.
