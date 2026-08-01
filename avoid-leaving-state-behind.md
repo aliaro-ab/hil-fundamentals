@@ -16,7 +16,7 @@ The symptom takes several forms:
 - It works for you and not for the colleague who runs it after you
 - The bench "needs a reboot every morning"
 
-Every one of these is the same disease. **Something left state behind.**
+Every one of these is the same disease: **something left state behind.**
 
 ## What gets left behind
 

@@ -40,7 +40,7 @@ stateDiagram-v2
 
 ## Why the states exist
 
-They're not bureaucracy. They exist because of real constraints:
+These states aren't bureaucracy; they exist because of real constraints:
 
 - Real-time resources need their memory and schedule laid out before the loop starts. You can't renegotiate that mid-cycle without breaking determinism.
 - Hardware is genuinely exclusive. Two tests cannot both own the same output.

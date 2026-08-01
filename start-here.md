@@ -41,7 +41,7 @@ Plan for half a day, in this order:
 | [[triggers-and-windows]] | How a capture becomes evidence instead of a pile of samples |
 | [[five-names-for-one-signal]] | Where most real bugs live |
 | [[the-test-bench-resource-model]] | The resource discipline that keeps benches stable |
-| [[one-test-on-three-benches]] | The payoff. One test, three benches |
+| [[one-test-on-three-benches]] | The payoff: one test, three benches |
 
 Then work the [[scenario-cards|scenario cards]] with someone who has done this before.
 

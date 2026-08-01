@@ -52,9 +52,7 @@ flowchart LR
 
 Between the physical plate and your test's intent sit five names: a pin number, two internal symbols, a network signal, and a model variable.
 
-**Five names. Five unit systems. Four scaling conversions.**
-
-All for one plate on one shaft. Every arrow in that chain is a conversion that somebody configured by hand, in a file, possibly years ago, possibly for a different variant.
+Five names, five unit systems, and four scaling conversions, all for one plate on one shaft. Every arrow in that chain is a conversion that somebody configured by hand, in a file, possibly years ago, possibly for a different variant.
 
 ## The three layers
 

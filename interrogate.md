@@ -15,7 +15,7 @@ Every other verb observes the device from outside. Interrogate asks the device f
 
 ## Why it is a separate verb
 
-You could, in principle, read the same fault flags out of memory with [[observe|observe]] at [[device-internals|device internals]]. That would be a mistake, for a reason worth internalizing.
+You could, in principle, read the same fault flags out of memory with [[observe|observe]] at [[device-internals|device internals]]. That would be a mistake.
 
 ### The channel is a product feature
 

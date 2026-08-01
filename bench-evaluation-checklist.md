@@ -9,9 +9,7 @@ _favorite_index: 2
 ---
 # Bench evaluation checklist
 
-This document outlines what to ask when evaluating a testbench.
-
-It's [[the-capability-grid|the capability grid]] turned into questions to guide you through discovery. Work through it with whoever owns the bench and write the answers down.
+What to ask when evaluating a testbench: [[the-capability-grid|the capability grid]] turned into questions to guide you through discovery. Work through it with whoever owns the bench and write the answers down.
 
 The document you produce is more useful than most bench documentation you'll be given.
 

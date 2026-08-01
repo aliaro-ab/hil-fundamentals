@@ -10,7 +10,7 @@ related_to:
 
 Two years in, the bench gets refreshed. Or a second bench is built at another site. Or a new product variant arrives.
 
-And nothing runs. Not because the product changed, but because four hundred test files contain the old bench's signal names, the old I/O card's channel numbers, the old database's scaling, and a set of sleeps tuned to the old bench's speed.
+And nothing runs, not because the product changed but because four hundred test files contain the old bench's signal names, the old I/O card's channel numbers, the old database's scaling, and a set of sleeps tuned to the old bench's speed.
 
 The team's options are all bad. They can rewrite the suite, keep the obsolete bench in service solely to run the old tests, or quietly stop running them.
 
@@ -61,4 +61,4 @@ If not, it's in the wrong layer. That single question, applied consistently in c
 
 ## Acceptable coupling
 
-Some coupling is unavoidable and pretending otherwise is its own trap. A test that deliberately exercises a specific piece of I/O hardware is *supposed* to know about that hardware. The goal isn't zero bench knowledge. It's that bench knowledge appears **deliberately, in one place, and labeled**, rather than accidentally, everywhere, in silence.
+Some coupling is unavoidable and pretending otherwise is its own trap. A test that deliberately exercises a specific piece of I/O hardware is *supposed* to know about that hardware. The goal isn't zero bench knowledge; it's that bench knowledge appears **deliberately, in one place, and labeled**, rather than scattered silently through the suite.
