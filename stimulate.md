@@ -1,10 +1,10 @@
 ---
 type: Capability
-belongs_to: "[[capability-grid]]"
+belongs_to: "[[the-capability-grid]]"
 related_to:
   - "[[open-loop-vs-closed-loop]]"
-  - "[[capability-replay]]"
-  - "[[pitfall-python-loop-as-control-loop]]"
+  - "[[replay]]"
+  - "[[avoid-relying-on-scripting-for-time-sensitive-tasks]]"
 ---
 
 # Stimulate
@@ -30,7 +30,7 @@ Two constraints:
 
 Deliver a *time-varying* signal with real timing guarantees, such as a 5 Hz sine, a 10 ms pulse, a ramp from 0 to 100% over 3 seconds, or an arbitrary recorded trace.
 
-This cannot be done from your test script. A loop of write-and-sleep gives you a staircase with jitter determined by operating system scheduling. See [[pitfall-python-loop-as-control-loop]]. Instead you **describe** the waveform, hand the description to the real-time part of the bench, and tell it to run.
+This cannot be done from your test script. A loop of write-and-sleep gives you a staircase with jitter determined by operating system scheduling. See [[avoid-relying-on-scripting-for-time-sensitive-tasks]]. Instead you **describe** the waveform, hand the description to the real-time part of the bench, and tell it to run.
 
 That handoff is the single most important structural idea about stimulation. **You specify, the bench executes.** Your script's role is to arm it, start it, and find out when it finished.
 
@@ -38,11 +38,11 @@ That handoff is the single most important structural idea about stimulation. **Y
 
 | Boundary | What stimulating means there |
 | --- | --- |
-| [[boundary-plant-model]] | Drive a model input or override a model variable |
-| [[boundary-device-internals]] | Write a calibration value |
-| [[boundary-physical-pins]] | Generate a voltage, current, resistance, PWM, or encoder pattern |
-| [[boundary-network]] | Transmit a frame or set a signal the bench sends periodically |
-| [[boundary-service-layer]] | Issue a request, or stand in as a service the device calls |
+| [[the-plant-model]] | Drive a model input or override a model variable |
+| [[device-internals]] | Write a calibration value |
+| [[physical-pins]] | Generate a voltage, current, resistance, PWM, or encoder pattern |
+| [[the-network]] | Transmit a frame or set a signal the bench sends periodically |
+| [[the-service-layer]] | Issue a request, or stand in as a service the device calls |
 
 ## Questions to ask about any stimulus
 

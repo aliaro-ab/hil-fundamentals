@@ -1,7 +1,7 @@
 ---
 type: Guide
 related_to:
-  - "[[capability-grid]]"
+  - "[[the-capability-grid]]"
   - "[[start-here]]"
 _organized: true
 ---
@@ -29,12 +29,12 @@ It's a good indicator of whether someone has the mental model or just the vocabu
 
 ## The cards
 
-1. [[scenario-open-sensor-fault]]
-2. [[scenario-response-time]]
-3. [[scenario-silent-neighbor]]
-4. [[scenario-field-failure-reproduction]]
-5. [[scenario-calibration-threshold]]
-6. [[scenario-power-interrupt]]
+1. [[scenario-a-sensor-wire-breaks]]
+2. [[scenario-prove-a-100-ms-deadline]]
+3. [[scenario-another-node-stops-communicating]]
+4. [[scenario-reproduce-a-field-failure]]
+5. [[scenario-verify-a-tunable-threshold]]
+6. [[scenario-reset-at-the-worst-moment]]
 
 ## Criteria for a good answer
 

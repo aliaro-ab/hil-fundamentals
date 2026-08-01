@@ -2,12 +2,12 @@
 type: Scenario
 belongs_to: "[[scenario-cards]]"
 has:
-  - "[[capability-stimulate]]"
-  - "[[capability-observe]]"
+  - "[[stimulate]]"
+  - "[[observe]]"
   - "[[capability-capture]]"
 related_to:
-  - "[[boundary-device-internals]]"
-  - "[[pitfall-leaked-bench-resources]]"
+  - "[[device-internals]]"
+  - "[[avoid-leaving-state-behind]]"
 ---
 # Scenario: verify a tunable threshold
 
@@ -29,19 +29,19 @@ This is a test *about the calibratability itself*, which is a category new engin
 
 ### Read and save the original value first
 
-[[capability-observe]] the calibration at [[boundary-device-internals|device internals]]. You will restore exactly this, not a guess at the default. Do it before anything else.
+[[observe]] the calibration at [[device-internals|device internals]]. You will restore exactly this, not a guess at the default. Do it before anything else.
 
 ### Wrap everything in guaranteed cleanup
 
-Before you write a single calibration, make sure the restore runs on the failure path too. A test that fails partway and leaves a modified threshold in the DUT will poison every test that follows, persistently and invisibly. See [[pitfall-leaked-bench-resources]].
+Before you write a single calibration, make sure the restore runs on the failure path too. A test that fails partway and leaves a modified threshold in the DUT will poison every test that follows, persistently and invisibly. See [[avoid-leaving-state-behind]].
 
 ### Test at least three values
 
 For each value (low end of range, nominal, high end):
 
-1. Write the calibration. [[capability-stimulate]] at [[boundary-device-internals|device internals]].
+1. Write the calibration. [[stimulate]] at [[device-internals|device internals]].
 2. Read it back and confirm it took. Calibration writes can be silently rejected (wrong memory page, insufficient access, value out of range).
-3. Drive the temperature through the threshold using [[boundary-plant-model|the plant model]] or [[boundary-physical-pins|physical pins]]. Use a slow ramp, not a step. A ramp lets you measure *where* it tripped, while a step only tells you it eventually did.
+3. Drive the temperature through the threshold using [[the-plant-model|the plant model]] or [[physical-pins|physical pins]]. Use a slow ramp, not a step. A ramp lets you measure *where* it tripped, while a step only tells you it eventually did.
 4. [[capability-capture]] temperature and the warning flag together, so you can read off the trip point.
 5. Assert the trip point matches the calibrated value within tolerance.
 

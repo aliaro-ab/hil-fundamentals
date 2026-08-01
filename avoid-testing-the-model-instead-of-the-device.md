@@ -1,8 +1,8 @@
 ---
 type: Pitfall
 related_to:
-  - "[[boundary-plant-model]]"
-  - "[[what-a-hil-bench-is]]"
+  - "[[the-plant-model]]"
+  - "[[what-a-hil-test-bench-is]]"
 ---
 # Avoid testing the model instead of the device
 
@@ -14,7 +14,7 @@ Dig into the tests and you find a pattern. The stimulus is a model variable, the
 
 ## How it happens
 
-Nobody decides to do this. It's the path of least resistance. [[boundary-plant-model]] is by far the nicest boundary to work at, with clean names, real units, high rates, perfect timestamps, no wiring, and no electrical risk. So tests drift toward it, one convenient shortcut at a time.
+Nobody decides to do this. It's the path of least resistance. [[the-plant-model]] is by far the nicest boundary to work at, with clean names, real units, high rates, perfect timestamps, no wiring, and no electrical risk. So tests drift toward it, one convenient shortcut at a time.
 
 The specific moves:
 
@@ -25,7 +25,7 @@ The specific moves:
 
 ## Why it persists
 
-The tests aren't wrong, exactly. They do verify that the control logic behaves correctly *given the model's view of the world*. That's genuinely valuable, and it's the whole point of the MIL stage. See [[mil-sil-hil-one-story]].
+The tests aren't wrong, exactly. They do verify that the control logic behaves correctly *given the model's view of the world*. That's genuinely valuable, and it's the whole point of the MIL stage. See [[one-test-on-three-benches]].
 
 The problem is claiming more than that. Everything between the control logic and physical reality (sensor scaling, ADC behavior, filter lag, driver diagnostics, task scheduling, wiring) is exactly what the HIL stage was supposed to cover, and a model-to-model test skips all of it.
 
@@ -41,7 +41,7 @@ Then ask a second question. **Which boundary owns the value I'm asserting on?** 
 
 ### Stimulate at the model and assert at the device
 
-Use [[boundary-plant-model|the plant model]] to create conditions, because that's what it's good at. Then make the assertion somewhere the DUT actually owns, at [[boundary-physical-pins|physical pins]], [[boundary-network|the network]], or [[boundary-diagnostic-channel|the diagnostic channel]].
+Use [[the-plant-model|the plant model]] to create conditions, because that's what it's good at. Then make the assertion somewhere the DUT actually owns, at [[physical-pins|physical pins]], [[the-network|the network]], or [[the-diagnostic-channel|the diagnostic channel]].
 
 ### Use the model as ground truth
 

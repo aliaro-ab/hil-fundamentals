@@ -1,8 +1,8 @@
 ---
 type: Concept
 related_to:
-  - "[[pitfall-leaked-bench-resources]]"
-  - "[[boundary-device-internals]]"
+  - "[[avoid-leaving-state-behind]]"
+  - "[[device-internals]]"
 _organized: true
 ---
 # The test bench resource model
@@ -52,7 +52,7 @@ When an operation is rejected because you're "in the wrong state," the answer is
 
 The rule that matters most, because violating it hurts other people:
 
-- Restore every calibration value you changed. See [[boundary-device-internals]]
+- Restore every calibration value you changed. See [[device-internals]]
 - Clear every fault you injected, and confirm it cleared
 - Release every capture, stimulus, channel, and session
 - Return overridden variables to model control
@@ -68,4 +68,4 @@ The classic signature is the test passes alone and fails in the suite, or the fi
 
 When you see either, stop debugging the failing test and go look at what ran before it.
 
-See [[pitfall-leaked-bench-resources]].
+See [[avoid-leaving-state-behind]].

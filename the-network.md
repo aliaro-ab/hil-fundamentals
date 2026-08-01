@@ -1,10 +1,10 @@
 ---
 type: Boundary
-belongs_to: "[[capability-grid]]"
+belongs_to: "[[the-capability-grid]]"
 related_to:
-  - "[[capability-replay]]"
-  - "[[one-signal-five-names]]"
-  - "[[boundary-service-layer]]"
+  - "[[replay]]"
+  - "[[five-names-for-one-signal]]"
+  - "[[the-service-layer]]"
 _organized: true
 ---
 # The network
@@ -25,11 +25,11 @@ Work at signal level for readability; drop to frame level when you need to test 
 
 | Capability | What it means here |
 | --- | --- |
-| [[capability-observe]] | The last received value of a signal (remembering that "last" may be very old) |
-| [[capability-stimulate]] | Transmit frames, usually with the bench **restbus-simulating** the absent controllers so the DUT sees a plausible network |
+| [[observe]] | The last received value of a signal (remembering that "last" may be very old) |
+| [[stimulate]] | Transmit frames, usually with the bench **restbus-simulating** the absent controllers so the DUT sees a plausible network |
 | [[capability-capture]] | Frames or decoded signals, with timestamps (often the best-timestamped data on the bench) |
-| [[capability-replay]] | A recorded log, which is the highest-value use of this boundary |
-| [[capability-break]] | Rich support, including stopping a frame, delaying it, corrupting a checksum, freezing a counter, sending out-of-range values, and overloading the bus |
+| [[replay]] | A recorded log, which is the highest-value use of this boundary |
+| [[fault-injection]] | Rich support, including stopping a frame, delaying it, corrupting a checksum, freezing a counter, sending out-of-range values, and overloading the bus |
 
 ## Restbus simulation
 
@@ -43,10 +43,10 @@ Everything at signal level depends on a database file that defines names, scalin
 - **Multiple databases.** Different teams hold different revisions. Whose is authoritative?
 - **Silent decode.** A wrong scaling factor doesn't throw an error. It gives you a number that's off by 10.
 
-See [[one-signal-five-names]].
+See [[five-names-for-one-signal]].
 
 ## Timing
 
 Networks have cycle times, latency, and jitter. A signal updated every 100 ms cannot be used to assert a 20 ms response, no matter how fast you poll it. Always know the cycle time of any signal you assert on.
 
-For request/response service traffic layered on top of a network, see [[boundary-service-layer|the service layer]].
+For request/response service traffic layered on top of a network, see [[the-service-layer|the service layer]].

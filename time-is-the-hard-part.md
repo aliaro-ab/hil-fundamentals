@@ -3,9 +3,9 @@ type: Concept
 status: Active
 related_to:
   - "[[capability-capture]]"
-  - "[[capability-stimulate]]"
-  - "[[pitfall-python-loop-as-control-loop]]"
-  - "[[pitfall-write-then-read-immediately]]"
+  - "[[stimulate]]"
+  - "[[avoid-relying-on-scripting-for-time-sensitive-tasks]]"
+  - "[[avoid-immediately-reading-after-writing]]"
 _organized: true
 ---
 # Time is the hard part
@@ -63,7 +63,7 @@ Between cause and effect sit at least:
 
 Wait for a *condition*, with a timeout, not for a fixed sleep you tuned until it passed. 
 
-See [[pitfall-write-then-read-immediately]].
+See [[avoid-immediately-reading-after-writing]].
 
 ### Anything with real timing requirements belongs on the real-time side
 
@@ -71,13 +71,13 @@ You describe the waveform, the trigger, or the capture window and the bench exec
 
 Your script arms and queries, but it does not participate in the loop. 
 
-See [[pitfall-python-loop-as-control-loop]].
+See [[avoid-relying-on-scripting-for-time-sensitive-tasks]].
 
 ### Every number has a rate
 
 The rate is part of the number's meaning. A signal on a 100 ms cycle carries no information about a 10 ms event, no matter how fast you sample it downstream. Before asserting on any value, know its update rate at its source.
 
-See [[pitfall-sample-rate-blindness]].
+See [[avoid-undersampling]].
 
 ## The fixed-sleep warning sign
 

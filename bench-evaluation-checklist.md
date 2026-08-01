@@ -1,8 +1,8 @@
 ---
 type: Guide
 related_to:
-  - "[[capability-grid]]"
-  - "[[one-signal-five-names]]"
+  - "[[the-capability-grid]]"
+  - "[[five-names-for-one-signal]]"
 _organized: true
 _favorite: true
 _favorite_index: 2
@@ -11,7 +11,7 @@ _favorite_index: 2
 
 This document outlines what to ask when evaluating a testbench.
 
-It's [[capability-grid|the capability grid]] turned into questions to guide you through discovery. Work through it with whoever owns the bench and write the answers down.
+It's [[the-capability-grid|the capability grid]] turned into questions to guide you through discovery. Work through it with whoever owns the bench and write the answers down.
 
 The document you produce is more useful than most bench documentation you'll be given.
 
@@ -26,7 +26,7 @@ The document you produce is more useful than most bench documentation you'll be 
 
 ## Per boundary
 
-For each of the six boundaries ([[boundary-plant-model|the plant model]], [[boundary-device-internals|device internals]], [[boundary-physical-pins|physical pins]], [[boundary-network|the network]], [[boundary-service-layer|the service layer]], [[boundary-diagnostic-channel|the diagnostic channel]]) ask:
+For each of the six boundaries ([[the-plant-model|the plant model]], [[device-internals|device internals]], [[physical-pins|physical pins]], [[the-network|the network]], [[the-service-layer|the service layer]], [[the-diagnostic-channel|the diagnostic channel]]) ask:
 
 1. Is it present on this bench at all?
 2. Can I observe? At what rate? With what latency?
@@ -43,7 +43,7 @@ For each of the six boundaries ([[boundary-plant-model|the plant model]], [[boun
 4. Which units does each layer use, and where does conversion happen?
 5. Are there product variants, and how does the mapping handle them?
 
-See [[one-signal-five-names]].
+See [[five-names-for-one-signal]].
 
 ## Timing
 

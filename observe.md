@@ -1,10 +1,10 @@
 ---
 type: Capability
-belongs_to: "[[capability-grid]]"
+belongs_to: "[[the-capability-grid]]"
 related_to:
   - "[[capability-capture]]"
   - "[[time-is-the-hard-part]]"
-  - "[[pitfall-write-then-read-immediately]]"
+  - "[[avoid-immediately-reading-after-writing]]"
 ---
 
 # Observe
@@ -25,11 +25,11 @@ At every boundary, with different meanings:
 
 | Boundary | What observing means there |
 | --- | --- |
-| [[boundary-plant-model]] | Read a simulation variable |
-| [[boundary-device-internals]] | Read a variable out of the device's live memory |
-| [[boundary-physical-pins]] | Measure a voltage or current |
-| [[boundary-network]] | Read the last received value of a bus signal |
-| [[boundary-service-layer]] | Read a field or call a getter |
+| [[the-plant-model]] | Read a simulation variable |
+| [[device-internals]] | Read a variable out of the device's live memory |
+| [[physical-pins]] | Measure a voltage or current |
+| [[the-network]] | Read the last received value of a bus signal |
+| [[the-service-layer]] | Read a field or call a getter |
 
 Note the network case. "The last value received" may be from 100 ms ago if the sender is slow or has stopped. A stale bus signal reads as a perfectly plausible number.
 
@@ -38,7 +38,7 @@ Note the network case. "The last value received" may be from 100 ms ago if the s
 | Verdict | Question |
 | --- | --- |
 | Right | "After the system settles, is the commanded current within tolerance?" |
-| Wrong | "Immediately after I write the setpoint, has the output changed?" See [[pitfall-write-then-read-immediately]]. |
+| Wrong | "Immediately after I write the setpoint, has the output changed?" See [[avoid-immediately-reading-after-writing]]. |
 | Wrong | "Did the voltage ever exceed 16 V?" A single observation cannot answer a question about *ever*. That's [[capability-capture|capture]]. |
 
 ## Rule of thumb

@@ -1,9 +1,9 @@
 ---
 type: Boundary
-belongs_to: "[[capability-grid]]"
+belongs_to: "[[the-capability-grid]]"
 related_to:
-  - "[[capability-interrogate]]"
-  - "[[boundary-device-internals]]"
+  - "[[interrogate]]"
+  - "[[device-internals]]"
 ---
 # The diagnostic channel
 
@@ -13,7 +13,7 @@ A standardized request/response channel, usually layered over the network, throu
 
 ## Distinction from device internals
 
-[[boundary-device-internals]] is a developer's back door, with raw memory, symbol names, and no contract. The diagnostic channel is a **published interface with a specification**, used by garages, field tools, fleet systems, and end-of-line testers.
+[[device-internals]] is a developer's back door, with raw memory, symbol names, and no contract. The diagnostic channel is a **published interface with a specification**, used by garages, field tools, fleet systems, and end-of-line testers.
 
 That distinction is the whole reason it's a separate boundary. A fault correctly set in RAM but incorrectly reported over diagnostics is a shipped defect. Only a test at this boundary can catch it.
 
@@ -55,4 +55,4 @@ A refusal carries a reason code. Reading it is usually faster than guessing.
 
 This is the most common mistake at this boundary. A fault isn't simply present or absent. It has status bits distinguishing *confirmed this cycle*, *pending*, *tested this cycle*, *failed since last clear*, and more. A test that checks only "is this code in the list?" will pass in cases it should fail and, more annoyingly, fail intermittently in cases it should pass, because the code is present but not yet confirmed.
 
-Learn the status model on your project before writing fault-memory assertions. See [[capability-interrogate]].
+Learn the status model on your project before writing fault-memory assertions. See [[interrogate]].

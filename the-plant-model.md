@@ -1,9 +1,9 @@
 ---
 type: Boundary
-belongs_to: "[[capability-grid]]"
+belongs_to: "[[the-capability-grid]]"
 related_to:
   - "[[open-loop-vs-closed-loop]]"
-  - "[[pitfall-testing-the-model-not-the-device]]"
+  - "[[avoid-testing-the-model-instead-of-the-device]]"
 _organized: true
 ---
 # The plant model
@@ -16,12 +16,12 @@ The plant model is whatever the DUT is trying to control, whether that is the mo
 
 | Capability | What it means here |
 | --- | --- |
-| [[capability-observe]] and [[capability-stimulate]] | Any model variable |
+| [[observe]] and [[stimulate]] | Any model variable |
 | [[capability-capture]] | Model variables at the model's own rate (usually the highest-fidelity, best-aligned data available on the whole bench) |
-| [[capability-replay]] | Recorded profiles into model inputs |
-| [[capability-break]] | Logical faults, such as seizing a bearing, springing a leak, or sticking an actuator |
+| [[replay]] | Recorded profiles into model inputs |
+| [[fault-injection]] | Logical faults, such as seizing a bearing, springing a leak, or sticking an actuator |
 
-You cannot [[capability-interrogate|interrogate]] a model. It has no opinion about its own health.
+You cannot [[interrogate|interrogate]] a model. It has no opinion about its own health.
 
 ## Advantages
 
@@ -41,6 +41,6 @@ The model runs at a fixed step. Nothing you do here happens faster than one step
 
 ## The over-testing trap
 
-The plant model is so pleasant to work with that you'll be tempted to test against it exclusively. But the model is not the product, and it was written by someone with their own assumptions and simplifications. A test that only touches the plant model is at constant risk of confirming that the model does what the model does. See [[pitfall-testing-the-model-not-the-device]].
+The plant model is so pleasant to work with that you'll be tempted to test against it exclusively. But the model is not the product, and it was written by someone with their own assumptions and simplifications. A test that only touches the plant model is at constant risk of confirming that the model does what the model does. See [[avoid-testing-the-model-instead-of-the-device]].
 
 Use the model to *create conditions* and to *provide ground truth*. Wherever possible, make the assertion at a boundary the DUT actually owns.

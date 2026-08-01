@@ -1,17 +1,15 @@
 ---
 type: Capability
-belongs_to: "[[capability-grid]]"
+belongs_to: "[[the-capability-grid]]"
 related_to:
-  - "[[boundary-physical-pins]]"
-  - "[[capability-interrogate]]"
-  - "[[scenario-open-sensor-fault]]"
+  - "[[physical-pins]]"
+  - "[[interrogate]]"
+  - "[[scenario-a-sensor-wire-breaks]]"
 _organized: true
 ---
-# Break
+# Fault injection
 
 **What happens when something goes wrong?**
-
-The industry term is **fault injection**. On the grid it gets one word, like the other five verbs, and the two names mean the same thing.
 
 The ability to inject fault conditions is the capability that most justifies the existence of a HIL bench because it is the one you genuinely cannot exercise any other way.
 
@@ -28,11 +26,11 @@ Behavior on an error is the hardest to get right, the most safety-relevant, and 
 
 | Layer | Boundary | Faults you can inject | Why it matters |
 | --- | --- | --- | --- |
-| **Electrically** | [[boundary-physical-pins]] | Open circuit, short to supply, short to ground, short between two pins, added series resistance, degraded contact | The physically real one. Relays and switch matrices sit between the bench and the DUT connector, so the controller experiences an actual broken wire |
-| **Logically** | [[boundary-plant-model]] | Stuck actuator, leak, seized bearing, depleted battery | The sensor still works; the thing it's measuring is wrong. Tests the *plausibility* logic rather than the hardware diagnostics |
-| **On the network** | [[boundary-network]] | Stop transmitting a frame, send it late, send a stale counter, corrupt a checksum, flood the bus, send an out-of-range value | Communication faults are extremely common in the field and cheap to inject |
-| **At the service layer** | [[boundary-service-layer]] | Return an error, time out, respond out of order, disappear mid-session | Exercises the client-side error paths that only appear when a peer misbehaves |
-| **On power** | [[boundary-physical-pins]] | Brownouts, sags, cranking profiles, hard resets at awkward moments | The supply rails are pins too, though they usually get their own programmable supply rather than the fault matrix. Reset-during-write is a rich source of real bugs |
+| **Electrically** | [[physical-pins]] | Open circuit, short to supply, short to ground, short between two pins, added series resistance, degraded contact | The physically real one. Relays and switch matrices sit between the bench and the DUT connector, so the controller experiences an actual broken wire |
+| **Logically** | [[the-plant-model]] | Stuck actuator, leak, seized bearing, depleted battery | The sensor still works; the thing it's measuring is wrong. Tests the *plausibility* logic rather than the hardware diagnostics |
+| **On the network** | [[the-network]] | Stop transmitting a frame, send it late, send a stale counter, corrupt a checksum, flood the bus, send an out-of-range value | Communication faults are extremely common in the field and cheap to inject |
+| **At the service layer** | [[the-service-layer]] | Return an error, time out, respond out of order, disappear mid-session | Exercises the client-side error paths that only appear when a peer misbehaves |
+| **On power** | [[physical-pins]] | Brownouts, sags, cranking profiles, hard resets at awkward moments | The supply rails are pins too, though they usually get their own programmable supply rather than the fault matrix. Reset-during-write is a rich source of real bugs |
 
 ## The four-part fault test
 
@@ -42,7 +40,7 @@ Every fault test should have the same shape:
 | --- | --- |
 | **Detection** | Does the DUT notice? Within what time? |
 | **Reaction** | Does it enter the correct degraded state? |
-| **Reporting** | Does it log the right fault? Use [[capability-interrogate|interrogate]]. |
+| **Reporting** | Does it log the right fault? Use [[interrogate|interrogate]]. |
 | **Recovery** | When the fault clears, does the DUT return to normal? Does the fault stay logged as history? Does it need a power cycle, and is that intended? |
 
 > [!tip]

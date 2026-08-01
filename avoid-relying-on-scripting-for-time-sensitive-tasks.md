@@ -2,7 +2,7 @@
 type: Pitfall
 related_to:
   - "[[time-is-the-hard-part]]"
-  - "[[capability-stimulate]]"
+  - "[[stimulate]]"
 ---
 # Avoid relying on scripting for time-sensitive tasks
 
@@ -49,7 +49,7 @@ Your script's job is to *specify, arm, start, and query*. The real-time side exe
 | Closing the physics loop | real-time side, always |
 | Deciding what to run, and pass/fail | your script |
 
-See [[capability-stimulate]] and [[time-is-the-hard-part]].
+See [[stimulate]] and [[time-is-the-hard-part]].
 
 ## Where the boundary lies
 
@@ -71,4 +71,4 @@ It may not:
 
 ## Unsupported stimuli
 
-Occasionally you need a stimulus the bench's built-in generators don't cover. The answer is still not a loop in your script. It's a table of samples, uploaded as an arbitrary waveform and played by the real-time side. Compute it offline, play it in real time. See [[capability-replay]].
+Occasionally you need a stimulus the bench's built-in generators don't cover. The answer is still not a loop in your script. It's a table of samples, uploaded as an arbitrary waveform and played by the real-time side. Compute it offline, play it in real time. See [[replay]].

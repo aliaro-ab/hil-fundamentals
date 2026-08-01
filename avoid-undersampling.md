@@ -3,7 +3,7 @@ type: Pitfall
 related_to:
   - "[[capability-capture]]"
   - "[[time-is-the-hard-part]]"
-  - "[[boundary-network]]"
+  - "[[the-network]]"
 ---
 # Avoid undersampling
 
@@ -32,7 +32,7 @@ There's a chain, and the slowest link governs:
 | **The capture** | What you configured |
 | **Your analysis** | Any downsampling or filtering you applied afterwards |
 
-Sampling a network signal at 1 kHz when the sender transmits it every 100 ms gets you a thousand samples a second of a value that changes ten times a second. The extra 990 are decoration. See [[boundary-network]].
+Sampling a network signal at 1 kHz when the sender transmits it every 100 ms gets you a thousand samples a second of a value that changes ten times a second. The extra 990 are decoration. See [[the-network]].
 
 ## What to do
 

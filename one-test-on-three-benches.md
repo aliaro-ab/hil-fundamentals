@@ -1,7 +1,7 @@
 ---
 type: Guide
 related_to:
-  - "[[capability-grid]]"
+  - "[[the-capability-grid]]"
   - "[[why-abstraction-exists]]"
 _organized: true
 ---
@@ -29,7 +29,7 @@ The control logic exists only as a block diagram or model. There is no code and 
 
 The plant model and the controller model run together on one desktop machine. Execution is synchronous but not real-time, meaning the controller and plant step together, but a simulated second may take more or less than a wall-clock second.
 
-- You set temperature by driving the plant model. See [[boundary-plant-model]].
+- You set temperature by driving the plant model. See [[the-plant-model]].
 - You observe the power command as a model variable.
 
 ```mermaid
@@ -84,8 +84,8 @@ You cannot learn anything that requires the target processor or real I/O.
 
 The production software is flashed onto the real controller, in its real housing, and wired to a bench. Now everything is in real time and executes as it would in-vehicle.
 
-- Temperature is no longer a number you write. It's a resistance the bench presents across two pins, which the controller's ADC samples, scales, and filters. See [[boundary-physical-pins]].
-- The power command is no longer a variable. It's a PWM duty cycle on an output pin, or a value in a network frame. See [[boundary-network]].
+- Temperature is no longer a number you write. It's a resistance the bench presents across two pins, which the controller's ADC samples, scales, and filters. See [[physical-pins]].
+- The power command is no longer a variable. It's a PWM duty cycle on an output pin, or a value in a network frame. See [[the-network]].
 
 ```mermaid
 flowchart LR
@@ -107,7 +107,7 @@ Does the whole thing work? This covers sensor scaling, ADC noise, filter lag, ta
 
 ### What you can now also do
 
-Cut the sensor wire mid-test and confirm the controller notices. See [[capability-break]].
+Cut the sensor wire mid-test and confirm the controller notices. See [[fault-injection]].
 
 ## What actually changes
 

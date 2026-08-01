@@ -1,9 +1,9 @@
 ---
 type: Capability
-belongs_to: "[[capability-grid]]"
+belongs_to: "[[the-capability-grid]]"
 related_to:
-  - "[[boundary-diagnostic-channel]]"
-  - "[[capability-break]]"
+  - "[[the-diagnostic-channel]]"
+  - "[[fault-injection]]"
 _organized: true
 ---
 
@@ -15,7 +15,7 @@ Every other verb observes the device from outside. Interrogate asks the device f
 
 ## Why it is a separate verb
 
-You could, in principle, read the same fault flags out of memory with [[capability-observe|observe]] at [[boundary-device-internals|device internals]]. That would be a mistake, for a reason worth internalizing.
+You could, in principle, read the same fault flags out of memory with [[observe|observe]] at [[device-internals|device internals]]. That would be a mistake, for a reason worth internalizing.
 
 ### The channel is a product feature
 
@@ -47,7 +47,7 @@ So diagnostic steps are slow and sequential, while the rest of your test is fast
 
 ## Where it fits in a test
 
-Almost always as the third act of a fault test (see [[capability-break]]):
+Almost always as the third act of a fault test (see [[fault-injection]]):
 
 1. Break something
 2. Confirm the reaction with [[capability-capture|capture]]

@@ -2,11 +2,11 @@
 type: Scenario
 belongs_to: "[[scenario-cards]]"
 has:
-  - "[[capability-break]]"
+  - "[[fault-injection]]"
   - "[[capability-capture]]"
-  - "[[capability-interrogate]]"
+  - "[[interrogate]]"
 related_to:
-  - "[[boundary-physical-pins]]"
+  - "[[physical-pins]]"
   - "[[triggers-and-windows]]"
 _organized: true
 ---
@@ -50,7 +50,7 @@ The interesting failures cluster at specific microseconds inside the write (star
 
 ### Cut the power for real
 
-[[capability-break]] at [[boundary-physical-pins|physical pins]]. And test both shapes, a **clean cut** to zero and a **brownout** (a sag to some intermediate voltage). Brownouts are nastier and more common. The processor may run erratically at a voltage where its brown-out detector hasn't yet tripped, and that's where the genuinely bad corruption happens. Sweep the sag voltage too.
+[[fault-injection]] at [[physical-pins|physical pins]]. And test both shapes, a **clean cut** to zero and a **brownout** (a sag to some intermediate voltage). Brownouts are nastier and more common. The processor may run erratically at a voltage where its brown-out detector hasn't yet tripped, and that's where the genuinely bad corruption happens. Sweep the sag voltage too.
 
 ### Capture the supply rail
 
@@ -63,7 +63,7 @@ Restore power, then check:
 - Does it boot at all? (Bricking is the failure mode you most need to know about.)
 - Are the stored hours valid (either the old value or the new one, never garbage)?
 - Does it detect and recover from a partial write, if the design claims to?
-- Is there a fault indicating the interruption, if there should be? Use [[capability-interrogate|interrogate]] to check.
+- Is there a fault indicating the interruption, if there should be? Use [[interrogate|interrogate]] to check.
 - Are *other* stored values intact, or did the corruption spread?
 
 ### Repeat the test

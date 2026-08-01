@@ -2,7 +2,7 @@
 type: Pitfall
 related_to:
   - "[[why-abstraction-exists]]"
-  - "[[one-signal-five-names]]"
+  - "[[five-names-for-one-signal]]"
 ---
 # Avoid bench specifics in test code
 
@@ -39,7 +39,7 @@ Every line of a test is either a statement about **the product** or a statement 
 
 Product statements are durable. They stay true across benches, variants, sites, and years. Bench statements are configuration, and configuration belongs in a file, owned by whoever owns the bench, not scattered through test logic owned by whoever owns the product.
 
-See [[why-abstraction-exists]] and [[one-signal-five-names]].
+See [[why-abstraction-exists]] and [[five-names-for-one-signal]].
 
 ## The practical structure
 

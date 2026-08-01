@@ -2,7 +2,7 @@
 type: Pitfall
 related_to:
   - "[[time-is-the-hard-part]]"
-  - "[[capability-observe]]"
+  - "[[observe]]"
 ---
 # Avoid immediately reading after writing
 

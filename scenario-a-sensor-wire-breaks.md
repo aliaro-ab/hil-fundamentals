@@ -2,11 +2,11 @@
 type: Scenario
 belongs_to: "[[scenario-cards]]"
 has:
-  - "[[capability-break]]"
+  - "[[fault-injection]]"
   - "[[capability-capture]]"
-  - "[[capability-interrogate]]"
+  - "[[interrogate]]"
 related_to:
-  - "[[boundary-physical-pins]]"
+  - "[[physical-pins]]"
 _organized: true
 ---
 # Scenario: a sensor wire breaks
@@ -33,15 +33,15 @@ Work out what you need before reading on.
 
 ### Establish the precondition
 
-Get the system to a steady operating state where the sensor is being read and power is not already limited. Establish this via [[boundary-plant-model|the plant model]], and *verify* it rather than assuming.
+Get the system to a steady operating state where the sensor is being read and power is not already limited. Establish this via [[the-plant-model|the plant model]], and *verify* it rather than assuming.
 
 ### Arm the capture first
 
-[[capability-capture]] the commanded power output (at [[boundary-network|the network]] or [[boundary-physical-pins|physical pins]], wherever the DUT actually publishes it), the DUT's internal reported temperature (at [[boundary-device-internals|device internals]], for diagnosis), and the fault flag. Use a pre-trigger so you see the state before the break. Sample fast enough to resolve 500 ms comfortably, at 100 Hz or better. See [[triggers-and-windows]].
+[[capability-capture]] the commanded power output (at [[the-network|the network]] or [[physical-pins|physical pins]], wherever the DUT actually publishes it), the DUT's internal reported temperature (at [[device-internals|device internals]], for diagnosis), and the fault flag. Use a pre-trigger so you see the state before the break. Sample fast enough to resolve 500 ms comfortably, at 100 Hz or better. See [[triggers-and-windows]].
 
 ### Inject the fault
 
-[[capability-break]] at [[boundary-physical-pins|physical pins]] by opening the circuit on the sensor line. The fault must be electrically real rather than a model-level substitution, because the point is to test the DUT's input diagnostics, which a model fault would bypass entirely.
+[[fault-injection]] at [[physical-pins|physical pins]] by opening the circuit on the sensor line. The fault must be electrically real rather than a model-level substitution, because the point is to test the DUT's input diagnostics, which a model fault would bypass entirely.
 
 ### Assert on the trace
 
@@ -49,7 +49,7 @@ From the captured timestamps, verify that the time from the break to the fault f
 
 ### Interrogate the diagnostics
 
-[[capability-interrogate]] at [[boundary-diagnostic-channel|the diagnostic channel]] and confirm the correct fault code, the correct status bits (not merely "present"; see the status model discussion there), and a freeze frame with plausible conditions.
+[[interrogate]] at [[the-diagnostic-channel|the diagnostic channel]] and confirm the correct fault code, the correct status bits (not merely "present"; see the status model discussion there), and a freeze frame with plausible conditions.
 
 ### Verify recovery
 

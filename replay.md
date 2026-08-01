@@ -1,17 +1,17 @@
 ---
 type: Capability
-belongs_to: "[[capability-grid]]"
+belongs_to: "[[the-capability-grid]]"
 related_to:
   - "[[capability-capture]]"
-  - "[[capability-stimulate]]"
-  - "[[boundary-network]]"
+  - "[[stimulate]]"
+  - "[[the-network]]"
 ---
 
 # Replay
 
 **Do again exactly what happened before.**
 
-Replay is [[capability-stimulate|stimulate]] whose source is a recorded trace instead of a mathematical description. It closes the loop between the field and the lab.
+Replay is [[stimulate|stimulate]] whose source is a recorded trace instead of a mathematical description. It closes the loop between the field and the lab.
 
 ## Why it matters
 
@@ -46,10 +46,10 @@ A team that can do this has a fundamentally different debugging life from one th
 
 | Boundary | What replaying means there |
 | --- | --- |
-| [[boundary-network]] | The classic case. Replay a recorded bus log so the DUT sees exactly the traffic it saw in the field. Watch for whether the bench replays *timing* faithfully or just message order |
-| [[boundary-physical-pins]] | Play a recorded analog trace back out as a real waveform |
-| [[boundary-plant-model]] | Drive model inputs from a recorded profile |
-| [[boundary-service-layer]] | Replay a recorded request sequence; often awkward, because services are request/response and a blind replay can desynchronize |
+| [[the-network]] | The classic case. Replay a recorded bus log so the DUT sees exactly the traffic it saw in the field. Watch for whether the bench replays *timing* faithfully or just message order |
+| [[physical-pins]] | Play a recorded analog trace back out as a real waveform |
+| [[the-plant-model]] | Drive model inputs from a recorded profile |
+| [[the-service-layer]] | Replay a recorded request sequence; often awkward, because services are request/response and a blind replay can desynchronize |
 
 ## Replay fidelity questions
 
@@ -58,7 +58,7 @@ A team that can do this has a fundamentally different debugging life from one th
 | **Is timing preserved?** | Original inter-sample intervals, or a nominal fixed rate |
 | **Is it interactive?** | A pure replay ignores the DUT. If the DUT was in a closed loop originally, blind replay may present it with a physically impossible situation |
 | **What was not recorded?** | Everything absent from the log is being supplied by something else, probably a default. That gap is where "it reproduced but behaved differently" comes from |
-| **Do the names and units still line up?** | See [[one-signal-five-names]] |
+| **Do the names and units still line up?** | See [[five-names-for-one-signal]] |
 
 ## Rule of thumb
 

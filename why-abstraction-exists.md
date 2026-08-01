@@ -1,8 +1,8 @@
 ---
 type: Concept
 related_to:
-  - "[[mil-sil-hil-one-story]]"
-  - "[[one-signal-five-names]]"
+  - "[[one-test-on-three-benches]]"
+  - "[[five-names-for-one-signal]]"
   - "[[pitfall-hardcoded-bench-names]]"
 _organized: true
 ---
@@ -20,9 +20,9 @@ The test bench that runs it is not durable in the same way. Test benches get rep
 
 | What changes | How it changes | Why it hurts |
 | --- | --- | --- |
-| **The device** | Starts as a model, becomes compiled software, ends up as silicon in a housing. | Same behavior, three different things to poke at. See [[mil-sil-hil-one-story]]. |
+| **The device** | Starts as a model, becomes compiled software, ends up as silicon in a housing. | Same behavior, three different things to poke at. See [[one-test-on-three-benches]]. |
 | **The bench** | Different vendors, different I/O, different naming, different units. | It's a purchase decision made by someone who wasn't thinking about your test. |
-| **The signal names** | The model, the controller's symbol file, the wiring diagram, and the network database each have their own name for one physical quantity. | Nothing lines up by default. See [[one-signal-five-names]]. |
+| **The signal names** | The model, the controller's symbol file, the wiring diagram, and the network database each have their own name for one physical quantity. | Nothing lines up by default. See [[five-names-for-one-signal]]. |
 
 ## Benefits
 
@@ -31,7 +31,7 @@ The return is not elegance; it is three concrete things:
 | What you get | Why it matters |
 | --- | --- |
 | **Portability** | The same test runs on the next bench, so a bench refresh doesn't torch your regression suite. |
-| **Reuse across development stages** | The test written against a model gets rerun against hardware. See [[mil-sil-hil-one-story]]. |
+| **Reuse across development stages** | The test written against a model gets rerun against hardware. See [[one-test-on-three-benches]]. |
 | **A shared vocabulary** | When a test engineer and a bench engineer both say "capture," they mean the same thing. Half of onboarding is just this. |
 
 ## Costs

@@ -2,11 +2,11 @@
 type: Scenario
 belongs_to: "[[scenario-cards]]"
 has:
-  - "[[capability-replay]]"
+  - "[[replay]]"
   - "[[capability-capture]]"
 related_to:
-  - "[[boundary-network]]"
-  - "[[one-signal-five-names]]"
+  - "[[the-network]]"
+  - "[[five-names-for-one-signal]]"
 ---
 # Scenario: reproduce a field failure
 
@@ -36,11 +36,11 @@ Reproduce against the same software version the field unit was running. A newer 
 
 ### Check the database revision
 
-The log decodes correctly only against the database that was current when it was recorded. A signal that moved between revisions will decode into a plausible wrong number. See [[one-signal-five-names]].
+The log decodes correctly only against the database that was current when it was recorded. A signal that moved between revisions will decode into a plausible wrong number. See [[five-names-for-one-signal]].
 
 ### Set up the replay
 
-[[capability-replay]] at [[boundary-network|the network]]. The critical question is whether your bench replays original *timing* or just message order at a nominal rate. For a timing-sensitive bug, order-only replay will not reproduce it, and you'll wrongly conclude the log is useless.
+[[replay]] at [[the-network|the network]]. The critical question is whether your bench replays original *timing* or just message order at a nominal rate. For a timing-sensitive bug, order-only replay will not reproduce it, and you'll wrongly conclude the log is useless.
 
 ### Handle the restbus conflict
 
@@ -48,7 +48,7 @@ Your bench is probably already simulating those messages. Replaying the log on t
 
 ### Capture everything
 
-[[capability-capture]] far more widely than the log covers, including internals at [[boundary-device-internals|device internals]], outputs, mode, and faults. The whole value of doing this on a bench rather than in the field is that you can see inside.
+[[capability-capture]] far more widely than the log covers, including internals at [[device-internals|device internals]], outputs, mode, and faults. The whole value of doing this on a bench rather than in the field is that you can see inside.
 
 ### Run it
 

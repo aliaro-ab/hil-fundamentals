@@ -3,10 +3,10 @@ type: Scenario
 belongs_to: "[[scenario-cards]]"
 has:
   - "[[capability-capture]]"
-  - "[[capability-stimulate]]"
+  - "[[stimulate]]"
 related_to:
   - "[[time-is-the-hard-part]]"
-  - "[[pitfall-sample-rate-blindness]]"
+  - "[[avoid-undersampling]]"
 ---
 # Scenario: prove a 100 ms deadline
 
@@ -25,7 +25,7 @@ It sounds trivial, and it is the card most people get wrong.
 
 ### The wrong instinct
 
-The wrong instinct is worth naming first. Send the request, `sleep(0.1)`, read the output, assert it's zero. This proves almost nothing. Your script's timing is good to maybe tens of milliseconds; you can't measure a 100 ms deadline with a 30 ms ruler. And a *pass* here is even more misleading than a fail. See [[pitfall-write-then-read-immediately]].
+The wrong instinct is worth naming first. Send the request, `sleep(0.1)`, read the output, assert it's zero. This proves almost nothing. Your script's timing is good to maybe tens of milliseconds; you can't measure a 100 ms deadline with a 30 ms ruler. And a *pass* here is even more misleading than a fail. See [[avoid-immediately-reading-after-writing]].
 
 ### Take both timestamps from the real-time side
 
@@ -33,7 +33,7 @@ Both timestamps must come from the real-time side; that is the entire point of t
 
 ### Set up the capture
 
-[[capability-capture]] on both the stop request and the commanded output, **in the same capture** so they share a time base. Separate captures may be skewed, and the skew can easily be a large fraction of your 100 ms budget. Sample at 1 kHz or better, at least 10× the deadline. See [[pitfall-sample-rate-blindness]].
+[[capability-capture]] on both the stop request and the commanded output, **in the same capture** so they share a time base. Separate captures may be skewed, and the skew can easily be a large fraction of your 100 ms budget. Sample at 1 kHz or better, at least 10× the deadline. See [[avoid-undersampling]].
 
 ### Trigger on the request
 
@@ -41,7 +41,7 @@ Use a pre-trigger so you can see the steady state before it and confirm the syst
 
 ### Issue the request
 
-[[capability-stimulate]] at whichever boundary the operator interface really uses, whether that is [[boundary-network|the network]], a discrete at [[boundary-physical-pins|physical pins]], or a call at [[boundary-service-layer|the service layer]]. It matters. A network request inherits the bus cycle time, and if the frame carrying it is on a 50 ms cycle, half your budget can be consumed before the DUT has even heard you. That's a real finding, not a bench artifact.
+[[stimulate]] at whichever boundary the operator interface really uses, whether that is [[the-network|the network]], a discrete at [[physical-pins|physical pins]], or a call at [[the-service-layer|the service layer]]. It matters. A network request inherits the bus cycle time, and if the frame carrying it is on a 50 ms cycle, half your budget can be consumed before the DUT has even heard you. That's a real finding, not a bench artifact.
 
 ### Measure from the trace
 

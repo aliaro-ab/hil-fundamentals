@@ -18,23 +18,23 @@ Six capabilities at six boundaries cover the entirety of what HIL does and where
 
 | Verb | What it means |
 | --- | --- |
-| [[capability-observe]] | What is this value right now? |
-| [[capability-stimulate]] | Make this value be something. |
+| [[observe]] | What is this value right now? |
+| [[stimulate]] | Make this value be something. |
 | [[capability-capture]] | What did this value do over that window? |
-| [[capability-replay]] | Do again exactly what happened before. |
-| [[capability-break]] | What happens when this goes wrong? |
-| [[capability-interrogate]] | What does the device think is wrong? |
+| [[replay]] | Do again exactly what happened before. |
+| [[fault-injection]] | What happens when this goes wrong? |
+| [[interrogate]] | What does the device think is wrong? |
 
 ## The six boundaries
 
 | Boundary | What it is |
 | --- | --- |
-| [[boundary-plant-model]] | The simulated world around the device |
-| [[boundary-device-internals]] | The device's own memory and calibrations |
-| [[boundary-physical-pins]] | Wires, voltages, currents, resistances |
-| [[boundary-network]] | Frames and signals on a bus |
-| [[boundary-service-layer]] | Requests, responses, and events between software services |
-| [[boundary-diagnostic-channel]] | The device's self-report |
+| [[the-plant-model]] | The simulated world around the device |
+| [[device-internals]] | The device's own memory and calibrations |
+| [[physical-pins]] | Wires, voltages, currents, resistances |
+| [[the-network]] | Frames and signals on a bus |
+| [[the-service-layer]] | Requests, responses, and events between software services |
+| [[the-diagnostic-channel]] | The device's self-report |
 
 Six surfaces around one device:
 
@@ -61,7 +61,7 @@ flowchart TB
 
 ❌ = not available
 
-|  | Observe | Stimulate | Capture | Replay | Break | Interrogate |
+|  | Observe | Stimulate | Capture | Replay | Fault injection | Interrogate |
 | --- | --- | --- | --- | --- | --- | --- |
 | **Plant model** | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ |
 | **Device internals** | ✅ | ✅ | ✅ | ⚠️ | ⚠️ | ❌ |
@@ -103,4 +103,4 @@ See [[time-is-the-hard-part]].
 ### Naming
 
 The same physical quantity has a different name at every boundary, and translating between them is where the bugs are.
-See [[one-signal-five-names]].
+See [[five-names-for-one-signal]].

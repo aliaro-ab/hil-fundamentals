@@ -2,7 +2,7 @@
 type: Pitfall
 related_to:
   - "[[the-test-bench-resource-model]]"
-  - "[[boundary-device-internals]]"
+  - "[[device-internals]]"
 ---
 # Avoid leaving state behind
 
@@ -26,7 +26,7 @@ You forced a sensor value and never released it. Every subsequent test runs agai
 
 ### Modified calibrations
 
-You changed a threshold to check the logic, the test failed before the restore line, and now the DUT has a wrong threshold that survives reboots. This is the worst one, because it's persistent and invisible. See [[boundary-device-internals]].
+You changed a threshold to check the logic, the test failed before the restore line, and now the DUT has a wrong threshold that survives reboots. This is the worst one, because it's persistent and invisible. See [[device-internals]].
 
 ### Injected faults
 

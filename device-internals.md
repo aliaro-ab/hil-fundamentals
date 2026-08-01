@@ -1,9 +1,9 @@
 ---
 type: Boundary
-belongs_to: "[[capability-grid]]"
+belongs_to: "[[the-capability-grid]]"
 related_to:
-  - "[[one-signal-five-names]]"
-  - "[[capability-interrogate]]"
+  - "[[five-names-for-one-signal]]"
+  - "[[interrogate]]"
 ---
 # Device internals
 
@@ -17,7 +17,7 @@ Two distinct things live here:
 
 Internal state as the DUT sees it. 
 
-This could be filtered sensor values, estimator outputs, state machine states, intermediate computations, internal flags. These are read-only, so you can [[capability-observe|observe]] and [[capability-capture|capture]] these.
+This could be filtered sensor values, estimator outputs, state machine states, intermediate computations, internal flags. These are read-only, so you can [[observe|observe]] and [[capability-capture|capture]] these.
 
 This is your window into *why*. When a test fails, the physical outputs tell you what happened, and the internal variables tell you what the DUT believed. 
 
@@ -25,7 +25,7 @@ The gap between the two is usually the bug.
 
 ## Calibration values
 
-Calibration interfaces give you access to read and write thresholds, gains, lookup tables, timeouts, enable flags, and other tuning parameters on the device. You can [[capability-stimulate|stimulate]] these to change a threshold mid-test to check the logic responds, configure a variant without reflashing, or a number of other useful features.
+Calibration interfaces give you access to read and write thresholds, gains, lookup tables, timeouts, enable flags, and other tuning parameters on the device. You can [[stimulate|stimulate]] these to change a threshold mid-test to check the logic responds, configure a variant without reflashing, or a number of other useful features.
 
 > [!warning]
 > These are dangerous.
@@ -41,7 +41,7 @@ No customer reads your internal variables. Asserting on an internal flag is conv
 
 ### Limited sample rates
 
-This channel usually samples slower than the DUT's own control loop, and often slower than [[boundary-physical-pins|physical pins]]. 
+This channel usually samples slower than the DUT's own control loop, and often slower than [[physical-pins|physical pins]]. 
 
 ### Side effects
 
@@ -49,7 +49,7 @@ The DUT spends real cycles servicing your requests. Asking for too many variable
 
 ### Names are volatile
 
-Internal symbol names come from a build artifact and change between software versions. This is a major contributor to [[one-signal-five-names|five names for one signal]].
+Internal symbol names come from a build artifact and change between software versions. This is a major contributor to [[five-names-for-one-signal|five names for one signal]].
 
 ## Rule of thumb
 

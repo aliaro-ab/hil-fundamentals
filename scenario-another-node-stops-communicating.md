@@ -2,14 +2,14 @@
 type: Scenario
 belongs_to: "[[scenario-cards]]"
 has:
-  - "[[capability-break]]"
+  - "[[fault-injection]]"
   - "[[capability-capture]]"
-  - "[[capability-interrogate]]"
+  - "[[interrogate]]"
 related_to:
-  - "[[boundary-network]]"
+  - "[[the-network]]"
 _organized: true
 ---
-# Scenario: another node stops talking
+# Scenario: another node stops communicating
 
 ## The goal
 
@@ -31,7 +31,7 @@ Work out what you need before reading on.
 
 ### Understand how the bus is simulated
 
-The message in question is being sent by the bench, standing in for a controller that isn't on this rack. See [[boundary-network]] for details.
+The message in question is being sent by the bench, standing in for a controller that isn't on this rack. See [[the-network]] for details.
 
 ### Establish the precondition
 
@@ -43,7 +43,7 @@ Establish normal operation, with the restbus healthy, the speed signal present a
 
 ### Stop the frame
 
-[[capability-break]] at [[boundary-network|the network]] by stopping transmission of that frame. Note the timing subtlety. The deadline starts at the *last successfully received* frame, not at the moment you called stop. Read that from the capture.
+[[fault-injection]] at [[the-network|the network]] by stopping transmission of that frame. Note the timing subtlety. The deadline starts at the *last successfully received* frame, not at the moment you called stop. Read that from the capture.
 
 ### Assert on the capture
 
@@ -51,7 +51,7 @@ Verify detection within 300 ms of the last received frame, the correct substitut
 
 ### Interrogate the diagnostics
 
-[[capability-interrogate]] and confirm the correct communication fault code and the correct status.
+[[interrogate]] and confirm the correct communication fault code and the correct status.
 
 ### Verify recovery
 
@@ -73,4 +73,4 @@ This is the boundary where fault injection is cheapest and most productive. Each
 
 ## Limitations
 
-Bus-level problems, such as arbitration under load, error frames, bus-off recovery, and wiring faults on the bus itself. Those are separate tests at [[boundary-physical-pins|physical pins]] and at the frame level.
+Bus-level problems, such as arbitration under load, error frames, bus-off recovery, and wiring faults on the bus itself. Those are separate tests at [[physical-pins|physical pins]] and at the frame level.

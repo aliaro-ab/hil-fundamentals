@@ -3,7 +3,7 @@ type: Concept
 status: Active
 related_to:
   - "[[why-abstraction-exists]]"
-  - "[[pitfall-unit-assumption]]"
+  - "[[avoid-unit-and-scaling-assumptions]]"
   - "[[pitfall-hardcoded-bench-names]]"
 _organized: true
 ---
@@ -78,7 +78,7 @@ A good test is written in intent, resolved to physical by a mapping layer, and c
 
 A wrong factor doesn't throw. It gives you 3.0 where 30 was expected, or 30 where 0.30 was expected. The test fails, someone "fixes" the tolerance, and the wrongness is now permanent.
 
-See [[pitfall-unit-assumption]].
+See [[avoid-unit-and-scaling-assumptions]].
 
 ### Drift between sources
 

@@ -1,9 +1,9 @@
 ---
 type: Boundary
-belongs_to: "[[capability-grid]]"
+belongs_to: "[[the-capability-grid]]"
 related_to:
-  - "[[capability-break]]"
-  - "[[one-signal-five-names]]"
+  - "[[fault-injection]]"
+  - "[[five-names-for-one-signal]]"
 _organized: true
 ---
 # Physical pins
@@ -29,7 +29,7 @@ It's the only place you can test what happens **between** the DUT's software and
 - Input filtering and its lag
 - Signal integrity, noise, and ground offsets
 - Driver-level diagnostics (open load, short circuit, over-current)
-- Genuine electrical faults, via [[capability-break|fault injection]]
+- Genuine electrical faults, via [[fault-injection|fault injection]]
 
 If your test is about whether the DUT interprets the physical world correctly, it has to happen here. No other boundary can answer that question.
 
@@ -41,7 +41,7 @@ A meaningful fraction of early bench failures are the harness, not the software.
 
 ### Everything is a conversion
 
-The physical quantity, the electrical quantity, the raw count, and the engineering unit are four different numbers, and the mapping between them is bench configuration that someone typed in. See [[one-signal-five-names]].
+The physical quantity, the electrical quantity, the raw count, and the engineering unit are four different numbers, and the mapping between them is bench configuration that someone typed in. See [[five-names-for-one-signal]].
 
 ### Loads matter
 

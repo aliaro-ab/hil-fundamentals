@@ -1,17 +1,17 @@
 ---
 type: Capability
-belongs_to: "[[capability-grid]]"
+belongs_to: "[[the-capability-grid]]"
 related_to:
   - "[[triggers-and-windows]]"
-  - "[[capability-observe]]"
-  - "[[pitfall-sample-rate-blindness]]"
+  - "[[observe]]"
+  - "[[avoid-undersampling]]"
 _organized: true
 ---
 # Capture
 
 **What did this value do over that window?**
 
-Capture is [[capability-observe|observe]] done over many values, at a known rate, over a defined window, with known time alignment.
+Capture is [[observe|observe]] done over many values, at a known rate, over a defined window, with known time alignment.
 
 Almost every interesting test assertion is a statement about a captured trace rather than a single reading.
 
@@ -20,7 +20,7 @@ Almost every interesting test assertion is a statement about a captured trace ra
 | Dimension | What it means |
 | --- | --- |
 | **Which signals** | A named set, captured together so they share a time base. Signals captured separately cannot be reliably compared against each other. |
-| **At what rate** | Fast enough to see what you're testing. See [[pitfall-sample-rate-blindness]]. |
+| **At what rate** | Fast enough to see what you're testing. See [[avoid-undersampling]]. |
 | **Over what window** | Bounded by time, by sample count, or by conditions. See [[triggers-and-windows]]. |
 | **Aligned to what clock** | A shared time base for every signal you intend to compare. |
 
@@ -51,11 +51,11 @@ Capture is available at every boundary.
 
 | Boundary | What you capture there |
 | --- | --- |
-| [[boundary-plant-model]] | Model variables |
-| [[boundary-device-internals]] | Internal values |
-| [[boundary-physical-pins]] | Analog and digital lines |
-| [[boundary-network]] | Frames or decoded signals |
-| [[boundary-service-layer]] | Message traces |
+| [[the-plant-model]] | Model variables |
+| [[device-internals]] | Internal values |
+| [[physical-pins]] | Analog and digital lines |
+| [[the-network]] | Frames or decoded signals |
+| [[the-service-layer]] | Message traces |
 
 The important question at each boundary is **what rate, and does it share a clock with the others?**
 

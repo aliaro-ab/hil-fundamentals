@@ -1,7 +1,7 @@
 ---
 type: Pitfall
 related_to:
-  - "[[one-signal-five-names]]"
+  - "[[five-names-for-one-signal]]"
 _width: normal
 ---
 # Avoid unit and scaling assumptions
@@ -28,7 +28,7 @@ Worse, wrong-unit tests often *pass*, which means they're never investigated. A 
 | **Angle conventions** | Degrees vs radians, and which direction is positive |
 | **Sign conventions** | Is torque positive when driving or when braking? Is current positive into or out of the battery? |
 | **Offset units** | °C vs K. Adding two temperatures in °C is a specific kind of wrong. |
-| **Raw vs physical** | An ADC count is not a voltage. See [[one-signal-five-names]]. |
+| **Raw vs physical** | An ADC count is not a voltage. See [[five-names-for-one-signal]]. |
 | **Variant drift** | The same signal in different units on two product variants, with one mapping file used for both. |
 
 ## What to do

@@ -1,8 +1,8 @@
 ---
 type: Concept
 related_to:
-  - "[[what-a-hil-bench-is]]"
-  - "[[capability-stimulate]]"
+  - "[[what-a-hil-test-bench-is]]"
+  - "[[stimulate]]"
   - "[[time-is-the-hard-part]]"
 _organized: true
 ---
