@@ -56,9 +56,9 @@ Then work the [[scenario-cards|scenario cards]] with someone who has done this b
 
 | Type | What it's for |
 | --- | --- |
-| [[guide]] | Read start to finish |
-| [[concept]] | Load-bearing ideas |
-| [[boundary]] | Surfaces of the device you can touch |
-| [[capability]] | The six verbs |
-| [[pitfall]] | Mistakes you get to make only once |
+| [[guide]] | Step-by-step instructions and guidance |
+| [[concept]] | Load-bearing ideas for understand HIL |
+| [[boundary]] | Core interfaces and surfaces where the test system and the DUT exchange information |
+| [[capability]] | Actions that the test system can perform at one or more boundaries |
+| [[pitfall]] | Common mistakes and missteps, and how to avoid them |
 | [[scenario]] | Practice cards |
