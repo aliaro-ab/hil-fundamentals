@@ -23,17 +23,29 @@ A hardware-in-the-loop bench is a simulation system designed to convince a real 
 
 ```mermaid
 flowchart LR
-    DUT["Device under test"]
-    IO_OUT["I/O layer"]
-    PLANT["Plant model"]
-    IO_IN["I/O layer"]
-    TEST["Test automation"]
+    subgraph SUT["System Under Test"]
+        DUT["Device Under Test"]
+    end
 
-    DUT -- outputs --> IO_OUT --> PLANT --> IO_IN -- inputs --> DUT
+    subgraph TB["TestBench"]
+        subgraph RTC["RT Controller"]
+            PLANT["Plant Model"]
+        end
+		subgraph DAQ["Data Acquisition System"]
+        	DAQ_IN["Input"]
+            DAQ_OUT["Output"]
+        end
+        subgraph HOST["Host PC"]
+            TEST["Test Automation"]
+        end
+    end
+    DUT -- response --> DAQ_IN -- inports --> PLANT -- outports --> DAQ_OUT -- stimulus --> DUT
     TEST -. model access .-> PLANT
 
     style TEST stroke-dasharray: 4 4
+    
 ```
+
 
 The loop runs at a fixed rate, typically somewhere between 100 Hz and 10 kHz depending on the physics. If the system is running, it keeps running whether your test script is executing, sleeping, or crashed.
 
