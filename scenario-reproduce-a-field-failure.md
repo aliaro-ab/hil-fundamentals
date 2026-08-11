@@ -3,7 +3,7 @@ type: Scenario
 belongs_to: "[[scenario-cards]]"
 has:
   - "[[replay]]"
-  - "[[capability-capture]]"
+  - "[[capture]]"
 related_to:
   - "[[the-network]]"
   - "[[five-names-for-one-signal]]"
@@ -48,7 +48,7 @@ Your bench is probably already simulating those messages. Replaying the log on t
 
 ### Capture everything
 
-[[capability-capture]] far more widely than the log covers, including internals at [[device-internals|device internals]], outputs, mode, and faults. The whole value of doing this on a bench rather than in the field is that you can see inside.
+[[capture]] far more widely than the log covers, including internals at [[device-internals|device internals]], outputs, mode, and faults. The whole value of doing this on a bench rather than in the field is that you can see inside.
 
 ### Run it
 

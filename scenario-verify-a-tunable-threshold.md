@@ -4,7 +4,7 @@ belongs_to: "[[scenario-cards]]"
 has:
   - "[[stimulate]]"
   - "[[observe]]"
-  - "[[capability-capture]]"
+  - "[[capture]]"
 related_to:
   - "[[device-internals]]"
   - "[[avoid-leaving-state-behind]]"
@@ -42,7 +42,7 @@ For each value (low end of range, nominal, high end):
 1. Write the calibration. [[stimulate]] at [[device-internals|device internals]].
 2. Read it back and confirm it took. Calibration writes can be silently rejected (wrong memory page, insufficient access, value out of range).
 3. Drive the temperature through the threshold using [[the-plant-model|the plant model]] or [[physical-pins|physical pins]]. Use a slow ramp, not a step. A ramp lets you measure *where* it tripped, while a step only tells you it eventually did.
-4. [[capability-capture]] temperature and the warning flag together, so you can read off the trip point.
+4. [[capture]] temperature and the warning flag together, so you can read off the trip point.
 5. Assert the trip point matches the calibrated value within tolerance.
 
 ### Restore the original value

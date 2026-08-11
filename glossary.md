@@ -42,7 +42,7 @@ Projects, applications, and industries will have their own words for several of 
 | **Label** | A signal's name in a particular naming scheme. The same signal can be represented by multiple labels in multiple schemes. See [[five-names-for-one-signal]]. |
 | **Mapping** | The translation table between naming schemes, with units and scaling. |
 | **Raw vs physical** | The measured value versus what that value represents, for example `Counts → degrees` or `volts → newton-meters`. |
-| **Capture / acquisition / measurement** | The real-time system records many samples over a window. See [[capability-capture]]. |
+| **Capture / acquisition / measurement** | The real-time system records many samples over a window. See [[capture]]. |
 | **Stimulus / stimulation** | The real-time system drives a value or waveform in. See [[stimulate]]. |
 | **Trigger** | A condition that starts or stops something, evaluated on the real-time side. |
 | **Pre-trigger** | Keeping buffered samples from *before* the trigger. See [[triggers-and-windows]]. |
@@ -72,7 +72,7 @@ Projects, applications, and industries will have their own words for several of 
 
 | Term | Meaning |
 | --- | --- |
-| **Fault injection** | Deliberately breaking something by simulating an electrical or logical error. See [[fault-injection]]. |
+| **Fault injection** | Deliberately breaking something by simulating an electrical or logical error. See [[disturb]]. |
 | **FIU / fault injection unit** | The switching hardware that creates electrical faults. |
 | **Open / short-to-ground / short-to-battery** | The three basic electrical faults. These cover 90% of fault requirements. |
 | **Fault code / DTC** | A stored identifier for a detected problem. |

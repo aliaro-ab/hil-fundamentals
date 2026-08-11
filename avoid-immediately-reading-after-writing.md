@@ -71,7 +71,7 @@ Now the test says what it means. It's fast when the system is fast, patient when
 
 ## When timing is the point
 
-If the requirement is *"shall respond within 100 ms"*, a wait loop can't prove it. Your polling isn't precise enough to measure 100 ms. Arm a [[capability-capture|capture]] with a pre-trigger, apply the stimulus, and measure the response time from the captured timestamps. See [[triggers-and-windows]].
+If the requirement is *"shall respond within 100 ms"*, a wait loop can't prove it. Your polling isn't precise enough to measure 100 ms. Arm a [[capture|capture]] with a pre-trigger, apply the stimulus, and measure the response time from the captured timestamps. See [[triggers-and-windows]].
 
 As a rule of thumb, **waiting is for getting the system into a state, and capturing is for asserting on how it got there.**
 

@@ -2,7 +2,7 @@
 type: Scenario
 belongs_to: "[[scenario-cards]]"
 has:
-  - "[[capability-capture]]"
+  - "[[capture]]"
   - "[[stimulate]]"
 related_to:
   - "[[time-is-the-hard-part]]"
@@ -33,7 +33,7 @@ Both timestamps must come from the real-time side; that is the entire point of t
 
 ### Set up the capture
 
-[[capability-capture]] on both the stop request and the commanded output, **in the same capture** so they share a time base. Separate captures may be skewed, and the skew can easily be a large fraction of your 100 ms budget. Sample at 1 kHz or better, at least 10× the deadline. See [[avoid-undersampling]].
+[[capture]] on both the stop request and the commanded output, **in the same capture** so they share a time base. Separate captures may be skewed, and the skew can easily be a large fraction of your 100 ms budget. Sample at 1 kHz or better, at least 10× the deadline. See [[avoid-undersampling]].
 
 ### Trigger on the request
 

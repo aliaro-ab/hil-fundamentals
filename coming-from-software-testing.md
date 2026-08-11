@@ -19,7 +19,7 @@ If you already write automated tests for services or applications, most bench di
 | Restbus simulation, at [[the-network]] | Mocks for collaborators that aren't deployed. The DUT won't leave startup without its dependencies answering, so the bench plays all of them. |
 | The mapping layer, from [[five-names-for-one-signal]] | The configuration and dependency-injection layer that keeps environment specifics out of test logic. |
 | [[the-test-bench-resource-model]] | Fixtures with guaranteed teardown. Leaked state fails the *next* test, same as always, except here it can survive a reboot. |
-| [[capability-capture]] | Structured logging and tracing with timestamps, configured before the event rather than grepped after it. |
+| [[capture]] | Structured logging and tracing with timestamps, configured before the event rather than grepped after it. |
 | Wait-for-condition with timeout | Asserting against an eventually-consistent system. `sleep()` is as wrong here as in your integration suite, and for the same reason. See [[time-is-the-hard-part]]. |
 | [[replay]] | Record-and-replay of production traffic, turned into a regression test. |
 | [[the-diagnostic-channel]] vs [[device-internals]] | The public API vs private state. Assert on the contract, use internals for diagnosis. See [[interrogate]]. |
@@ -46,4 +46,4 @@ A wrong unit or scaling factor doesn't throw, it returns a plausible number. The
 
 ### Mistakes can cost hardware
 
-A wrong write in software throws an exception. A wrong relay closure can put supply voltage on a signal pin and destroy the DUT in a millisecond. Learn the interlocks before the API. See [[fault-injection]] and [[physical-pins]].
+A wrong write in software throws an exception. A wrong relay closure can put supply voltage on a signal pin and destroy the DUT in a millisecond. Learn the interlocks before the API. See [[disturb]] and [[physical-pins]].

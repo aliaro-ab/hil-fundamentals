@@ -1,13 +1,13 @@
 ---
 type: Concept
 related_to:
-  - "[[capability-capture]]"
+  - "[[capture]]"
   - "[[time-is-the-hard-part]]"
 _organized: true
 ---
 # Triggers and windows
 
-A [[capability-capture|capture]] needs a beginning and an end. How you choose them decides whether you get evidence or a pile of samples.
+A [[capture|capture]] needs a beginning and an end. How you choose them decides whether you get evidence or a pile of samples.
 
 ## Limits of continuous capture
 

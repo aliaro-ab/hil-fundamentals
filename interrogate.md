@@ -3,7 +3,7 @@ type: Capability
 belongs_to: "[[the-capability-grid]]"
 related_to:
   - "[[the-diagnostic-channel]]"
-  - "[[fault-injection]]"
+  - "[[disturb]]"
 _organized: true
 ---
 
@@ -47,10 +47,10 @@ So diagnostic steps are slow and sequential, while the rest of your test is fast
 
 ## Where it fits in a test
 
-Almost always as the third act of a fault test (see [[fault-injection]]):
+Almost always as the third act of a fault test (see [[disturb]]):
 
 1. Break something
-2. Confirm the reaction with [[capability-capture|capture]]
+2. Confirm the reaction with [[capture|capture]]
 3. **Interrogate** to confirm the correct fault code, with the right status bits and a sane freeze frame
 4. Clear the fault, remove the cause, confirm the device agrees it's healthy
 

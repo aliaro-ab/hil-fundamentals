@@ -15,7 +15,7 @@ The rest of this vault teaches you how to operate a bench. This note is about wh
 | Deliverable | What it is | Who consumes it |
 | --- | --- | --- |
 | **A regression suite** | Repeatable evidence that behavior which worked yesterday still works today, across software releases and bench refreshes. | Developers, every time they change something. See [[why-abstraction-exists]]. |
-| **Fault-coverage evidence** | Proof that the error handling, which is most of the software and the least exercised part in normal operation, actually works. | Safety and certification processes, which cannot accept "we never saw it fail" as an answer. See [[fault-injection]]. |
+| **Fault-coverage evidence** | Proof that the error handling, which is most of the software and the least exercised part in normal operation, actually works. | Safety and certification processes, which cannot accept "we never saw it fail" as an answer. See [[disturb]]. |
 | **A reproducible-failure library** | Field failures converted into on-demand bench reproductions, then into permanent regression tests. | Whoever is on the hook when a unit misbehaves in the field. See [[replay]]. |
 | **Requirements verification evidence** | For each requirement, a test that discharges it, with a result traceable to the software version and bench configuration that produced it. | Program and release decisions. "Are we done?" is answered against this. |
 
@@ -31,7 +31,7 @@ A HIL program is working when:
 
 - The suite runs unattended, and people trust a red result enough to act on it without first asking whether the bench is broken.
 - A failure points at the product more often than at the bench. The inverse ratio is the most common way suites lose their audience. See [[avoid-leaving-state-behind]].
-- A bench refresh, a second bench, or a new product variant does not torch the suite. See [[pitfall-hardcoded-bench-names]].
+- A bench refresh, a second bench, or a new product variant does not torch the suite. See [[avoid-bench-specifics-in-test-code]].
 - A field failure routinely becomes a regression test rather than a war story. See [[replay]].
 
 ## What it cannot produce

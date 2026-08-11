@@ -2,7 +2,7 @@
 type: Capability
 belongs_to: "[[the-capability-grid]]"
 related_to:
-  - "[[capability-capture]]"
+  - "[[capture]]"
   - "[[stimulate]]"
   - "[[the-network]]"
 ---

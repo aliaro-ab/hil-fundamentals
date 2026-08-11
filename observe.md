@@ -2,7 +2,7 @@
 type: Capability
 belongs_to: "[[the-capability-grid]]"
 related_to:
-  - "[[capability-capture]]"
+  - "[[capture]]"
   - "[[time-is-the-hard-part]]"
   - "[[avoid-immediately-reading-after-writing]]"
 ---
@@ -17,7 +17,7 @@ The simplest verb, and the one that misleads people most. Reading a single value
 
 What you get is not "the value" but **a value that was true at some moment, delivered to you a little later.** Between the sample and your receipt of it sits a scheduler, a transport, and a queue. On a bench running at 1 kHz, the number in your hand may be up to several milliseconds stale, and nothing about the API will tell you that.
 
-For slow physics (temperature, state of charge, pressure in a big vessel) this is irrelevant. For anything that moves fast, a single observation is close to meaningless. Use [[capability-capture|capture]] instead.
+For slow physics (temperature, state of charge, pressure in a big vessel) this is irrelevant. For anything that moves fast, a single observation is close to meaningless. Use [[capture|capture]] instead.
 
 ## Where it works
 
@@ -39,7 +39,7 @@ Note the network case. "The last value received" may be from 100 ms ago if the s
 | --- | --- |
 | Right | "After the system settles, is the commanded current within tolerance?" |
 | Wrong | "Immediately after I write the setpoint, has the output changed?" See [[avoid-immediately-reading-after-writing]]. |
-| Wrong | "Did the voltage ever exceed 16 V?" A single observation cannot answer a question about *ever*. That's [[capability-capture|capture]]. |
+| Wrong | "Did the voltage ever exceed 16 V?" A single observation cannot answer a question about *ever*. That's [[capture|capture]]. |
 
 ## Rule of thumb
 

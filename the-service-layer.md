@@ -3,7 +3,7 @@ type: Boundary
 belongs_to: "[[the-capability-grid]]"
 related_to:
   - "[[the-network]]"
-  - "[[fault-injection]]"
+  - "[[disturb]]"
 _organized: true
 ---
 # The service layer
@@ -28,8 +28,8 @@ This is a newer boundary than the rest, and it behaves much more like distribute
 | --- | --- |
 | [[observe]] | A field, or the last event received |
 | [[stimulate]] | Call methods, publish events, or write fields |
-| [[capability-capture]] | The message trace (usually the primary evidence for these tests) |
-| [[fault-injection]] | Ways with no analog elsewhere. Return errors, time out, respond out of order, vanish mid-session, fail discovery |
+| [[capture]] | The message trace (usually the primary evidence for these tests) |
+| [[disturb]] | Ways with no analog elsewhere. Return errors, time out, respond out of order, vanish mid-session, fail discovery |
 | [[replay]] | Awkward here, because blind playback desynchronizes a conversational protocol |
 
 ## Differences from other boundaries

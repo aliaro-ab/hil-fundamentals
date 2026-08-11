@@ -2,7 +2,7 @@
 type: Boundary
 belongs_to: "[[the-capability-grid]]"
 related_to:
-  - "[[fault-injection]]"
+  - "[[disturb]]"
   - "[[five-names-for-one-signal]]"
 _organized: true
 ---
@@ -29,7 +29,7 @@ It's the only place you can test what happens **between** the DUT's software and
 - Input filtering and its lag
 - Signal integrity, noise, and ground offsets
 - Driver-level diagnostics (open load, short circuit, over-current)
-- Genuine electrical faults, via [[fault-injection|fault injection]]
+- Genuine electrical faults, via [[disturb|fault injection]]
 
 If your test is about whether the DUT interprets the physical world correctly, it has to happen here. No other boundary can answer that question.
 

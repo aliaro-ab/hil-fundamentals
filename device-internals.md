@@ -17,7 +17,7 @@ Two distinct things live here:
 
 Internal state as the DUT sees it. 
 
-This could be filtered sensor values, estimator outputs, state machine states, intermediate computations, internal flags. These are read-only, so you can [[observe|observe]] and [[capability-capture|capture]] these.
+This could be filtered sensor values, estimator outputs, state machine states, intermediate computations, internal flags. These are read-only, so you can [[observe|observe]] and [[capture|capture]] these.
 
 This is your window into *why*. When a test fails, the physical outputs tell you what happened, and the internal variables tell you what the DUT believed. 
 

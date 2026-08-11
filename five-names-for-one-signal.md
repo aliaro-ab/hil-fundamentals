@@ -4,7 +4,7 @@ status: Active
 related_to:
   - "[[why-abstraction-exists]]"
   - "[[avoid-unit-and-scaling-assumptions]]"
-  - "[[pitfall-hardcoded-bench-names]]"
+  - "[[avoid-bench-specifics-in-test-code]]"
 _organized: true
 ---
 # Five names for one signal
@@ -86,7 +86,7 @@ Symbol files come from a build. Network databases come from an architecture tool
 
 Once a test contains a bench-specific label, it's welded to that bench.
 
-See [[pitfall-hardcoded-bench-names]] and [[why-abstraction-exists]].
+See [[avoid-bench-specifics-in-test-code]] and [[why-abstraction-exists]].
 
 ## Why a mapping layer exists
 

@@ -2,7 +2,7 @@
 type: Concept
 status: Active
 related_to:
-  - "[[capability-capture]]"
+  - "[[capture]]"
   - "[[stimulate]]"
   - "[[avoid-relying-on-scripting-for-time-sensitive-tasks]]"
   - "[[avoid-immediately-reading-after-writing]]"
@@ -47,7 +47,7 @@ Both lines are approximate in time. Neither is wrong; they're just not instantan
 | **The DUT's clock** | Its own scheduler, which is free-running, unsynchronized with the bench, and running its tasks at its own rates. |
 | **Your script's clock** | The wall clock on a general-purpose operating system. Coarse, jittery, subject to garbage collection, network hiccups, and someone else logging in. Good to maybe tens of milliseconds under favorable conditions. |
 
-Any assertion whose precision depends on your script's clock is worth roughly nothing. Assertions must be made against timestamps that came from the real-time side, which is why [[capability-capture|capture]] exists and why it isn't just "read in a loop."
+Any assertion whose precision depends on your script's clock is worth roughly nothing. Assertions must be made against timestamps that came from the real-time side, which is why [[capture|capture]] exists and why it isn't just "read in a loop."
 
 ## The three rules
 

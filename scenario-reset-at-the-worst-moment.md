@@ -2,8 +2,8 @@
 type: Scenario
 belongs_to: "[[scenario-cards]]"
 has:
-  - "[[fault-injection]]"
-  - "[[capability-capture]]"
+  - "[[disturb]]"
+  - "[[capture]]"
   - "[[interrogate]]"
 related_to:
   - "[[physical-pins]]"
@@ -50,7 +50,7 @@ The interesting failures cluster at specific microseconds inside the write (star
 
 ### Cut the power for real
 
-[[fault-injection]] at [[physical-pins|physical pins]]. And test both shapes, a **clean cut** to zero and a **brownout** (a sag to some intermediate voltage). Brownouts are nastier and more common. The processor may run erratically at a voltage where its brown-out detector hasn't yet tripped, and that's where the genuinely bad corruption happens. Sweep the sag voltage too.
+[[disturb]] at [[physical-pins|physical pins]]. And test both shapes, a **clean cut** to zero and a **brownout** (a sag to some intermediate voltage). Brownouts are nastier and more common. The processor may run erratically at a voltage where its brown-out detector hasn't yet tripped, and that's where the genuinely bad corruption happens. Sweep the sag voltage too.
 
 ### Capture the supply rail
 

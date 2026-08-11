@@ -1,7 +1,7 @@
 ---
 type: Pitfall
 related_to:
-  - "[[capability-capture]]"
+  - "[[capture]]"
   - "[[time-is-the-hard-part]]"
   - "[[the-network]]"
 ---

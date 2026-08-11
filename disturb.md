@@ -7,7 +7,7 @@ related_to:
   - "[[scenario-a-sensor-wire-breaks]]"
 _organized: true
 ---
-# Fault injection
+# Disturb
 
 **What happens when something goes wrong?**
 
@@ -40,7 +40,7 @@ Every fault test should have the same shape:
 | --- | --- |
 | **Detection** | Does the DUT notice? Within what time? |
 | **Reaction** | Does it enter the correct degraded state? |
-| **Reporting** | Does it log the right fault? Use [[interrogate|interrogate]]. |
+| **Reporting** | Does it log the right fault? Use [[interrogate\\|interrogate]]. |
 | **Recovery** | When the fault clears, does the DUT return to normal? Does the fault stay logged as history? Does it need a power cycle, and is that intended? |
 
 > [!tip]

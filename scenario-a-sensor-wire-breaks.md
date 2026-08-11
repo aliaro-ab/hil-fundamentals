@@ -2,15 +2,14 @@
 type: Scenario
 belongs_to: "[[scenario-cards]]"
 has:
-  - "[[fault-injection]]"
-  - "[[capability-capture]]"
+  - "[[disturb]]"
+  - "[[capture]]"
   - "[[interrogate]]"
 related_to:
   - "[[physical-pins]]"
 _organized: true
 ---
-# Scenario: a sensor wire breaks
-
+ 
 ## The goal
 
 ```
@@ -37,11 +36,11 @@ Get the system to a steady operating state where the sensor is being read and po
 
 ### Arm the capture first
 
-[[capability-capture]] the commanded power output (at [[the-network|the network]] or [[physical-pins|physical pins]], wherever the DUT actually publishes it), the DUT's internal reported temperature (at [[device-internals|device internals]], for diagnosis), and the fault flag. Use a pre-trigger so you see the state before the break. Sample fast enough to resolve 500 ms comfortably, at 100 Hz or better. See [[triggers-and-windows]].
+[[capture]] the commanded power output (at [[the-network|the network]] or [[physical-pins|physical pins]], wherever the DUT actually publishes it), the DUT's internal reported temperature (at [[device-internals|device internals]], for diagnosis), and the fault flag. Use a pre-trigger so you see the state before the break. Sample fast enough to resolve 500 ms comfortably, at 100 Hz or better. See [[triggers-and-windows]].
 
 ### Inject the fault
 
-[[fault-injection]] at [[physical-pins|physical pins]] by opening the circuit on the sensor line. The fault must be electrically real rather than a model-level substitution, because the point is to test the DUT's input diagnostics, which a model fault would bypass entirely.
+[[disturb]] at [[physical-pins|physical pins]] by opening the circuit on the sensor line. The fault must be electrically real rather than a model-level substitution, because the point is to test the DUT's input diagnostics, which a model fault would bypass entirely.
 
 ### Assert on the trace
 

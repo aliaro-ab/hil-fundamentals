@@ -17,9 +17,9 @@ The plant model is whatever the DUT is trying to control, whether that is the mo
 | Capability | What it means here |
 | --- | --- |
 | [[observe]] and [[stimulate]] | Any model variable |
-| [[capability-capture]] | Model variables at the model's own rate (usually the highest-fidelity, best-aligned data available on the whole bench) |
+| [[capture]] | Model variables at the model's own rate (usually the highest-fidelity, best-aligned data available on the whole bench) |
 | [[replay]] | Recorded profiles into model inputs |
-| [[fault-injection]] | Logical faults, such as seizing a bearing, springing a leak, or sticking an actuator |
+| [[disturb]] | Logical faults, such as seizing a bearing, springing a leak, or sticking an actuator |
 
 You cannot [[interrogate|interrogate]] a model. It has no opinion about its own health.
 

@@ -2,8 +2,8 @@
 type: Scenario
 belongs_to: "[[scenario-cards]]"
 has:
-  - "[[fault-injection]]"
-  - "[[capability-capture]]"
+  - "[[disturb]]"
+  - "[[capture]]"
   - "[[interrogate]]"
 related_to:
   - "[[the-network]]"
@@ -39,11 +39,11 @@ Establish normal operation, with the restbus healthy, the speed signal present a
 
 ### Arm the capture
 
-[[capability-capture]] at frame level, not just signal level. You need to see the *absence* of a message, and a decoded signal view will happily keep showing you the last received value forever. Capture the frame in question, the DUT's mode indication, and its output. Turn the pre-trigger on.
+[[capture]] at frame level, not just signal level. You need to see the *absence* of a message, and a decoded signal view will happily keep showing you the last received value forever. Capture the frame in question, the DUT's mode indication, and its output. Turn the pre-trigger on.
 
 ### Stop the frame
 
-[[fault-injection]] at [[the-network|the network]] by stopping transmission of that frame. Note the timing subtlety. The deadline starts at the *last successfully received* frame, not at the moment you called stop. Read that from the capture.
+[[disturb]] at [[the-network|the network]] by stopping transmission of that frame. Note the timing subtlety. The deadline starts at the *last successfully received* frame, not at the moment you called stop. Read that from the capture.
 
 ### Assert on the capture
 
