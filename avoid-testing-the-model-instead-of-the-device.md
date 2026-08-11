@@ -10,47 +10,47 @@ related_to:
 
 A large, green, well-maintained test suite. And a product that fails in the field in ways the suite never hinted at.
 
-Dig into the tests and you find a pattern. The stimulus is a model variable, the assertion is a model variable, and the DUT is technically present but is not really the subject of the experiment.
+Dig into the tests and you find a pattern. The stimulus is a model variable, and the assertion is a model variable. The DUT is technically present but is not really the subject of the experiment.
 
-## How it happens
+## How it occurs
 
-Nobody decides to do this. It's the path of least resistance. [[the-plant-model]] is by far the nicest boundary to work at, with clean names, real units, high rates, perfect timestamps, no wiring, and no electrical risk. So tests drift toward it, one convenient shortcut at a time.
+Nobody decides to do this. It is the path of least resistance. [[the-plant-model]] is by far the nicest boundary to work at, with clean names, real units, high rates, perfect timestamps, no wiring, and no electrical risk. So tests drift toward it, one convenient shortcut at a time.
 
 The specific moves:
 
-- Asserting on a model variable that mirrors a DUT output, instead of measuring the DUT's actual output
-- Setting a model variable that represents something the DUT computes, rather than driving the DUT to compute it
-- Building the plant model and the control logic from the same assumptions, so they agree with each other and both disagree with reality
-- Tuning the model until the tests pass, which is a real thing that really happens under schedule pressure
+- An assertion on a model variable that mirrors a DUT output, instead of a measurement of the DUT's actual output
+- A write to a model variable that represents something the DUT computes, rather than a stimulus that makes the DUT compute it
+- A plant model and control logic built from the same assumptions, so they agree with each other and both disagree with reality
+- A model tuned until the tests pass, which is a real thing that really occurs under schedule pressure
 
 ## Why it persists
 
-The tests aren't wrong, exactly. They do verify that the control logic behaves correctly *given the model's view of the world*. That's genuinely valuable, and it's the whole point of the MIL stage. See [[one-test-on-three-benches]].
+The tests are not incorrect, exactly. They do verify that the control logic behaves correctly *given the model's view of the world*. That is genuinely valuable, and it is the whole point of the MIL stage. See [[one-test-on-three-benches]].
 
-The problem is claiming more than that. Everything between the control logic and physical reality (sensor scaling, ADC behavior, filter lag, driver diagnostics, task scheduling, wiring) is exactly what the HIL stage was supposed to cover, and a model-to-model test skips all of it.
+The problem is to claim more than that. Everything between the control logic and physical reality (sensor scaling, ADC behavior, filter lag, driver diagnostics, task scheduling, wiring) is exactly what the HIL stage exists to cover. A model-to-model test skips all of it.
 
 ## How to detect it
 
-For each assertion, ask one question. **If the DUT were unplugged, would this still pass?**
+For each assertion, ask one question. **If the DUT is unplugged, does this still pass?**
 
-Uncomfortably often, the answer is yes. Those tests are measuring the bench.
+Uncomfortably frequently, the answer is yes. Those tests measure the bench.
 
-Then ask a second question. **Which boundary owns the value I'm asserting on?** If the model computes it, you're asserting about the model. If the DUT produces it (as a pin state, a network signal, a diagnostic response), you're asserting about the product.
+Then ask a second question. **Which boundary owns the value in my assertion?** If the model computes it, your assertion is about the model. If the DUT produces it (as a pin state, a network signal, a diagnostic response), your assertion is about the product.
 
-## Correct approach
+## The fix
 
 ### Stimulate at the model and assert at the device
 
-Use [[the-plant-model|the plant model]] to create conditions, because that's what it's good at. Then make the assertion somewhere the DUT actually owns, at [[physical-pins|physical pins]], [[the-network|the network]], or [[the-diagnostic-channel|the diagnostic channel]].
+Use [[the-plant-model|the plant model]] to create conditions, because that is what it is good at. Then make the assertion somewhere the DUT actually owns, at [[physical-pins|physical pins]], [[the-network|the network]], or [[the-diagnostic-channel|the diagnostic channel]].
 
 ### Use the model as ground truth
 
-Do not treat its output as the answer. The model knows the true value; the DUT has an estimate. Asserting that the DUT's estimate tracks the model's truth within tolerance is a strong test, and it's a different thing from asserting the model agrees with itself.
+Do not treat its output as the answer. The model knows the true value. The DUT has an estimate. Asserting that the DUT's estimate tracks the model's truth within tolerance is a strong test. It is a different thing from asserting the model agrees with itself.
 
 ### Keep the model honest
 
-If a model change makes a failing test pass, that's an event worth a conversation, not a commit. Model changes should be justified by physics, not by test results.
+If a model change makes a failing test pass, that is an event worth a conversation, not a commit. Physics, not test results, must justify model changes.
 
-### Know what your model doesn't do
+### Know what your model does not do
 
-Every model is a simplification. Get the author to tell you what's missing (thermal effects, saturation, backlash, noise, sensor dynamics). Tests that depend on missing behavior can't be trusted, and knowing the list is how you avoid writing them.
+Each model is a simplification. Get the author to tell you what is absent (thermal effects, saturation, backlash, noise, sensor dynamics). You cannot trust tests that depend on missing behavior, and knowing the list is how you avoid writing them.

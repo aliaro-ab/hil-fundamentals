@@ -6,7 +6,6 @@ _list_properties_display:
   - related_to
 _organized: true
 _icon: warning
-color: "#ef4444"
 _sort: "title:asc"
 ---
 
@@ -14,4 +13,4 @@ _sort: "title:asc"
 
 A mistake that engineers new to HIL reliably make once.
 
-Each pitfall note describes the symptom, the reason it happens, and the concept you were missing. Read these before you write your first test, then again after your first confusing failure.
+Each pitfall note describes the symptom, the reason it occurs, and the concept you missed. Read these before you write your first test, then again after your first confusing failure.

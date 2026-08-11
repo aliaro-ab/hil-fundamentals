@@ -7,17 +7,17 @@ _organized: true
 ---
 # Scenario cards
 
-These are provided for practice. Each card states a test goal in plain language so you can work out which [[boundary|boundaries]] and [[capability|capabilities]] you'd need *before* reading the answer.
+These cards are for practice. Each card states a test goal in plain language so you can work out which [[boundary|boundaries]] and [[capability|capabilities]] you need *before* reading the answer.
 
 ## How to run this
 
 ### Solo
 
-Read the goal, write your answer down, then compare. 
+Read the goal, write your answer down, then compare.
 
 ### In a group
 
-Hand out one card each, give people five minutes, then have each person defend their answer to the room. 
+Hand out one card each, give people five minutes, then have each person defend their answer to the room.
 
 Disagreements are the point. Most cards have more than one defensible approach, and the argument about which is better teaches more than the answer does.
 
@@ -25,7 +25,7 @@ Disagreements are the point. Most cards have more than one defensible approach, 
 
 Use one card, allow fifteen minutes, and talk it through.
 
-It's a good indicator of whether someone has the mental model or just the vocabulary.
+It is a good indicator of whether someone has the mental model or just the vocabulary.
 
 ## The cards
 
@@ -40,8 +40,8 @@ It's a good indicator of whether someone has the mental model or just the vocabu
 
 A good answer is not just a list of cells from the grid. It covers:
 
-- Which boundary for the stimulus, and which for the assertion, and why they're different
+- Which boundary for the stimulus, and which for the assertion, and why they are different
 - What capability at each, with the rate or timing it needs
-- What the trigger and window are, if a capture is involved
-- What cleanup is required as outlined in [[the-test-bench-resource-model|the test bench resource model]]
-- What the test would fail to catch, stated honestly
+- What the trigger and window are, if the test includes a capture
+- What cleanup [[the-test-bench-resource-model|the test bench resource model]] requires
+- What the test fails to catch, stated honestly

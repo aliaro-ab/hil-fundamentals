@@ -7,11 +7,11 @@ _organized: true
 ---
 # The test bench resource model
 
-Everything on a bench is a collection of shared, finite, stateful resources.
+Everything on a bench is a shared, finite, stateful resource.
 
 ## The universal pattern
 
-Every resource on every bench follows the same five steps:
+Each resource on each bench follows the same five steps:
 
 ```mermaid
 stateDiagram-v2
@@ -32,39 +32,39 @@ stateDiagram-v2
 
 | Step | What to watch for |
 | --- | --- |
-| **Reserve** | The resource may be in use, in a bad state, or held by a crashed session from yesterday afternoon. |
-| **Configure** | You declare which signals, what rate, which trigger, which database. Most things are only configurable *before* they start, which is why "I'll add that signal mid-run" usually isn't allowed. |
+| **Reserve** | The resource can be in use, in a bad state, or held by a crashed session from yesterday afternoon. |
+| **Configure** | You declare which signals, what rate, which trigger, which database. Most things are only configurable *before* they start, which is why the system usually refuses "I'll add that signal mid-run". |
 | **Start** | Configuration is now frozen. |
-| **Stop** | Results may only be retrievable after this point, or may be lost by it. Know which. |
+| **Stop** | Results can become retrievable only after this point, or the stop can destroy them. Know which. |
 | **Unreserve** | This is the step people skip, and skipping it is how benches become unusable. |
 
 ## Why the states exist
 
-These states aren't bureaucracy; they exist because of real constraints:
+These states are not bureaucracy. They exist because of real constraints:
 
-- Real-time resources need their memory and schedule laid out before the loop starts. You can't renegotiate that mid-cycle without breaking determinism.
+- Real-time resources need their memory and schedule laid out before the loop starts. You cannot renegotiate that mid-cycle without breaking determinism.
 - Hardware is genuinely exclusive. Two tests cannot both own the same output.
 - Some transitions take real time. Starting a model, opening a network channel, or establishing a diagnostic session are not instantaneous.
 
-When an operation is rejected because you're "in the wrong state," the answer is almost never to retry. It's that you asked for something the system physically cannot do yet.
+When the system rejects an operation because you are "in the wrong state," the answer is almost never to retry. It is that you asked for something the system physically cannot do yet.
 
 ## Cleanup
 
 The rule that matters most, because violating it hurts other people:
 
-- Restore every calibration value you changed. See [[device-internals]]
-- Clear every fault you injected, and confirm it cleared
-- Release every capture, stimulus, channel, and session
-- Return overridden variables to model control
-- Put the DUT back in a known state
+- Restore each calibration value you changed. See [[device-internals]].
+- Clear each fault you injected, and confirm it cleared.
+- Release each capture, stimulus, channel, and session.
+- Return overridden variables to model control.
+- Put the DUT back in a known state.
 
 Use whatever your language offers for guaranteed cleanup, such as try/finally, context managers, or fixtures with teardown.
 
-Cleanup that only runs on the success path is not cleanup, and tests fail more often than they pass while you're writing them.
+Cleanup that only runs on the success path is not cleanup, and tests fail more frequently than they pass while you write them.
 
 ## Symptoms
 
-The classic signature is the test passes alone and fails in the suite, or the first run passes and the second fails. Both mean someone left state behind.
+The classic signature is that the test passes alone and fails in the suite, or the first run passes and the second fails. Both mean someone left state behind.
 
 When you see either, stop debugging the failing test and go look at what ran before it.
 

@@ -1,12 +1,11 @@
 ---
 type: Type
 _color: "#10b981"
-_order: 3
+_order: 2
 _list_properties_display:
   - related_to
 _organized: true
 _icon: stack-simple
-color: "#10b981"
 _sort: "title:asc"
 ---
 

@@ -15,13 +15,13 @@ The simplest verb, and the one that misleads people most. Reading a single value
 
 ## What you get
 
-What you get is not "the value" but **a value that was true at some moment, delivered to you a little later.** Between the sample and your receipt of it sits a scheduler, a transport, and a queue. On a bench running at 1 kHz, the number in your hand may be up to several milliseconds stale, and nothing about the API will tell you that.
+What you get is not "the value" but **a value that was true at some moment, delivered to you a little later**. Between the sample and your receipt of it sits a scheduler, a transport, and a queue. On a bench running at 1 kHz, the number in your hand can be up to several milliseconds stale. Nothing about the API will tell you that.
 
-For slow physics (temperature, state of charge, pressure in a big vessel) this is irrelevant. For anything that moves fast, a single observation is close to meaningless. Use [[capture|capture]] instead.
+For slow physics (temperature, state of charge, pressure in a big vessel) this is irrelevant. For anything that moves fast, a single observation is close to meaningless. Use [[capture]] instead.
 
 ## Where it works
 
-At every boundary, with different meanings:
+At each boundary, with different meanings:
 
 | Boundary | What observing means there |
 | --- | --- |
@@ -31,15 +31,15 @@ At every boundary, with different meanings:
 | [[the-network]] | Read the last received value of a bus signal |
 | [[the-service-layer]] | Read a field or call a getter |
 
-Note the network case. "The last value received" may be from 100 ms ago if the sender is slow or has stopped. A stale bus signal reads as a perfectly plausible number.
+Note the network case. "The last value received" can be from 100 ms ago if the sender is slow or no longer sends. A stale bus signal reads as a perfectly plausible number.
 
-## Right and wrong questions
+## Right and incorrect questions
 
 | Verdict | Question |
 | --- | --- |
 | Right | "After the system settles, is the commanded current within tolerance?" |
-| Wrong | "Immediately after I write the setpoint, has the output changed?" See [[avoid-immediately-reading-after-writing]]. |
-| Wrong | "Did the voltage ever exceed 16 V?" A single observation cannot answer a question about *ever*. That's [[capture|capture]]. |
+| Incorrect | "Immediately after I write the setpoint, has the output changed?" See [[avoid-immediately-reading-after-writing]]. |
+| Incorrect | "Did the voltage ever exceed 16 V?" A single observation cannot answer a question about *ever*. That is [[capture]]. |
 
 ## Rule of thumb
 

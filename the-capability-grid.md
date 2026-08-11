@@ -11,8 +11,8 @@ _favorite_index: 1
 ---
 # The capability grid
 
-Every test system does a small number of things to a small number of surfaces.
-Six capabilities at six boundaries cover the entirety of what HIL does and where it happens.
+Each test system does a small number of things to a small number of surfaces.
+Six capabilities at six boundaries cover the entirety of what HIL does and where it occurs.
 
 ## The six verbs
 
@@ -21,9 +21,9 @@ Six capabilities at six boundaries cover the entirety of what HIL does and where
 | [[observe]] | What is this value right now? |
 | [[stimulate]] | Make this value be something. |
 | [[capture]] | What did this value do over that window? |
-| [[replay]] | Do again exactly what happened before. |
-| [[disturb]] | What happens when this goes wrong? |
-| [[interrogate]] | What does the device think is wrong? |
+| [[replay]] | Do again exactly what occurred before. |
+| [[disturb]] | What occurs when this fails? |
+| [[interrogate]] | What does the device think failed? |
 
 ## The six boundaries
 
@@ -61,7 +61,7 @@ flowchart TB
 
 ❌ = not available
 
-|  | Observe | Stimulate | Capture | Replay | Fault injection | Interrogate |
+|  | Observe | Stimulate | Capture | Replay | Disturb | Interrogate |
 | --- | --- | --- | --- | --- | --- | --- |
 | **Plant model** | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ |
 | **Device internals** | ✅ | ✅ | ✅ | ⚠️ | ⚠️ | ❌ |
@@ -70,37 +70,37 @@ flowchart TB
 | **Service layer** | ✅ | ✅ | ✅ | ⚠️ | ✅ | ❌ |
 | **Diagnostic channel** | ⚠️ | ⚠️ | ⚠️ | ❌ | ⚠️ | ✅ |
 
-Don't take the marks as definitive.
+Do not take the marks as definitive.
 They vary by bench, and arguing about a specific cell is a good way to learn.
 The value is the shape: most cells are filled, which is why a bench feels overwhelming.
 
 ## How to use it
 
-### Designing a test
+### Design a test
 
-Write the goal in one plain sentence, then find every cell you need.
-If a cell you need is ❌ or ⚠️ on your bench, you've found your hard part before you started writing code, which is the cheapest possible time to find it.
+Write the goal in one plain sentence, then find each cell you need.
+If a cell you need is ❌ or ⚠️ on your bench, you find your hard part before you start writing code. That is the cheapest possible time to find it.
 
-### Evaluating a bench
+### Evaluate a bench
 
-Walk the grid and ask "can it do this, and at what rate?" That's the [[bench-evaluation-checklist|bench evaluation checklist]].
+Walk the grid and ask "can it do this, and at what rate?" That is the [[bench-evaluation-checklist|bench evaluation checklist]].
 
-### Reading a standard or a manual
+### Read a standard or a manual
 
-Every concept or instruction is going to be in service of one of the above cells.
-When you know which one you're in, a massive standard becomes a lookup table for how to do [Capability] at [Boundary].
+Each concept or instruction serves one of the above cells.
+When you know which one you are in, a massive standard becomes a lookup table for how to do [Capability] at [Boundary].
 
 ## What the grid does not show
 
-It's a static picture of a system whose whole difficulty is dynamic.
+It is a static picture of a system whose whole difficulty is dynamic.
 Two things live off the grid and matter more than any single cell.
 
 ### Timing
 
-Every cell has a rate, a latency, and a jitter, and those numbers decide whether your test is meaningful.
+Each cell has a rate, a latency, and a jitter, and those numbers decide whether your test is meaningful.
 See [[time-is-the-hard-part]].
 
 ### Naming
 
-The same physical quantity has a different name at every boundary, and translating between them is where the bugs are.
+The same physical quantity has a different name at each boundary, and translating between them is where the bugs are.
 See [[five-names-for-one-signal]].

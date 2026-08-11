@@ -9,7 +9,7 @@ _organized: true
 ---
 # Five names for one signal
 
-Consider a single physical quantity, the angular position of a throttle plate, and how it is represented in the testbench.
+Consider a single physical quantity, the angular position of a throttle plate, and how the test bench represents it.
 
 ```mermaid
 flowchart LR
@@ -52,7 +52,7 @@ flowchart LR
 
 Between the physical plate and your test's intent sit five names: a pin number, two internal symbols, a network signal, and a model variable.
 
-Five names, five unit systems, and four scaling conversions, all for one plate on one shaft. Every arrow in that chain is a conversion that somebody configured by hand, in a file, possibly years ago, possibly for a different variant.
+Five names, five unit systems, and four scaling conversions, all for one plate on one shaft. Each arrow in that chain is a conversion that somebody configured by hand, in a file, possibly years ago, possibly for a different variant.
 
 ## The three layers
 
@@ -68,41 +68,42 @@ The engineering quantity. Degrees, percent, newton-meters, kelvin. Meaningful, b
 
 What the test means. "Throttle at 30%." "Idle." "Wide open." Durable across benches, variants, and years.
 
-A good test is written in intent, resolved to physical by a mapping layer, and converted to raw by the bench. A fragile test is written in raw values with a comment explaining the math.
+You write a good test in intent. A mapping layer resolves it to physical, and the bench converts it to raw. A fragile test uses raw values with a comment explaining the math.
 
 ## Failure modes
 
 ### Silent scaling errors
 
-A wrong factor doesn't throw. It gives you 3.0 where 30 was expected, or 30 where 0.30 was expected. The test fails, someone "fixes" the tolerance, and the wrongness is now permanent.
+An incorrect factor does not throw. It gives you 3.0 where you expected 30, or 30 where you expected 0.30. The test fails, someone "fixes" the tolerance, and the wrongness is now permanent.
 
 See [[avoid-unit-and-scaling-assumptions]].
 
 ### Drift between sources
 
-Symbol files come from a build. Network databases come from an architecture tool. Bench configuration comes from a spreadsheet. Model names come from the model. Four sources of truth, four update cadences, and no one notices they've diverged until a test reads a plausible wrong number.
+Symbol files come from a build. Network databases come from an architecture tool. Bench configuration comes from a spreadsheet. Model names come from the model. Four sources of truth, four update cadences, and no one notices they diverged until a test reads a plausible incorrect number.
 
 ### Names in test code
 
-Once a test contains a bench-specific label, it's welded to that bench.
+Once a test contains a bench-specific label, it is welded to that bench.
 
 See [[avoid-bench-specifics-in-test-code]] and [[why-abstraction-exists]].
 
 ## Why a mapping layer exists
 
-Nearly every test framework provides some way to implement a translation table between the intent-level name your test uses and the bench-level identifier, the units, and scaling for your testbench hardware.
+Nearly all test frameworks give you some way to implement a translation table. The table maps the intent-level name your test uses to the bench-level identifier, the units, and scaling for your test bench hardware.
 
-Implementing a good mapping layer for the device under test is what makes your test suite portable, but also introduces opportunities for error during comparisons and transforms.
+A good mapping layer for the device under test is what makes your test suite portable. But it also introduces opportunities for error during comparisons and transforms.
 
-Every test program needs to know where this lives, who owns it, how it is regenerated, and how anyone would know if it were wrong.
+Each test program needs to know where this lives, who owns it, how to regenerate it, and how anyone knows if it is incorrect.
 
-On most projects, the honest answer is "we wouldn't." Teams that add a consistency check between the mapping and its upstream sources catch a class of bug that otherwise costs weeks.
+On most projects, the honest answer is "we wouldn't." Some teams add a consistency check between the mapping and its upstream sources. Those teams catch a class of bug that otherwise costs weeks.
 
 ## Recommended practice
 
-For every value you read or write, be able to answer three questions:
+For each value you read or write, be able to answer three questions:
 
 1. What are the units, and who decided?
-2. What's the valid range, and what happens outside it?
-3. What's the update rate at the source?
-If you can't answer all three, you don't yet know what that number means.
+2. What is the valid range, and what occurs outside it?
+3. What is the update rate at the source?
+
+If you cannot answer all three, you do not yet know what that number means.

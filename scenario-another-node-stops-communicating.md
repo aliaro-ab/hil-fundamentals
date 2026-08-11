@@ -29,9 +29,9 @@ Work out what you need before reading on.
 
 ## A good answer
 
-### Understand how the bus is simulated
+### Understand how the bench simulates the bus
 
-The message in question is being sent by the bench, standing in for a controller that isn't on this rack. See [[the-network]] for details.
+The bench sends the message in question, standing in for a controller that is not on this rack. See [[the-network]] for details.
 
 ### Establish the precondition
 
@@ -47,7 +47,7 @@ Establish normal operation, with the restbus healthy, the speed signal present a
 
 ### Assert on the capture
 
-Verify detection within 300 ms of the last received frame, the correct substitute value, and the correct degraded mode. And check the boundary. Does it correctly *not* trip at 290 ms? A timeout that fires too early is as much a defect as one that fires too late, and only testing the far side of the boundary leaves half the requirement unverified.
+Verify detection within 300 ms of the last received frame, the correct substitute value, and the correct degraded mode. And check the boundary. Does it correctly *not* trip at 290 ms? A timeout that fires too early is as much a defect as one that fires too late. Only testing the far side of the boundary leaves half the requirement unverified.
 
 ### Interrogate the diagnostics
 
@@ -59,18 +59,21 @@ Resume transmission. Confirm automatic recovery, and confirm the fault becomes h
 
 ## Variations
 
-This is the boundary where fault injection is cheapest and most productive. Each of these is a distinct failure mode and each has shipped as a field defect somewhere:
+This is the boundary where fault injection is cheapest and most productive. Each of these is a distinct failure mode and each shipped as a field defect somewhere:
 
 | Variation | What it asks of the DUT |
 | --- | --- |
 | **Intermittent** | Message drops for 200 ms repeatedly. Does the timeout reset correctly, or does it accumulate? |
 | **Stale but present** | The frame keeps arriving with an unchanging value. Does the DUT notice a frozen signal, or trust it forever? |
-| **Frozen rolling counter** | Frame arrives on time, counter doesn't increment. This is precisely what the counter is for; does the DUT check it? |
+| **Frozen rolling counter** | Frame arrives on time, counter does not increment. This is precisely what the counter is for. Does the DUT check it? |
 | **Bad checksum** | Arrives, decodes, fails integrity. Rejected, or used anyway? |
 | **Out-of-range value** | 900 km/h. Range-checked, or propagated into the control law? |
 | **Too fast** | Sent at 10× the cycle time. Some receivers overflow. |
-| **Recovery timing** | One good frame to recover, or several? Is there hysteresis, and should there be? |
+| **Recovery timing** | One good frame to recover, or several? Is there hysteresis, and is it required? |
 
 ## Limitations
 
-Bus-level problems, such as arbitration under load, error frames, bus-off recovery, and wiring faults on the bus itself. Those are separate tests at [[physical-pins|physical pins]] and at the frame level.
+- Bus-level problems such as arbitration under load, error frames, and bus-off recovery.
+- Wiring faults on the bus itself.
+
+Those are separate tests at [[physical-pins|physical pins]] and at the frame level.

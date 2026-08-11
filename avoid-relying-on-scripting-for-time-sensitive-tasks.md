@@ -16,21 +16,21 @@ for t in timesteps:
     sleep(0.001)
 ```
 
-What the DUT receives is not a sine wave. It's a staircase with randomly-sized steps, occasionally frozen for 40 ms by a garbage-collection pause, sometimes for 200 ms by competing load on the machine.
+What the DUT receives is not a sine wave. It is a staircase with randomly sized steps. It freezes occasionally for 40 ms from a garbage-collection pause, sometimes for 200 ms from competing load on the machine.
 
 Then you spend a day investigating why the controller's response looks nothing like the frequency-response test in the requirement.
 
-## Why it can't work
+## Why it cannot work
 
-Your test script runs on a general-purpose operating system. It is scheduled at the convenience of a kernel that is also handling networking, disk, a desktop environment, and whatever else is logged in. `sleep(0.001)` guarantees only a minimum. The pause lasts not less than a millisecond, with no upper bound.
+Your test script runs on a general-purpose operating system. A kernel schedules it at its own convenience, while it also handles networking, disk, a desktop environment, and whatever else is logged in. `sleep(0.001)` guarantees only a minimum. The pause lasts not less than a millisecond, with no upper bound.
 
-Jitter of tens of milliseconds is normal. Occasional pauses of hundreds of milliseconds are normal. For a 5 Hz signal, that jitter is a substantial fraction of a period. You are generating noise with a sinusoidal trend.
+Jitter of tens of milliseconds is normal. Occasional pauses of hundreds of milliseconds are normal. For a 5 Hz signal, that jitter is a substantial fraction of a period. You generate noise with a sinusoidal trend.
 
-Meanwhile the bench's real-time side is doing exactly this job, at a fixed rate, with microsecond determinism, because that's what it's for.
+Meanwhile the bench's real-time side does exactly this job, at a fixed rate, with microsecond determinism, because that is what it is for.
 
 ## The fix
 
-**Describe the signal; let the bench generate it.**
+**Describe the signal. Let the bench generate it.**
 
 ```
 sig = sine(freq=5, amplitude=a, offset=o, duration=10)
@@ -43,10 +43,10 @@ Your script's job is to *specify, arm, start, and query*. The real-time side exe
 
 | Time-critical thing | Where it belongs |
 | --- | --- |
-| Generating a waveform | real-time side, described by you |
+| Waveform generation | real-time side, described by you |
 | Sampling at rate | real-time side, configured by you |
 | Trigger conditions | real-time side, defined by you |
-| Closing the physics loop | real-time side, always |
+| Closure of the physics loop | real-time side, always |
 | Deciding what to run, and pass/fail | your script |
 
 See [[stimulate]] and [[time-is-the-hard-part]].
@@ -55,14 +55,14 @@ See [[stimulate]] and [[time-is-the-hard-part]].
 
 As a rule of thumb, **if the timing of an event matters to the DUT's behavior, it cannot originate in your script.**
 
-Your script may legitimately:
+Your script can legitimately:
 
 - Set slow values such as ambient temperature, configuration, or a mode request
 - Sequence phases of a test
 - Wait for conditions with generous timeouts
 - Fetch and analyze results
 
-It may not:
+It must not:
 
 - Generate waveforms
 - Implement a feedback loop
@@ -71,4 +71,4 @@ It may not:
 
 ## Unsupported stimuli
 
-Occasionally you need a stimulus the bench's built-in generators don't cover. The answer is still not a loop in your script. It's a table of samples, uploaded as an arbitrary waveform and played by the real-time side. Compute it offline, play it in real time. See [[replay]].
+Occasionally you need a stimulus the bench's built-in generators do not cover. The answer is still not a loop in your script. It is a table of samples, uploaded as an arbitrary waveform and played by the real-time side. Compute it offline, play it in real time. See [[replay]].
