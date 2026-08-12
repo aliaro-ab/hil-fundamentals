@@ -10,7 +10,8 @@ _organized: true
 
 **The simulated world the device thinks it lives in.**
 
-The plant model is whatever the DUT tries to control, whether that is the motor, the vehicle, the battery pack, or the hydraulic circuit. It consumes the DUT's outputs and produces the inputs the DUT expects to see.
+The plant model is whatever the DUT tries to control, whether that is the motor, the vehicle, the battery pack, or the hydraulic circuit.
+It consumes the DUT's outputs and produces the inputs the DUT expects to see.
 
 ## Capabilities
 
@@ -21,26 +22,39 @@ The plant model is whatever the DUT tries to control, whether that is the motor,
 | [[replay]] | Recorded profiles into model inputs |
 | [[disturb]] | Logical faults, such as seizing a bearing, springing a leak, or sticking an actuator |
 
-You cannot [[interrogate]] a model. It has no opinion about its own health.
+You cannot [[interrogate]] a model.
+It has no opinion about its own health.
 
 ## Advantages
 
-Everything is a named number in a known unit at a known rate, with no wiring, no scaling, and no electrical risk. Model variables are also the only place you can see quantities that do not physically exist as signals. Examples: internal states, energies, forces, and the "true" value of something the DUT can only estimate.
+Everything is a named number in a known unit at a known rate, with no wiring, no scaling, and no electrical risk.
+Model variables are also the only place you can see quantities that do not physically exist as signals.
+Examples: internal states, energies, forces, and the "true" value of something the DUT can only estimate.
 
-That last one is enormously useful. You can compare the DUT's *estimate* of a quantity against the model's *truth*, which is an assertion you simply cannot make on a real machine.
+That last one is enormously useful.
+You can compare the DUT's *estimate* of a quantity against the model's *truth*, which is an assertion you simply cannot make on a real machine.
 
 ## Constraints
 
 ### Ownership
 
-The model recomputes its variables each tick. If you write one it owns, your value survives one cycle. To influence a model-owned quantity you change a driver, a load, a parameter, or an explicit override input the model author provided. See [[open-loop-vs-closed-loop]].
+The model recomputes its variables each tick.
+If you write one it owns, your value survives one cycle.
+To influence a model-owned quantity you change a driver, a load, a parameter, or an explicit override input the model author provided.
+See [[open-loop-vs-closed-loop]].
 
 ### Rate
 
-The model runs at a fixed step. Nothing you do here occurs faster than one step, and no assertion about the model can resolve finer than that. A 1 ms model cannot tell you anything trustworthy about a 200 µs event.
+The model runs at a fixed step.
+Nothing you do here occurs faster than one step, and no assertion about the model can resolve finer than that.
+A 1 ms model cannot tell you anything trustworthy about a 200 µs event.
 
 ## The over-testing trap
 
-The plant model is so pleasant to work with that it tempts you to test against it exclusively. But the model is not the product, and its author had their own assumptions and simplifications. A test that only touches the plant model is at constant risk of confirming that the model does what the model does. See [[avoid-testing-the-model-instead-of-the-device]].
+The plant model is so pleasant to work with that it tempts you to test against it exclusively.
+But the model is not the product, and its author had their own assumptions and simplifications.
+A test that only touches the plant model is at constant risk of confirming that the model does what the model does.
+See [[avoid-testing-the-model-instead-of-the-device]].
 
-Use the model to *create conditions* and to *provide ground truth*. Wherever possible, make the assertion at a boundary the DUT actually owns.
+Use the model to *create conditions* and to *provide ground truth*.
+Wherever possible, make the assertion at a boundary the DUT actually owns.

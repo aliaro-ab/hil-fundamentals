@@ -7,7 +7,8 @@ _organized: true
 ---
 # Scenario cards
 
-These cards are for practice. Each card states a test goal in plain language so you can work out which [[boundary|boundaries]] and [[capability|capabilities]] you need *before* reading the answer.
+These cards are for practice.
+Each card states a test goal in plain language so you can work out which [[boundary|boundaries]] and [[capability|capabilities]] you need *before* reading the answer.
 
 ## How to run this
 
@@ -19,7 +20,8 @@ Read the goal, write your answer down, then compare.
 
 Hand out one card each, give people five minutes, then have each person defend their answer to the room.
 
-Disagreements are the point. Most cards have more than one defensible approach, and the argument about which is better teaches more than the answer does.
+Disagreements are the point.
+Most cards have more than one defensible approach, and the argument about which is better teaches more than the answer does.
 
 ### As an interview or check-in
 
@@ -38,7 +40,8 @@ It is a good indicator of whether someone has the mental model or just the vocab
 
 ## Criteria for a good answer
 
-A good answer is not just a list of cells from the grid. It covers:
+A good answer is not just a list of cells from the grid.
+It covers:
 
 - Which boundary for the stimulus, and which for the assertion, and why they are different
 - What capability at each, with the rate or timing it needs

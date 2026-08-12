@@ -79,7 +79,8 @@ The value is the shape: most cells are filled, which is why a bench feels overwh
 ### Design a test
 
 Write the goal in one plain sentence, then find each cell you need.
-If a cell you need is ❌ or ⚠️ on your bench, you find your hard part before you start writing code. That is the cheapest possible time to find it.
+If a cell you need is ❌ or ⚠️ on your bench, you find your hard part before you start writing code.
+That is the cheapest possible time to find it.
 
 ### Evaluate a bench
 

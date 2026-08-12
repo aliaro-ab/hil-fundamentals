@@ -11,16 +11,19 @@ _organized: true
 
 **What occurs when something fails?**
 
-The ability to inject fault conditions is the capability that most justifies the existence of a HIL bench. It is the one you genuinely cannot exercise any other way.
+The ability to inject fault conditions is the capability that most justifies the existence of a HIL bench.
+It is the one you genuinely cannot exercise any other way.
 
-Most of a controller's software is not the control algorithms. It is the error handling:
+Most of a controller's software is not the control algorithms.
+It is the error handling:
 
 - detection of a failed sensor
 - graceful degradation
 - entry into a safe state
 - notification of the user or technician
 
-Behavior on an error is the hardest to get right, the most safety-relevant, and by far the least exercised in normal operation. A bench lets you run it a thousand times a day.
+Behavior on an error is the hardest to get right, the most safety-relevant, and by far the least exercised in normal operation.
+A bench lets you run it a thousand times a day.
 
 ## Where it works
 
@@ -45,8 +48,8 @@ Give each fault test the same shape:
 | **Reporting** | Does it log the right fault? Use [[interrogate]]. |
 | **Recovery** | When the fault clears, does the DUT return to normal? Does the fault stay logged as history? Does it need a power cycle? Is that intended? |
 
-> [!tip]
-> Part 4 is where the good bugs live. Latching a fault that must self-clear, and self-clearing one that must latch, are both classic field failures.
+> [!tip] > Part 4 is where the good bugs live.
+Latching a fault that must self-clear, and self-clearing one that must latch, are both classic field failures.
 
 ## Safety
 
@@ -54,5 +57,4 @@ Fault injection hardware can put supply voltage onto a pin that was never design
 
 Know your bench's interlocks, know which combinations are prohibited, and never invent a new short by hand on a bench you do not yet understand.
 
-> [!danger]
-> This is one of the few places on a test bench where you can destroy an expensive DUT or the bench itself in a millisecond.
+> [!danger] > This is one of the few places on a test bench where you can destroy an expensive DUT or the bench itself in a millisecond.

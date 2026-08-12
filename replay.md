@@ -11,11 +11,13 @@ related_to:
 
 **Do again exactly what occurred before.**
 
-Replay is [[stimulate]] whose source is a recorded trace instead of a mathematical description. It closes the loop between the field and the lab.
+Replay is [[stimulate]] whose source is a recorded trace instead of a mathematical description.
+It closes the loop between the field and the lab.
 
 ## Why it matters
 
-The most valuable test data your organization has is the recording of a failure in the field, under conditions you cannot reproduce. Replay is how that recording becomes a regression test.
+The most valuable test data your organization has is the recording of a failure in the field, under conditions you cannot reproduce.
+Replay is how that recording becomes a regression test.
 
 ```mermaid
 flowchart LR
@@ -63,4 +65,7 @@ A team that can do this has a fundamentally different debugging life from one th
 
 ## Rule of thumb
 
-Replay is at its best for **open-loop, observational** signals such as bus traffic, sensor inputs, and commands from another controller. It is at its weakest wherever the DUT's own behavior changes what it receives. In closed loop, prefer replaying the *inputs to the plant model* over replaying the DUT's sensor values directly. That way the physics stays consistent.
+Replay is at its best for **open-loop, observational** signals such as bus traffic, sensor inputs, and commands from another controller.
+It is at its weakest wherever the DUT's own behavior changes what it receives.
+In closed loop, prefer replaying the *inputs to the plant model* over replaying the DUT's sensor values directly.
+That way the physics stays consistent.

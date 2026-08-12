@@ -8,7 +8,9 @@ _organized: true
 ---
 # What HIL testing produces
 
-The rest of this vault teaches you how to operate a bench. This note is about what the operating is *for*, because "a green suite" is not the deliverable. A HIL program exists to produce evidence, and it is worth knowing who the evidence is for before you write your first test.
+The rest of this vault teaches you how to operate a bench.
+This note is about what the operating is *for*, because "a green suite" is not the deliverable.
+A HIL program exists to produce evidence, and it is worth knowing who the evidence is for before you write your first test.
 
 ## The deliverables
 
@@ -21,9 +23,14 @@ The rest of this vault teaches you how to operate a bench. This note is about wh
 
 ## Tests discharge requirements
 
-Each [[scenario-cards|scenario card]] in this vault opens with a requirement-shaped goal, and that shape is not decoration. In this discipline a test exists to verify a requirement, and you measure coverage against the requirement set. A result that you cannot trace back to a requirement, a software version, and a bench configuration is an anecdote rather than evidence. The reproducibility questions in the [[bench-evaluation-checklist]] exist for exactly this reason.
+Each [[scenario-cards|scenario card]] in this vault opens with a requirement-shaped goal, and that shape is not decoration.
+In this discipline a test exists to verify a requirement, and you measure coverage against the requirement set.
+A result that you cannot trace back to a requirement, a software version, and a bench configuration is an anecdote rather than evidence.
+The reproducibility questions in the [[bench-evaluation-checklist]] exist for exactly this reason.
 
-This is also half the argument for writing tests in intent rather than bench terms. The requirement is a statement about the product, so the test that discharges it must be too. See [[why-abstraction-exists]].
+This is also half the argument for writing tests in intent rather than bench terms.
+The requirement is a statement about the product, so the test that discharges it must be too.
+See [[why-abstraction-exists]].
 
 ## What success looks like
 
@@ -36,6 +43,8 @@ A HIL program works when:
 
 ## What it cannot produce
 
-A passing suite means the controller behaves correctly in the world the bench describes. That is a large and useful claim, and it is not "the product works." See the limitations in [[what-a-hil-test-bench-is]].
+A passing suite means the controller behaves correctly in the world the bench describes.
+That is a large and useful claim, and it is not "the product works." See the limitations in [[what-a-hil-test-bench-is]].
 
-And no bench can tell you whether a requirement itself is right. Verification asks "did we build it as specified?" Whether the specification describes a good product is validation, and it occurs somewhere other than the rack.
+And no bench can tell you whether a requirement itself is right.
+Verification asks "did we build it as specified?" Whether the specification describes a good product is validation, and it occurs somewhere other than the rack.

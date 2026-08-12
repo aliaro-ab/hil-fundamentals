@@ -12,9 +12,14 @@ Everything else in this vault follows from one observation.
 
 **Test cases outlive test benches.**
 
-A test that says `drive the throttle to 30% and confirm the controller trips the overspeed fault` is a statement about the product. It is true in 2026 and it is true in 2032. It is true on a laptop running a pure simulation and true on a test bench with real wiring.
+A test that says `drive the throttle to 30% and confirm the controller trips the overspeed fault` is a statement about the product.
+It is true in 2026 and it is true in 2032.
+It is true on a laptop running a pure simulation and true on a test bench with real wiring.
 
-The test bench that runs it is not durable in the same way. Test benches age out, chassis change, a vendor disappears into an acquisition. The I/O card goes out of production, or the project moves to another site. If your test centers on the test bench, you have to rewrite it each time the test bench changes.
+The test bench that runs it is not durable in the same way.
+Test benches age out, chassis change, a vendor disappears into an acquisition.
+The I/O card goes out of production, or the project moves to another site.
+If your test centers on the test bench, you have to rewrite it each time the test bench changes.
 
 ## Sources of change
 
@@ -26,7 +31,8 @@ The test bench that runs it is not durable in the same way. Test benches age out
 
 ## Benefits
 
-The return is not elegance. It is three concrete things:
+The return is not elegance.
+It is three concrete things:
 
 | What you get | Why it matters |
 | --- | --- |
@@ -46,4 +52,6 @@ Abstraction is not free, and pretending otherwise breeds cynicism the first time
 
 When you read a line of a test case, ask *is this describing the product, or the bench?*
 
-Product statements belong in the test. Bench statements belong in configuration. Most bad test code is the two of them mixed together.
+Product statements belong in the test.
+Bench statements belong in configuration.
+Most bad test code is the two of them mixed together.

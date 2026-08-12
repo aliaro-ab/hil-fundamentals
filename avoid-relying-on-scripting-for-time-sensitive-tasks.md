@@ -16,21 +16,29 @@ for t in timesteps:
     sleep(0.001)
 ```
 
-What the DUT receives is not a sine wave. It is a staircase with randomly sized steps. It freezes occasionally for 40 ms from a garbage-collection pause, sometimes for 200 ms from competing load on the machine.
+What the DUT receives is not a sine wave.
+It is a staircase with randomly sized steps.
+It freezes occasionally for 40 ms from a garbage-collection pause, sometimes for 200 ms from competing load on the machine.
 
 Then you spend a day investigating why the controller's response looks nothing like the frequency-response test in the requirement.
 
 ## Why it cannot work
 
-Your test script runs on a general-purpose operating system. A kernel schedules it at its own convenience, while it also handles networking, disk, a desktop environment, and whatever else is logged in. `sleep(0.001)` guarantees only a minimum. The pause lasts not less than a millisecond, with no upper bound.
+Your test script runs on a general-purpose operating system.
+A kernel schedules it at its own convenience, while it also handles networking, disk, a desktop environment, and whatever else is logged in. `sleep(0.001)` guarantees only a minimum.
+The pause lasts not less than a millisecond, with no upper bound.
 
-Jitter of tens of milliseconds is normal. Occasional pauses of hundreds of milliseconds are normal. For a 5 Hz signal, that jitter is a substantial fraction of a period. You generate noise with a sinusoidal trend.
+Jitter of tens of milliseconds is normal.
+Occasional pauses of hundreds of milliseconds are normal.
+For a 5 Hz signal, that jitter is a substantial fraction of a period.
+You generate noise with a sinusoidal trend.
 
 Meanwhile the bench's real-time side does exactly this job, at a fixed rate, with microsecond determinism, because that is what it is for.
 
 ## The fix
 
-**Describe the signal. Let the bench generate it.**
+**Describe the signal.
+Let the bench generate it.**
 
 ```
 sig = sine(freq=5, amplitude=a, offset=o, duration=10)
@@ -39,7 +47,9 @@ stimulus.start()
 stimulus.wait_until_done(timeout=15)
 ```
 
-Your script's job is to *specify, arm, start, and query*. The real-time side executes. This is the correct division of labor for everything time-critical on a bench:
+Your script's job is to *specify, arm, start, and query*.
+The real-time side executes.
+This is the correct division of labor for everything time-critical on a bench:
 
 | Time-critical thing | Where it belongs |
 | --- | --- |
@@ -71,4 +81,8 @@ It must not:
 
 ## Unsupported stimuli
 
-Occasionally you need a stimulus the bench's built-in generators do not cover. The answer is still not a loop in your script. It is a table of samples, uploaded as an arbitrary waveform and played by the real-time side. Compute it offline, play it in real time. See [[replay]].
+Occasionally you need a stimulus the bench's built-in generators do not cover.
+The answer is still not a loop in your script.
+It is a table of samples, uploaded as an arbitrary waveform and played by the real-time side.
+Compute it offline, play it in real time.
+See [[replay]].

@@ -31,23 +31,35 @@ Work out what you need before reading on.
 
 ### Understand how the bench simulates the bus
 
-The bench sends the message in question, standing in for a controller that is not on this rack. See [[the-network]] for details.
+The bench sends the message in question, standing in for a controller that is not on this rack.
+See [[the-network]] for details.
 
 ### Establish the precondition
 
-Establish normal operation, with the restbus healthy, the speed signal present at its normal cycle time, and the DUT not already degraded. Verify it.
+Establish normal operation, with the restbus healthy, the speed signal present at its normal cycle time, and the DUT not already degraded.
+Verify it.
 
 ### Arm the capture
 
-[[capture]] at frame level, not just signal level. You need to see the *absence* of a message, and a decoded signal view will happily keep showing you the last received value forever. Capture the frame in question, the DUT's mode indication, and its output. Turn the pre-trigger on.
+[[capture]] at frame level, not just signal level.
+You need to see the *absence* of a message, and a decoded signal view will happily keep showing you the last received value forever.
+Capture the frame in question, the DUT's mode indication, and its output.
+Turn the pre-trigger on.
 
 ### Stop the frame
 
-[[disturb]] at [[the-network|the network]] by stopping transmission of that frame. Note the timing subtlety. The deadline starts at the *last successfully received* frame, not at the moment you called stop. Read that from the capture.
+[[disturb]] at [[the-network|the network]] by stopping transmission of that frame.
+Note the timing subtlety.
+The deadline starts at the *last successfully received* frame, not at the moment you called stop.
+Read that from the capture.
 
 ### Assert on the capture
 
-Verify detection within 300 ms of the last received frame, the correct substitute value, and the correct degraded mode. And check the boundary. Does it correctly *not* trip at 290 ms? A timeout that fires too early is as much a defect as one that fires too late. Only testing the far side of the boundary leaves half the requirement unverified.
+Verify detection within 300 ms of the last received frame, the correct substitute value, and the correct degraded mode.
+And check the boundary.
+Does it correctly *not* trip at 290 ms?
+A timeout that fires too early is as much a defect as one that fires too late.
+Only testing the far side of the boundary leaves half the requirement unverified.
 
 ### Interrogate the diagnostics
 
@@ -55,11 +67,13 @@ Verify detection within 300 ms of the last received frame, the correct substitut
 
 ### Verify recovery
 
-Resume transmission. Confirm automatic recovery, and confirm the fault becomes history rather than remaining active.
+Resume transmission.
+Confirm automatic recovery, and confirm the fault becomes history rather than remaining active.
 
 ## Variations
 
-This is the boundary where fault injection is cheapest and most productive. Each of these is a distinct failure mode and each shipped as a field defect somewhere:
+This is the boundary where fault injection is cheapest and most productive.
+Each of these is a distinct failure mode and each shipped as a field defect somewhere:
 
 | Variation | What it asks of the DUT |
 | --- | --- |

@@ -18,7 +18,8 @@ When you eventually read a real standard or a real product manual, this referenc
 
 Engineers who are competent in embedded software, controls, or test automation, but new to HIL specifically.
 
-If your background is automated software testing, skim [[coming-from-software-testing]] first. It maps this world onto the one you already know, and flags where the analogies break.
+If your background is automated software testing, skim [[coming-from-software-testing]] first.
+It maps this world onto the one you already know, and flags where the analogies break.
 
 ## Summary
 

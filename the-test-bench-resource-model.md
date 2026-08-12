@@ -40,13 +40,15 @@ stateDiagram-v2
 
 ## Why the states exist
 
-These states are not bureaucracy. They exist because of real constraints:
+These states are not bureaucracy.
+They exist because of real constraints:
 
 - Real-time resources need their memory and schedule laid out before the loop starts. You cannot renegotiate that mid-cycle without breaking determinism.
 - Hardware is genuinely exclusive. Two tests cannot both own the same output.
 - Some transitions take real time. Starting a model, opening a network channel, or establishing a diagnostic session are not instantaneous.
 
-When the system rejects an operation because you are "in the wrong state," the answer is almost never to retry. It is that you asked for something the system physically cannot do yet.
+When the system rejects an operation because you are "in the wrong state," the answer is almost never to retry.
+It is that you asked for something the system physically cannot do yet.
 
 ## Cleanup
 
@@ -64,7 +66,8 @@ Cleanup that only runs on the success path is not cleanup, and tests fail more f
 
 ## Symptoms
 
-The classic signature is that the test passes alone and fails in the suite, or the first run passes and the second fails. Both mean someone left state behind.
+The classic signature is that the test passes alone and fails in the suite, or the first run passes and the second fails.
+Both mean someone left state behind.
 
 When you see either, stop debugging the failing test and go look at what ran before it.
 

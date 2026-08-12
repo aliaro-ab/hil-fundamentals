@@ -9,13 +9,17 @@ related_to:
 
 **The device's own account of itself through the interface a technician uses.**
 
-A standardized request/response channel, usually layered over the network. External tools use it to ask the device about its health, identity, and history, and occasionally to command it to do things.
+A standardized request/response channel, usually layered over the network.
+External tools use it to ask the device about its health, identity, and history, and occasionally to command it to do things.
 
 ## Distinction from device internals
 
-[[device-internals]] is a developer's back door, with raw memory, symbol names, and no contract. The diagnostic channel is a **published interface with a specification**, used by garages, field tools, fleet systems, and end-of-line testers.
+[[device-internals]] is a developer's back door, with raw memory, symbol names, and no contract.
+The diagnostic channel is a **published interface with a specification**, used by garages, field tools, fleet systems, and end-of-line testers.
 
-That distinction is the whole reason it is a separate boundary. A fault correctly set in RAM but incorrectly reported over diagnostics is a shipped defect. Only a test at this boundary can catch it.
+That distinction is the whole reason it is a separate boundary.
+A fault correctly set in RAM but incorrectly reported over diagnostics is a shipped defect.
+Only a test at this boundary can catch it.
 
 ## What you can ask
 
@@ -39,17 +43,20 @@ That distinction is the whole reason it is a separate boundary. A fault correctl
 | [[disturb]] | Malformed and incorrect-state requests, to check the negative responses are correct |
 | [[interrogate]] | The whole point of this boundary, and the only place the verb works properly |
 
-[[replay]] does not apply here. You cannot blindly play back a diagnostic exchange, because each response depends on the session state at the moment of asking.
+[[replay]] does not apply here.
+You cannot blindly play back a diagnostic exchange, because each response depends on the session state at the moment of asking.
 
 ## Constraints
 
 ### Sessions expire
 
-Many operations require entering a non-default session first, and sessions time out if you stop talking. Long test steps can silently drop you back to default and the next request fails for reasons that look unrelated.
+Many operations require entering a non-default session first, and sessions time out if you stop talking.
+Long test steps can silently drop you back to default and the next request fails for reasons that look unrelated.
 
 ### Responses are slow
 
-Latencies in the tens to hundreds of milliseconds are normal, and some routines take seconds. Never place a diagnostic call inside a tight timing assertion.
+Latencies in the tens to hundreds of milliseconds are normal, and some routines take seconds.
+Never place a diagnostic call inside a tight timing assertion.
 
 ### Communication is sequential
 
@@ -57,14 +64,21 @@ The channel carries one conversation at a time, which makes diagnostic steps a n
 
 ### Requests are state-gated
 
-The device refuses some requests unless the machine is stationary, unlocked, unpowered, or in a service mode. A "rejected" response is frequently correct behavior, not a bug.
+The device refuses some requests unless the machine is stationary, unlocked, unpowered, or in a service mode.
+A "rejected" response is frequently correct behavior, not a bug.
 
 ### Negative responses are meaningful
 
-A refusal carries a reason code. Reading it is usually faster than guessing.
+A refusal carries a reason code.
+Reading it is usually faster than guessing.
 
 ## Fault status is not a boolean
 
-This is the most common mistake at this boundary. A fault is not simply present or absent. It has status bits distinguishing *confirmed this cycle*, *pending*, *tested this cycle*, *failed since last clear*, and more. A test that checks only "is this code in the list?" will pass in cases it must fail. More annoyingly, it will fail intermittently in cases it must pass, because the code is present but not yet confirmed.
+This is the most common mistake at this boundary.
+A fault is not simply present or absent.
+It has status bits distinguishing *confirmed this cycle*, *pending*, *tested this cycle*, *failed since last clear*, and more.
+A test that checks only "is this code in the list?" will pass in cases it must fail.
+More annoyingly, it will fail intermittently in cases it must pass, because the code is present but not yet confirmed.
 
-Learn the status model on your project before writing fault-memory assertions. See [[interrogate]].
+Learn the status model on your project before writing fault-memory assertions.
+See [[interrogate]].

@@ -12,7 +12,8 @@ related_to:
 
 ## The goal
 
-A unit in the field entered an unexpected shutdown. You have a 90-second bus log from the vehicle, recorded up to and including the event.
+A unit in the field entered an unexpected shutdown.
+You have a 90-second bus log from the vehicle, recorded up to and including the event.
 
 ```
 Given that log:
@@ -28,27 +29,39 @@ Work out what you need before reading on.
 
 ### Decide what you actually have
 
-A bus log contains what was *said on the bus*. It does not contain analog sensor inputs, internal state, the DUT's own reasoning, or anything on a network that no one logged. Your bench's defaults will supply everything absent, and those defaults are now part of the experiment whether you chose them or not. Write down the gaps before you start.
+A bus log contains what was *said on the bus*.
+It does not contain analog sensor inputs, internal state, the DUT's own reasoning, or anything on a network that no one logged.
+Your bench's defaults will supply everything absent, and those defaults are now part of the experiment whether you chose them or not.
+Write down the gaps before you start.
 
 ### Match the software
 
-Reproduce against the same software version the field unit ran. A newer build can fix the bug, not reproduce it, and cost you a day proving nothing.
+Reproduce against the same software version the field unit ran.
+A newer build can fix the bug, not reproduce it, and cost you a day proving nothing.
 
 ### Check the database revision
 
-The log decodes correctly only against the database that was current when it was recorded. A signal that moved between revisions will decode into a plausible incorrect number. See [[five-names-for-one-signal]].
+The log decodes correctly only against the database that was current when it was recorded.
+A signal that moved between revisions will decode into a plausible incorrect number.
+See [[five-names-for-one-signal]].
 
 ### Set up the replay
 
-[[replay]] at [[the-network|the network]]. The critical question is whether your bench replays original *timing* or just message order at a nominal rate. For a timing-sensitive bug, order-only replay will not reproduce it, and you will incorrectly conclude the log is useless.
+[[replay]] at [[the-network|the network]].
+The critical question is whether your bench replays original *timing* or just message order at a nominal rate.
+For a timing-sensitive bug, order-only replay will not reproduce it, and you will incorrectly conclude the log is useless.
 
 ### Handle the restbus conflict
 
-Your bench is probably already simulating those messages. Replaying the log on top produces duplicates and the DUT sees nonsense. You must disable restbus transmission for each ID the log provides, and keep it running for the ones the log does not. An error here is the single most common reason a replay "doesn't work."
+Your bench is probably already simulating those messages.
+Replaying the log on top produces duplicates and the DUT sees nonsense.
+You must disable restbus transmission for each ID the log provides, and keep it running for the ones the log does not.
+An error here is the single most common reason a replay "doesn't work."
 
 ### Capture everything
 
-[[capture]] far more widely than the log covers, including internals at [[device-internals|device internals]], outputs, mode, and faults. The whole value of doing this on a bench rather than in the field is that you can see inside.
+[[capture]] far more widely than the log covers, including internals at [[device-internals|device internals]], outputs, mode, and faults.
+The whole value of doing this on a bench rather than in the field is that you can see inside.
 
 ### Run it
 
@@ -61,12 +74,16 @@ Then decide what you learned:
 
 ### Make it a test
 
-Trimmed log, pinned software version, pinned database revision, explicit assertion on the correct behavior, checked into the suite. This is the payoff. The bug can never silently return.
+Trimmed log, pinned software version, pinned database revision, explicit assertion on the correct behavior, checked into the suite.
+This is the payoff.
+The bug can never silently return.
 
 ## Why this card matters
 
-A team that can do this reliably has a different relationship with field failures than one that cannot. It converts "we think we fixed it" into "we can demonstrate it's fixed, forever." Almost all organizations underinvest in the plumbing that makes it routine.
+A team that can do this reliably has a different relationship with field failures than one that cannot.
+It converts "we think we fixed it" into "we can demonstrate it's fixed, forever." Almost all organizations underinvest in the plumbing that makes it routine.
 
 ## Limitations
 
-Whatever was not in the log. So after any field failure, ask: *what data do we need to record to make this reproducible?* Then go and record it.
+Whatever was not in the log.
+So after any field failure, ask: *what data do we need to record to make this reproducible?* Then go and record it.

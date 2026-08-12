@@ -24,7 +24,9 @@ Almost all interesting test assertions are statements about a captured trace rat
 | **Over what window** | Bounded by time, by sample count, or by conditions. See [[triggers-and-windows]]. |
 | **Aligned to what clock** | A shared time base for each signal you intend to compare. |
 
-The clock dimension is the one people miss. If your test asserts `output responded within 50 ms of input`, the input and output samples need to share a time base. Cross-boundary captures (like a model variable against a network signal) frequently do not, and the skew is a potential source of failures.
+The clock dimension is the one people miss.
+If your test asserts `output responded within 50 ms of input`, the input and output samples need to share a time base.
+Cross-boundary captures (like a model variable against a network signal) frequently do not, and the skew is a potential source of failures.
 
 ## Why a trace instead of a number
 
@@ -41,9 +43,13 @@ A polling loop cannot answer any of these, because your loop's sampling is neith
 
 ## Trigger before you need it
 
-The most common capture mistake is to run the test, see the failure, and realize you were not recording. Configure the capture *before* the stimulus, arm it, then act. Storage is cheap, test bench time is not.
+The most common capture mistake is to run the test, see the failure, and realize you were not recording.
+Configure the capture *before* the stimulus, arm it, then act.
+Storage is cheap, test bench time is not.
 
-Better still, use a pre-trigger. Most benches continuously buffer so that when the trigger fires it keeps some window from *before* it. That is how you catch the cause of an event rather than only its aftermath.
+Better still, use a pre-trigger.
+Most benches continuously buffer so that when the trigger fires it keeps some window from *before* it.
+That is how you catch the cause of an event rather than only its aftermath.
 
 ## Where it works
 
@@ -61,4 +67,7 @@ The important question at each boundary is **what rate, and does it share a cloc
 
 ## The output is data rather than a verdict
 
-A capture gives you a table of samples. Deciding pass or fail is your analysis code's job. Keep that code separate from the test that produced the data. Then you can re-analyze an old capture when someone changes their mind about the tolerance.
+A capture gives you a table of samples.
+Deciding pass or fail is your analysis code's job.
+Keep that code separate from the test that produced the data.
+Then you can re-analyze an old capture when someone changes their mind about the tolerance.

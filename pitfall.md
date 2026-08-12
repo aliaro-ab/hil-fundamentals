@@ -13,4 +13,5 @@ _sort: "title:asc"
 
 A mistake that engineers new to HIL reliably make once.
 
-Each pitfall note describes the symptom, the reason it occurs, and the concept you missed. Read these before you write your first test, then again after your first confusing failure.
+Each pitfall note describes the symptom, the reason it occurs, and the concept you missed.
+Read these before you write your first test, then again after your first confusing failure.

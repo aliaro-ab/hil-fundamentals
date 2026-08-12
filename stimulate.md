@@ -15,9 +15,11 @@ Stimulate splits into two very different operations that are easy to conflate, a
 
 ## Set a value
 
-Write a number. The system now uses that number until something changes it.
+Write a number.
+The system now uses that number until something changes it.
 
-A simple set is fine for preconditions and slow changes such as ambient temperature, a configuration parameter, a mode request, or an operator setpoint. Your test script can do this directly.
+A simple set is fine for preconditions and slow changes such as ambient temperature, a configuration parameter, a mode request, or an operator setpoint.
+Your test script can do this directly.
 
 Two constraints:
 
@@ -28,9 +30,13 @@ Two constraints:
 
 ## Play a waveform
 
-Deliver a *time-varying* signal with real timing guarantees. Examples: a 5 Hz sine, a 10 ms pulse, a ramp from 0 to 100% over 3 seconds, or an arbitrary recorded trace.
+Deliver a *time-varying* signal with real timing guarantees.
+Examples: a 5 Hz sine, a 10 ms pulse, a ramp from 0 to 100% over 3 seconds, or an arbitrary recorded trace.
 
-Your test script cannot do this. A loop of write-and-sleep gives you a staircase with jitter determined by operating system scheduling. See [[avoid-relying-on-scripting-for-time-sensitive-tasks]]. Instead you **describe** the waveform, hand the description to the real-time part of the bench, and tell it to run.
+Your test script cannot do this.
+A loop of write-and-sleep gives you a staircase with jitter determined by operating system scheduling.
+See [[avoid-relying-on-scripting-for-time-sensitive-tasks]].
+Instead you **describe** the waveform, hand the description to the real-time part of the bench, and tell it to run.
 
 That handoff is the single most important structural idea about stimulation. **You specify, the bench executes.** Your script's role is to arm it, start it, and find out when it finished.
 

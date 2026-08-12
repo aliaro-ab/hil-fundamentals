@@ -16,7 +16,9 @@ This list groups terms by theme rather than alphabetically, so related vocabular
 
 This vault uses six controlled verbs for what a test system does to a device: [[observe]], [[stimulate]], [[capture]], [[replay]], [[disturb]], and [[interrogate]].
 
-These six are the technical verbs of this vault, in the sense of ASD-STE100 rule 1.12 (category: computing and test operations). Use them only with the meanings their notes define, and do not use synonyms for them. One verb, one meaning, everywhere.
+These six are the technical verbs of this vault, in the sense of ASD-STE100 rule 1.12 (category: computing and test operations).
+Use them only with the meanings their notes define, and do not use synonyms for them.
+One verb, one meaning, everywhere.
 
 ## The system
 

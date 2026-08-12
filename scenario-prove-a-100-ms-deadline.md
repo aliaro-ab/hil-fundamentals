@@ -27,31 +27,51 @@ Work out what you need before reading on.
 
 ### The incorrect instinct
 
-The incorrect instinct is worth naming first. Send the request, `sleep(0.1)`, read the output, assert it is zero. This proves almost nothing. Your script's timing is good to maybe tens of milliseconds. You cannot measure a 100 ms deadline with a 30 ms ruler. And a *pass* here is even more misleading than a fail. See [[avoid-immediately-reading-after-writing]].
+The incorrect instinct is worth naming first.
+Send the request, `sleep(0.1)`, read the output, assert it is zero.
+This proves almost nothing.
+Your script's timing is good to maybe tens of milliseconds.
+You cannot measure a 100 ms deadline with a 30 ms ruler.
+And a *pass* here is even more misleading than a fail.
+See [[avoid-immediately-reading-after-writing]].
 
 ### Take both timestamps from the real-time side
 
-Both timestamps must come from the real-time side. That is the entire point of this card.
+Both timestamps must come from the real-time side.
+That is the entire point of this card.
 
 ### Set up the capture
 
-[[capture]] on both the stop request and the commanded output, **in the same capture** so they share a time base. Separate captures can be skewed, and the skew can easily be a large fraction of your 100 ms budget. Sample at 1 kHz or better, at least 10× the deadline. See [[avoid-undersampling]].
+[[capture]] on both the stop request and the commanded output, **in the same capture** so they share a time base.
+Separate captures can be skewed, and the skew can easily be a large fraction of your 100 ms budget.
+Sample at 1 kHz or better, at least 10× the deadline.
+See [[avoid-undersampling]].
 
 ### Trigger on the request
 
-Use a pre-trigger so you can see the steady state before it and confirm the system was actually in a state where the requirement applies. See [[triggers-and-windows]].
+Use a pre-trigger so you can see the steady state before it and confirm the system was actually in a state where the requirement applies.
+See [[triggers-and-windows]].
 
 ### Issue the request
 
-[[stimulate]] at whichever boundary the operator interface really uses. That can be [[the-network|the network]], a discrete at [[physical-pins|physical pins]], or a call at [[the-service-layer|the service layer]]. It matters. A network request inherits the bus cycle time. If the frame carrying it is on a 50 ms cycle, the bus can consume half your budget before the DUT even hears you. That is a real finding, not a bench artifact.
+[[stimulate]] at whichever boundary the operator interface really uses.
+That can be [[the-network|the network]], a discrete at [[physical-pins|physical pins]], or a call at [[the-service-layer|the service layer]].
+It matters.
+A network request inherits the bus cycle time.
+If the frame carrying it is on a 50 ms cycle, the bus can consume half your budget before the DUT even hears you.
+That is a real finding, not a bench artifact.
 
 ### Measure from the trace
 
-Find the request edge, find where the output first meets the zero criterion, subtract. Assert the difference is under 100 ms.
+Find the request edge, find where the output first meets the zero criterion, subtract.
+Assert the difference is under 100 ms.
 
 ### Define "zero" precisely
 
-Exactly zero, or below a threshold? Reached, or reached and stayed? A command that dips to zero and rebounds satisfies a naive check and violates the intent. Write the criterion down.
+Exactly zero, or below a threshold?
+Reached, or reached and stayed?
+A command that dips to zero and rebounds satisfies a naive check and violates the intent.
+Write the criterion down.
 
 ## Key questions
 

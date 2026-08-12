@@ -8,7 +8,9 @@ _organized: true
 ---
 # What a HIL test bench is
 
-A hardware-in-the-loop bench is a simulation system designed to convince a real controller that it is installed in a real machine. In fact, the controller is bolted to a rack in a lab. Everything else is detail.
+A hardware-in-the-loop bench is a simulation system designed to convince a real controller that it is installed in a real machine.
+In fact, the controller is bolted to a rack in a lab.
+Everything else is detail.
 
 ## Components
 
@@ -45,10 +47,12 @@ flowchart LR
     style TEST stroke-dasharray: 4 4
 ```
 
-The loop runs at a fixed rate, typically somewhere between 100 Hz and 10 kHz depending on the physics. If the system runs, it continues to run whether your test script executes, sleeps, or crashed.
+The loop runs at a fixed rate, typically somewhere between 100 Hz and 10 kHz depending on the physics.
+If the system runs, it continues to run whether your test script executes, sleeps, or crashed.
 
-> [!tip]
-> Your test does not drive the loop. It reaches into the loop, changes something, and watches what occurs. Internalizing that one sentence is most of the conceptual jump.
+> [!tip] > Your test does not drive the loop.
+It reaches into the loop, changes something, and watches what occurs.
+Internalizing that one sentence is most of the conceptual jump.
 
 ## Advantages over the real machine
 
@@ -68,4 +72,5 @@ This is worth saying early, because engineers tend to over-trust testing of any 
 - It is usually poor at EMC, thermal, vibration, and mechanical wear analysis.
 - Timing fidelity has limits. A bench running at 1 kHz cannot honestly test a 50 µs interrupt race.
 
-A passing HIL suite means "the controller behaves correctly in the world we described." That is a large and useful claim. It is not "the product works."
+A passing HIL suite means "the controller behaves correctly in the world we described." That is a large and useful claim.
+It is not "the product works."

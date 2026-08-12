@@ -7,7 +7,8 @@ _organized: true
 
 This is a [Tolaria](https://github.com/refactoringhq/tolaria) vault.
 
-Keep this file focused on vault-specific conventions. For general Tolaria behavior, use the bundled Tolaria agent docs path provided by the app session context.
+Keep this file focused on vault-specific conventions.
+For general Tolaria behavior, use the bundled Tolaria agent docs path provided by the app session context.
 
 ## Core conventions
 
@@ -38,7 +39,8 @@ Body content in Markdown.
 
 ## Types
 
-Types are regular notes with `type: Type`. They define how notes of that type appear and which properties or relationships should be suggested for new notes.
+Types are regular notes with `type: Type`.
+They define how notes of that type appear and which properties or relationships should be suggested for new notes.
 
 ```yaml
 ---
@@ -54,13 +56,16 @@ _sort: "property:onboarding:asc"
 # Project
 ```
 
-Empty properties and relationships in a type document become placeholders on new notes of that type. Values attached to properties in the type document become defaults for type instances.
+Empty properties and relationships in a type document become placeholders on new notes of that type.
+Values attached to properties in the type document become defaults for type instances.
 
-Useful type metadata includes `icon`/`_icon`, `color`/`_color`, `order`/`_order`, `sidebar label`, `_list_properties_display`, `_sort`, `template`, `view`, and `visible`. When editing an existing file, preserve the key style already used there instead of mass-normalizing underscored keys.
+Useful type metadata includes `icon`/`_icon`, `color`/`_color`, `order`/`_order`, `sidebar label`, `_list_properties_display`, `_sort`, `template`, `view`, and `visible`.
+When editing an existing file, preserve the key style already used there instead of mass-normalizing underscored keys.
 
 ## Relationships
 
-Any frontmatter property whose value contains `[[wikilinks]]` is treated as a relationship. Common relationship keys include `related_to`, `belongs_to`, and `has`, but custom relationship names are valid too.
+Any frontmatter property whose value contains `[[wikilinks]]` is treated as a relationship.
+Common relationship keys include `related_to`, `belongs_to`, and `has`, but custom relationship names are valid too.
 
 Preserve older relationship labels such as `Belongs to:` when editing existing notes that already use them.
 
@@ -74,7 +79,8 @@ Use quoted wikilinks for scalar frontmatter values and YAML lists for multi-valu
 
 ## Views
 
-Saved views live in `views/*.yml` and are written as YAML. Tolaria scans every `.yml` file in `views/`, and the filename is the stable view id, so use kebab-case filenames such as `active-projects.yml`.
+Saved views live in `views/*.yml` and are written as YAML.
+Tolaria scans every `.yml` file in `views/`, and the filename is the stable view id, so use kebab-case filenames such as `active-projects.yml`.
 
 A view definition looks like this:
 
@@ -108,7 +114,8 @@ View rules that matter when creating or editing files:
 
 ## Filenames
 
-Use kebab-case: `my-note-title.md`. One note per file.
+Use kebab-case: `my-note-title.md`.
+One note per file.
 
 ## What agents should do
 

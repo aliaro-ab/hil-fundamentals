@@ -9,7 +9,8 @@ _favorite_index: 2
 ---
 # Bench evaluation checklist
 
-What to ask when evaluating a test bench: [[the-capability-grid|the capability grid]] turned into questions to guide you through discovery. Work through it with whoever owns the bench and write the answers down.
+What to ask when evaluating a test bench: [[the-capability-grid|the capability grid]] turned into questions to guide you through discovery.
+Work through it with whoever owns the bench and write the answers down.
 
 The document you produce is more useful than most bench documentation you will receive.
 
@@ -77,4 +78,5 @@ See [[the-test-bench-resource-model]].
 3. Which tests are known to be flaky, and why?
 4. What is the most common reason a test fails here for a reason that is not the product?
 
-This last question is the highest-value question on this list. Ask it of the most experienced person on the team, and take notes.
+This last question is the highest-value question on this list.
+Ask it of the most experienced person on the team, and take notes.

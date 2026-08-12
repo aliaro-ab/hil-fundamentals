@@ -8,7 +8,8 @@ _organized: true
 ---
 # Coming from software testing
 
-If you already write automated tests for services or applications, most bench discipline maps onto something you own. "The map" below transfers years of instinct in one sitting. Then read "Where the analogy misleads," because analogies carried over unmodified will bite.
+If you already write automated tests for services or applications, most bench discipline maps onto something you own. "The map" below transfers years of instinct in one sitting.
+Then read "Where the analogy misleads," because analogies carried over unmodified will bite.
 
 ## The map
 
@@ -30,20 +31,35 @@ If you already write automated tests for services or applications, most bench di
 
 ### The system never pauses
 
-There is no breakpoint. The real-time loop runs whether your test executes, sleeps, or crashes. This makes it closer to testing against live production than to running a unit suite. Your test does not drive the system. It reaches into a running machine. See [[time-is-the-hard-part]].
+There is no breakpoint.
+The real-time loop runs whether your test executes, sleeps, or crashes.
+This makes it closer to testing against live production than to running a unit suite.
+Your test does not drive the system.
+It reaches into a running machine.
+See [[time-is-the-hard-part]].
 
 ### Timing is the subject, not an inconvenience
 
-In software, latency is usually noise you tolerate. Here, "within 100 ms" is frequently the requirement itself, and your script's clock cannot measure it. Anything with real timing needs belongs on the real-time side. See [[avoid-relying-on-scripting-for-time-sensitive-tasks]].
+In software, latency is usually noise you tolerate.
+Here, "within 100 ms" is frequently the requirement itself, and your script's clock cannot measure it.
+Anything with real timing needs belongs on the real-time side.
+See [[avoid-relying-on-scripting-for-time-sensitive-tasks]].
 
 ### Resources are physical and exclusive
 
-You cannot spin up a second bench in a container, and two tests cannot own the same output pin. Parallelism is the exception rather than the default, and bench time is scheduled like any other scarce machine. See [[the-test-bench-resource-model]].
+You cannot spin up a second bench in a container, and two tests cannot own the same output pin.
+Parallelism is the exception rather than the default, and bench time is scheduled like any other scarce machine.
+See [[the-test-bench-resource-model]].
 
 ### The type system ends at the wire
 
-An incorrect unit or scaling factor does not throw, it returns a plausible number. There is no compiler between a kilopascal and a bar, only your expectation. See [[avoid-unit-and-scaling-assumptions]].
+An incorrect unit or scaling factor does not throw, it returns a plausible number.
+There is no compiler between a kilopascal and a bar, only your expectation.
+See [[avoid-unit-and-scaling-assumptions]].
 
 ### Mistakes can cost hardware
 
-An incorrect write in software throws an exception. An incorrect relay closure can put supply voltage on a signal pin and destroy the DUT in a millisecond. Learn the interlocks before the API. See [[disturb]] and [[physical-pins]].
+An incorrect write in software throws an exception.
+An incorrect relay closure can put supply voltage on a signal pin and destroy the DUT in a millisecond.
+Learn the interlocks before the API.
+See [[disturb]] and [[physical-pins]].

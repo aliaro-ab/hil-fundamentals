@@ -11,13 +11,19 @@ related_to:
 
 **What is this value right now?**
 
-The simplest verb, and the one that misleads people most. Reading a single value from a running system is not like reading a variable in your own program.
+The simplest verb, and the one that misleads people most.
+Reading a single value from a running system is not like reading a variable in your own program.
 
 ## What you get
 
-What you get is not "the value" but **a value that was true at some moment, delivered to you a little later**. Between the sample and your receipt of it sits a scheduler, a transport, and a queue. On a bench running at 1 kHz, the number in your hand can be up to several milliseconds stale. Nothing about the API will tell you that.
+What you get is not "the value" but **a value that was true at some moment, delivered to you a little later**.
+Between the sample and your receipt of it sits a scheduler, a transport, and a queue.
+On a bench running at 1 kHz, the number in your hand can be up to several milliseconds stale.
+Nothing about the API will tell you that.
 
-For slow physics (temperature, state of charge, pressure in a big vessel) this is irrelevant. For anything that moves fast, a single observation is close to meaningless. Use [[capture]] instead.
+For slow physics (temperature, state of charge, pressure in a big vessel) this is irrelevant.
+For anything that moves fast, a single observation is close to meaningless.
+Use [[capture]] instead.
 
 ## Where it works
 
@@ -31,7 +37,8 @@ At each boundary, with different meanings:
 | [[the-network]] | Read the last received value of a bus signal |
 | [[the-service-layer]] | Read a field or call a getter |
 
-Note the network case. "The last value received" can be from 100 ms ago if the sender is slow or no longer sends. A stale bus signal reads as a perfectly plausible number.
+Note the network case. "The last value received" can be from 100 ms ago if the sender is slow or no longer sends.
+A stale bus signal reads as a perfectly plausible number.
 
 ## Right and incorrect questions
 
@@ -43,4 +50,5 @@ Note the network case. "The last value received" can be from 100 ms ago if the s
 
 ## Rule of thumb
 
-Observe is for **steady state and preconditions**. If the word "when," "during," "within," "ever," or "how fast" appears in your test requirement, you need capture, not observe.
+Observe is for **steady state and preconditions**.
+If the word "when," "during," "within," "ever," or "how fast" appears in your test requirement, you need capture, not observe.

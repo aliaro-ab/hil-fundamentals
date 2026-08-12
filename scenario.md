@@ -13,4 +13,6 @@ _sort: "title:asc"
 
 A test goal stated in plain language, with the capabilities it requires.
 
-Use these as flashcards. Read the goal, work out which [[boundary|boundaries]] and [[capability|capabilities]] you need, then check yourself against the answer. They work well as a group exercise.
+Use these as flashcards.
+Read the goal, work out which [[boundary|boundaries]] and [[capability|capabilities]] you need, then check yourself against the answer.
+They work well as a group exercise.

@@ -13,4 +13,5 @@ _sort: "title:asc"
 
 A walkthrough, map, or reference sheet that ties other notes together.
 
-Guides are the notes you read start to finish. Everything else in the vault is something you look up.
+Guides are the notes you read start to finish.
+Everything else in the vault is something you look up.

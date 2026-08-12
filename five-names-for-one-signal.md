@@ -52,35 +52,48 @@ flowchart LR
 
 Between the physical plate and your test's intent sit five names: a pin number, two internal symbols, a network signal, and a model variable.
 
-Five names, five unit systems, and four scaling conversions, all for one plate on one shaft. Each arrow in that chain is a conversion that somebody configured by hand, in a file, possibly years ago, possibly for a different variant.
+Five names, five unit systems, and four scaling conversions, all for one plate on one shaft.
+Each arrow in that chain is a conversion that somebody configured by hand, in a file, possibly years ago, possibly for a different variant.
 
 ## The three layers
 
 ### Raw
 
-What the hardware literally holds. Counts, bits, volts, bytes. No physical meaning without a conversion.
+What the hardware literally holds.
+Counts, bits, volts, bytes.
+No physical meaning without a conversion.
 
 ### Physical
 
-The engineering quantity. Degrees, percent, newton-meters, kelvin. Meaningful, but still bench- and implementation-specific.
+The engineering quantity.
+Degrees, percent, newton-meters, kelvin.
+Meaningful, but still bench- and implementation-specific.
 
 ### Intent
 
 What the test means. "Throttle at 30%." "Idle." "Wide open." Durable across benches, variants, and years.
 
-You write a good test in intent. A mapping layer resolves it to physical, and the bench converts it to raw. A fragile test uses raw values with a comment explaining the math.
+You write a good test in intent.
+A mapping layer resolves it to physical, and the bench converts it to raw.
+A fragile test uses raw values with a comment explaining the math.
 
 ## Failure modes
 
 ### Silent scaling errors
 
-An incorrect factor does not throw. It gives you 3.0 where you expected 30, or 30 where you expected 0.30. The test fails, someone "fixes" the tolerance, and the wrongness is now permanent.
+An incorrect factor does not throw.
+It gives you 3.0 where you expected 30, or 30 where you expected 0.30.
+The test fails, someone "fixes" the tolerance, and the wrongness is now permanent.
 
 See [[avoid-unit-and-scaling-assumptions]].
 
 ### Drift between sources
 
-Symbol files come from a build. Network databases come from an architecture tool. Bench configuration comes from a spreadsheet. Model names come from the model. Four sources of truth, four update cadences, and no one notices they diverged until a test reads a plausible incorrect number.
+Symbol files come from a build.
+Network databases come from an architecture tool.
+Bench configuration comes from a spreadsheet.
+Model names come from the model.
+Four sources of truth, four update cadences, and no one notices they diverged until a test reads a plausible incorrect number.
 
 ### Names in test code
 
@@ -90,13 +103,16 @@ See [[avoid-bench-specifics-in-test-code]] and [[why-abstraction-exists]].
 
 ## Why a mapping layer exists
 
-Nearly all test frameworks give you some way to implement a translation table. The table maps the intent-level name your test uses to the bench-level identifier, the units, and scaling for your test bench hardware.
+Nearly all test frameworks give you some way to implement a translation table.
+The table maps the intent-level name your test uses to the bench-level identifier, the units, and scaling for your test bench hardware.
 
-A good mapping layer for the device under test is what makes your test suite portable. But it also introduces opportunities for error during comparisons and transforms.
+A good mapping layer for the device under test is what makes your test suite portable.
+But it also introduces opportunities for error during comparisons and transforms.
 
 Each test program needs to know where this lives, who owns it, how to regenerate it, and how anyone knows if it is incorrect.
 
-On most projects, the honest answer is "we wouldn't." Some teams add a consistency check between the mapping and its upstream sources. Those teams catch a class of bug that otherwise costs weeks.
+On most projects, the honest answer is "we wouldn't." Some teams add a consistency check between the mapping and its upstream sources.
+Those teams catch a class of bug that otherwise costs weeks.
 
 ## Recommended practice
 

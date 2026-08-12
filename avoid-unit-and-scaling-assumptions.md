@@ -8,15 +8,26 @@ _width: normal
 
 ## The symptom
 
-The test asserts the pressure stays below 5. It passes. Nobody notices that the signal is in kPa and the requirement was in bar. The real limit was 500, and the test asserted nothing for eight months.
+The test asserts the pressure stays below 5.
+It passes.
+Nobody notices that the signal is in kPa and the requirement was in bar.
+The real limit was 500, and the test asserted nothing for eight months.
 
-Or the value reads 0.3 where you expected 30. Someone "fixes" it by multiplying by 100 in the test. Six weeks later a different variant reports the same signal as a percentage already, and now two tests disagree about reality.
+Or the value reads 0.3 where you expected 30.
+Someone "fixes" it by multiplying by 100 in the test.
+Six weeks later a different variant reports the same signal as a percentage already, and now two tests disagree about reality.
 
 ## Why it evades detection
 
-A units error does not throw. It returns a number. Numbers are plausible. Nothing in the system knows what a kilopascal is. There is a float, and there is your expectation, and only your head reconciles them.
+A units error does not throw.
+It returns a number.
+Numbers are plausible.
+Nothing in the system knows what a kilopascal is.
+There is a float, and there is your expectation, and only your head reconciles them.
 
-Worse, incorrect-unit tests frequently *pass*, which means they are never investigated. Someone fixes a test that fails loudly on day one. A test that passes vacuously survives for years and gives false confidence to the people relying on it.
+Worse, incorrect-unit tests frequently *pass*, which means they are never investigated.
+Someone fixes a test that fails loudly on day one.
+A test that passes vacuously survives for years and gives false confidence to the people relying on it.
 
 ## Common sources
 
@@ -37,7 +48,9 @@ Put the unit in the name, the constant, or the comment. `MAX_PRESSURE_BAR = 5` c
 
 ### Check the range at setup
 
-If a percentage reads 0.42, it is a fraction. If it reads 4200, it is raw counts. A one-time sanity read of each signal a test uses, at a known condition, catches most of these in the first five minutes.
+If a percentage reads 0.42, it is a fraction.
+If it reads 4200, it is raw counts.
+A one-time sanity read of each signal a test uses, at a known condition, catches most of these in the first five minutes.
 
 ### Make the test say the intent
 
@@ -45,8 +58,12 @@ If a percentage reads 0.42, it is a fraction. If it reads 4200, it is raw counts
 
 ### Sanity-check against something independent
 
-If the model has ground truth and the DUT has an estimate, compare them once at a known condition. Wildly different numbers for the same physical quantity is a units error until proven otherwise.
+If the model has ground truth and the DUT has an estimate, compare them once at a known condition.
+Wildly different numbers for the same physical quantity is a units error until proven otherwise.
 
 ### Distrust tests you never saw fail
 
-Break the test on purpose once. Inject a condition that *must* trip it. If it still passes, the assertion is not doing anything. This is worth doing for each safety-relevant limit check in the suite.
+Break the test on purpose once.
+Inject a condition that *must* trip it.
+If it still passes, the assertion is not doing anything.
+This is worth doing for each safety-relevant limit check in the suite.
