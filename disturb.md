@@ -5,7 +5,6 @@ related_to:
   - "[[physical-pins]]"
   - "[[interrogate]]"
   - "[[scenario-a-sensor-wire-breaks]]"
-_organized: true
 ---
 # Disturb
 

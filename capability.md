@@ -4,7 +4,6 @@ _color: "#3b82f6"
 _order: 3
 _list_properties_display:
   - related_to
-_organized: true
 _icon: barbell
 _sort: "title:asc"
 ---

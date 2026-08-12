@@ -3,7 +3,6 @@ type: Guide
 related_to:
   - "[[the-capability-grid]]"
   - "[[five-names-for-one-signal]]"
-_organized: true
 _favorite: true
 _favorite_index: 2
 ---

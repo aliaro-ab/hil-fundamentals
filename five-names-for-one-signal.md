@@ -5,7 +5,6 @@ related_to:
   - "[[why-abstraction-exists]]"
   - "[[avoid-unit-and-scaling-assumptions]]"
   - "[[avoid-bench-specifics-in-test-code]]"
-_organized: true
 ---
 # Five names for one signal
 

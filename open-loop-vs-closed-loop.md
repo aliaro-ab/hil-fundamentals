@@ -4,7 +4,6 @@ related_to:
   - "[[what-a-hil-test-bench-is]]"
   - "[[stimulate]]"
   - "[[time-is-the-hard-part]]"
-_organized: true
 ---
 # Open loop vs closed loop
 

@@ -3,7 +3,6 @@ type: Concept
 related_to:
   - "[[capture]]"
   - "[[time-is-the-hard-part]]"
-_organized: true
 ---
 # Triggers and windows
 

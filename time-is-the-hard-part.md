@@ -6,7 +6,6 @@ related_to:
   - "[[stimulate]]"
   - "[[avoid-relying-on-scripting-for-time-sensitive-tasks]]"
   - "[[avoid-immediately-reading-after-writing]]"
-_organized: true
 ---
 # Time is the hard part
 

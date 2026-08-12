@@ -4,7 +4,6 @@ belongs_to: "[[the-capability-grid]]"
 related_to:
   - "[[disturb]]"
   - "[[five-names-for-one-signal]]"
-_organized: true
 ---
 # Physical pins
 

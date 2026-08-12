@@ -3,7 +3,6 @@ type: Concept
 related_to:
   - "[[avoid-leaving-state-behind]]"
   - "[[device-internals]]"
-_organized: true
 ---
 # The test bench resource model
 

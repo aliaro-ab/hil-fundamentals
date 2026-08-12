@@ -4,7 +4,6 @@ related_to:
   - "[[one-test-on-three-benches]]"
   - "[[five-names-for-one-signal]]"
   - "[[avoid-bench-specifics-in-test-code]]"
-_organized: true
 ---
 # Why abstraction exists
 

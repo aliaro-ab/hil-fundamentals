@@ -4,7 +4,6 @@ _color: "#0ea5e9"
 _order: 0
 _list_properties_display:
   - related_to
-_organized: true
 _icon: map-pin
 _sort: "title:asc"
 ---

@@ -4,7 +4,6 @@ related_to:
   - "[[open-loop-vs-closed-loop]]"
   - "[[time-is-the-hard-part]]"
   - "[[the-capability-grid]]"
-_organized: true
 ---
 # What a HIL test bench is
 

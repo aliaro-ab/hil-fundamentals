@@ -4,7 +4,6 @@ _color: "#8b5cf6"
 _order: 5
 _list_properties_display:
   - has
-_organized: true
 _icon: strategy
 _sort: "title:asc"
 ---

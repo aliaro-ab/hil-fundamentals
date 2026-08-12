@@ -4,7 +4,6 @@ belongs_to: "[[the-capability-grid]]"
 related_to:
   - "[[the-diagnostic-channel]]"
   - "[[disturb]]"
-_organized: true
 ---
 
 # Interrogate

@@ -3,7 +3,6 @@ type: Guide
 related_to:
   - "[[the-capability-grid]]"
   - "[[why-abstraction-exists]]"
-_organized: true
 ---
 # One test on three benches
 

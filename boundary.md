@@ -4,7 +4,6 @@ _color: "#10b981"
 _order: 2
 _list_properties_display:
   - related_to
-_organized: true
 _icon: stack-simple
 _sort: "title:asc"
 ---

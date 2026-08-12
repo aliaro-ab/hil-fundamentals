@@ -5,7 +5,6 @@ related_to:
   - "[[triggers-and-windows]]"
   - "[[observe]]"
   - "[[avoid-undersampling]]"
-_organized: true
 ---
 # Capture
 

@@ -4,7 +4,6 @@ belongs_to: "[[the-capability-grid]]"
 related_to:
   - "[[open-loop-vs-closed-loop]]"
   - "[[avoid-testing-the-model-instead-of-the-device]]"
-_organized: true
 ---
 # The plant model
 

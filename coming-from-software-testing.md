@@ -4,7 +4,6 @@ related_to:
   - "[[start-here]]"
   - "[[time-is-the-hard-part]]"
   - "[[the-test-bench-resource-model]]"
-_organized: true
 ---
 # Coming from software testing
 

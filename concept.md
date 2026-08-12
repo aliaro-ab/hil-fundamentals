@@ -5,7 +5,6 @@ _color: "#f59e0b"
 _order: 1
 _list_properties_display:
   - related_to
-_organized: true
 _sort: "title:asc"
 ---
 

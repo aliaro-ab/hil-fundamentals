@@ -7,7 +7,6 @@ has:
   - "[[interrogate]]"
 related_to:
   - "[[physical-pins]]"
-_organized: true
 ---
 # Scenario: a sensor wire breaks
 

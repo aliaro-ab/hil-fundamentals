@@ -5,7 +5,6 @@ related_to:
   - "[[start-here]]"
   - "[[bench-evaluation-checklist]]"
 _width: wide
-_organized: true
 _favorite: true
 _favorite_index: 1
 ---

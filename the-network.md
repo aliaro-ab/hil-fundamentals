@@ -5,7 +5,6 @@ related_to:
   - "[[replay]]"
   - "[[five-names-for-one-signal]]"
   - "[[the-service-layer]]"
-_organized: true
 ---
 # The network
 

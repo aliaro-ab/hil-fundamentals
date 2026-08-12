@@ -1,6 +1,5 @@
 ---
 type: Type
-_organized: true
 _sort: "title:asc"
 ---
 

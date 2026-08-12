@@ -8,7 +8,6 @@ has:
 related_to:
   - "[[physical-pins]]"
   - "[[triggers-and-windows]]"
-_organized: true
 ---
 # Scenario: reset at the worst moment
 

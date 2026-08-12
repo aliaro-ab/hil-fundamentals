@@ -7,7 +7,6 @@ has:
   - "[[interrogate]]"
 related_to:
   - "[[the-network]]"
-_organized: true
 ---
 # Scenario: another node stops communicating
 

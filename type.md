@@ -2,7 +2,6 @@
 type: Type
 order: 0
 visible: false
-_organized: true
 ---
 
 # Type

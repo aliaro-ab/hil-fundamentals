@@ -4,7 +4,6 @@ related_to:
   - "[[what-a-hil-test-bench-is]]"
   - "[[why-abstraction-exists]]"
   - "[[replay]]"
-_organized: true
 ---
 # What HIL testing produces
 

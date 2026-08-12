@@ -4,7 +4,6 @@ belongs_to: "[[the-capability-grid]]"
 related_to:
   - "[[the-network]]"
   - "[[disturb]]"
-_organized: true
 ---
 # The service layer
 

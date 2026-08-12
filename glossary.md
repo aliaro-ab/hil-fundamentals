@@ -2,7 +2,6 @@
 type: Guide
 related_to:
   - "[[start-here]]"
-_organized: true
 ---
 # Glossary
 

@@ -3,7 +3,6 @@ type: Guide
 related_to:
   - "[[the-capability-grid]]"
   - "[[start-here]]"
-_organized: true
 ---
 # Scenario cards
 
