@@ -6,6 +6,7 @@ related_to:
   - "[[why-abstraction-exists]]"
 _favorite: true
 _favorite_index: 0
+_organized: true
 ---
 # Start here
 
