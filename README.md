@@ -1,5 +1,8 @@
 # HIL Fundamentals
 
+> [!NOTE]
+> Archived 2026-11-08. This reference is now maintained inside ALIARO's internal systems engineering tooling. This repository stays readable as its last public version and receives no further updates.
+
 A vendor-neutral reference vault on the concepts behind hardware-in-the-loop (HIL) test systems: no product names, no APIs, no code.
 It is for engineers who are competent in embedded software, controls, or test automation, but new to HIL specifically.
 When you eventually read a real standard or a real product manual, this reference helps you navigate vendor and industry terminology.
